@@ -9,15 +9,24 @@ import { brandIdentity } from "@/app/content";
 export const metadata: Metadata = {
   title: "About | KF Software",
   description: "Small software. Focused problems.",
+  alternates: {
+    canonical: "https://kf-software.com/about/",
+  },
+  openGraph: {
+    title: "About | KF Software",
+    description: "Small software. Focused problems.",
+    url: "https://kf-software.com/about/",
+    type: "website",
+  },
 };
 
 export default function AboutPlaceholder() {
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup" },
-    { label: "Blog", href: "/blog" },
-    { label: "Support", href: "/support" },
-    { label: "About", href: "/about" },
+    { label: "ChillPup", href: "/chillpup/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "Support", href: "/support/" },
+    { label: "About", href: "/about/" },
   ];
 
   return (

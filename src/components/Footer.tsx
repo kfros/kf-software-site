@@ -6,27 +6,27 @@ export function Footer() {
   const navGroups = [
     {
       title: "PRODUCTS",
-      links: [{ label: "ChillPup", href: "/chillpup" }],
+      links: [{ label: "ChillPup", href: "/chillpup/" }],
     },
     {
       title: "RESOURCES",
       links: [
-        { label: "Blog", href: "/blog" },
-        { label: "Support", href: "/support" },
+        { label: "Blog", href: "/blog/" },
+        { label: "Support", href: "/support/" },
       ],
     },
     {
       title: "COMPANY",
       links: [
-        { label: "About", href: "/about" },
-        { label: "Business Details", href: "/business-details" },
+        { label: "About", href: "/about/" },
+        { label: "Business Details", href: "/business-details/" },
       ],
     },
     {
       title: "LEGAL",
       links: [
-        { label: "Privacy Policy", href: "/privacy-policy" },
-        { label: "Terms of Use", href: "/terms-of-use" },
+        { label: "Privacy Policy", href: "/privacy-policy/" },
+        { label: "Terms of Use", href: "/terms-of-use/" },
       ],
     },
   ];

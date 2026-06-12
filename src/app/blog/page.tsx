@@ -8,15 +8,24 @@ import { ArrowLeft, BookOpen } from "lucide-react";
 export const metadata: Metadata = {
   title: "Blog | KF Software",
   description: "Notes about small software, practical automation, and building focused products.",
+  alternates: {
+    canonical: "https://kf-software.com/blog/",
+  },
+  openGraph: {
+    title: "Blog | KF Software",
+    description: "Notes about small software, practical automation, and building focused products.",
+    url: "https://kf-software.com/blog/",
+    type: "website",
+  },
 };
 
 export default function BlogPlaceholder() {
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup" },
-    { label: "Blog", href: "/blog" },
-    { label: "Support", href: "/support" },
-    { label: "About", href: "/about" },
+    { label: "ChillPup", href: "/chillpup/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "Support", href: "/support/" },
+    { label: "About", href: "/about/" },
   ];
 
   return (

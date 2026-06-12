@@ -8,15 +8,24 @@ import { ArrowLeft, HeartHandshake } from "lucide-react";
 export const metadata: Metadata = {
   title: "Support | KF Software",
   description: "Need help with ChillPup or a KF Software product? Contact us and we will help you find the next step.",
+  alternates: {
+    canonical: "https://kf-software.com/support/",
+  },
+  openGraph: {
+    title: "Support | KF Software",
+    description: "Need help with ChillPup or a KF Software product? Contact us and we will help you find the next step.",
+    url: "https://kf-software.com/support/",
+    type: "website",
+  },
 };
 
 export default function SupportPlaceholder() {
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup" },
-    { label: "Blog", href: "/blog" },
-    { label: "Support", href: "/support" },
-    { label: "About", href: "/about" },
+    { label: "ChillPup", href: "/chillpup/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "Support", href: "/support/" },
+    { label: "About", href: "/about/" },
   ];
 
   return (

@@ -48,7 +48,7 @@ export const navigationLinks: NavigationLink[] = [
 export const heroContent = {
   heading: "Small software for real-world problems.",
   subheading:
-    "KF Software builds simple, focused apps and automation tools that solve narrow, practical problems for everyday people.",
+    "We build small software products from idea to launch: web apps, mobile apps, automation tools, and niche utilities.",
   ctaPrimary: { label: "Explore ChillPup", href: "#chillpup" },
   ctaSecondary: { label: "Contact us", href: "#contact" },
   badges: [

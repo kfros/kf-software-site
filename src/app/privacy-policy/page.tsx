@@ -9,17 +9,23 @@ export const metadata: Metadata = {
   title: "Privacy Policy — KF Software",
   description: "Privacy Policy for applications developed by KYRYL FROSYNIAK Solutions.",
   alternates: {
-    canonical: "https://kf-software.com/privacy-policy",
+    canonical: "https://kf-software.com/privacy-policy/",
+  },
+  openGraph: {
+    title: "Privacy Policy — KF Software",
+    description: "Privacy Policy for applications developed by KYRYL FROSYNIAK Solutions.",
+    url: "https://kf-software.com/privacy-policy/",
+    type: "website",
   },
 };
 
 export default function PrivacyPolicy() {
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup" },
-    { label: "Blog", href: "/blog" },
-    { label: "Support", href: "/support" },
-    { label: "About", href: "/about" },
+    { label: "ChillPup", href: "/chillpup/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "Support", href: "/support/" },
+    { label: "About", href: "/about/" },
   ];
 
   const sections = [

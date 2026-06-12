@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description:
     "Short, owner-guided calming routines for fireworks, loud noises, visitors, travel, and everyday dog stress moments.",
   alternates: {
-    canonical: "https://kf-software.com/chillpup",
+    canonical: "https://kf-software.com/chillpup/",
   },
   keywords: [
     "dog calming app",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ChillPup — Calm Dog Routines | KF Software",
     description: "Short, owner-guided calming routines for fireworks, loud noises, visitors, travel, and everyday dog stress moments.",
-    url: "https://kf-software.com/chillpup",
+    url: "https://kf-software.com/chillpup/",
     type: "website",
   },
 };
@@ -50,10 +50,10 @@ export const metadata: Metadata = {
 export default function ChillPupLanding() {
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup" },
-    { label: "Blog", href: "/blog" },
-    { label: "Support", href: "/support" },
-    { label: "About", href: "/about" },
+    { label: "ChillPup", href: "/chillpup/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "Support", href: "/support/" },
+    { label: "About", href: "/about/" },
   ];
 
   // Steps for Solution section
@@ -167,7 +167,7 @@ export default function ChillPupLanding() {
                   CHILLPUP
                 </span>
                 <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl leading-[1.15]">
-                  Gentle routines for stressful dog moments.
+                  ChillPup is for moments when your dog is already stressed and you do not want to search through long articles on your phone.
                 </h1>
                 <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#526174] max-w-2xl">
                   Short, owner-guided routines for fireworks, loud noises, visitors, travel,
@@ -213,9 +213,7 @@ export default function ChillPupLanding() {
               When your dog is stressed, long advice is too slow.
             </h2>
             <p className="mt-6 text-lg sm:text-xl leading-relaxed text-[#526174] max-w-3xl mx-auto">
-              Fireworks start. A visitor arrives. Your dog starts pacing, barking,
-              hiding, or trembling. In that moment, you do not need a huge training
-              course. You need a calm next step.
+              When fireworks start or guests arrive, most owners do not need another long training guide. They need a calm sequence they can follow without guessing.
             </p>
           </div>
         </section>
@@ -241,8 +239,7 @@ export default function ChillPupLanding() {
                 Simple guidance when the moment is already happening.
               </h2>
               <p className="mt-4 text-base sm:text-lg text-[#526174]">
-                ChillPup gives you short routines you can follow right away, without
-                pressure or complicated theory.
+                ChillPup gives you short routines you can follow right away, without pressure or complicated theory. It is a small independent app built by KF Software and is intentionally narrow: no camera, no microphone, no behavior diagnosis. Just short routines for moments when the owner needs a clear next step.
               </p>
             </div>
 

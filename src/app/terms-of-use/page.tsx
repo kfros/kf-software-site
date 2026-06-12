@@ -9,17 +9,23 @@ export const metadata: Metadata = {
   title: "Terms of Use — KF Software",
   description: "Terms of Use for applications developed by KYRYL FROSYNIAK Solutions.",
   alternates: {
-    canonical: "https://kf-software.com/terms-of-use",
+    canonical: "https://kf-software.com/terms-of-use/",
+  },
+  openGraph: {
+    title: "Terms of Use — KF Software",
+    description: "Terms of Use for applications developed by KYRYL FROSYNIAK Solutions.",
+    url: "https://kf-software.com/terms-of-use/",
+    type: "website",
   },
 };
 
 export default function TermsOfUse() {
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup" },
-    { label: "Blog", href: "/blog" },
-    { label: "Support", href: "/support" },
-    { label: "About", href: "/about" },
+    { label: "ChillPup", href: "/chillpup/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "Support", href: "/support/" },
+    { label: "About", href: "/about/" },
   ];
 
   const sections = [

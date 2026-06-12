@@ -28,12 +28,12 @@ export const metadata: Metadata = {
     "Wrocław software",
   ],
   alternates: {
-    canonical: "/",
+    canonical: "https://kf-software.com/",
   },
   openGraph: {
     title: "KF Software — Small software for real-world problems",
     description: heroContent.subheading,
-    url: "https://kf-software.com",
+    url: "https://kf-software.com/",
     siteName: brandIdentity.logoText,
     locale: "en_US",
     type: "website",
