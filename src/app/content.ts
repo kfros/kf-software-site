@@ -42,7 +42,7 @@ export const brandIdentity = {
 export const navigationLinks: NavigationLink[] = [
   { label: "Home", href: "/" },
   { label: "ChillPup", href: "#chillpup" },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "/blog/" },
   { label: "Support", href: "#support" },
   { label: "About", href: "#about" },
 ];
