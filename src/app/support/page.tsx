@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContactModal } from "../contact-modal";
 import { ArrowLeft, HeartHandshake } from "lucide-react";
+import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 
 export const metadata: Metadata = {
   title: "Support | KF Software",
@@ -30,6 +31,7 @@ export default function SupportPlaceholder() {
 
   return (
     <>
+      <PageClarityTags siteSection="support" product="kf_software" pageType="support" />
       <Header activeItem="Support" navItems={navItems} />
       <main className="min-h-[60vh] flex flex-col justify-center bg-gradient-to-b from-[#F6F8FA] to-white py-16 sm:py-24">
         <div className="mx-auto max-w-xl px-4 sm:px-6 lg:px-8 text-center">

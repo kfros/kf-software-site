@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContactModal } from "../contact-modal";
 import { FileText } from "lucide-react";
+import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 
 export const metadata: Metadata = {
   title: "Terms of Use — KF Software",
@@ -97,6 +98,7 @@ export default function TermsOfUse() {
 
   return (
     <>
+      <PageClarityTags siteSection="legal" product="kf_software" pageType="legal" />
       <Header activeItem="" navItems={navItems} />
       <main className="bg-[#F8FAFC] min-h-screen py-14 px-5 sm:py-24 sm:px-6">
         <article className="mx-auto max-w-[900px] bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-12 shadow-sm">

@@ -146,7 +146,7 @@ export function ContactModal() {
               Send a short note and we will reply from contact@kf-software.com.
             </p>
 
-            <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+            <form className="mt-6 space-y-4" onSubmit={handleSubmit} data-clarity-mask="true">
               <input name="access_key" type="hidden" />
               <label className="block">
                 <span className="mb-2 flex items-center gap-2 text-sm font-medium text-brand-primary">

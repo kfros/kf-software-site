@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContactModal } from "../contact-modal";
 import { Shield } from "lucide-react";
+import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — KF Software",
@@ -65,10 +66,17 @@ export default function PrivacyPolicy() {
       content:
         "Users can delete their account and all associated data at any time directly within the app or by sending an email request to contact@kf-software.com. For email requests, data will be permanently deleted within 7 business days. This process includes the removal of the user profile and associated records from the Firebase database.",
     },
+    {
+      number: 7,
+      title: "Analytics and Session Recording",
+      content:
+        "Our website uses Microsoft Clarity to understand how visitors interact with our pages. Clarity collects interaction data, such as clicks, scrolls, page visits, browser/device specifications, and approximate usage behavior. We use this information to improve our website, user experience, and product pages. These cookies are set and data is collected only after you have given consent in the cookie banner. We do not use Microsoft Clarity to collect personally identifying information or sensitive medical data.",
+    },
   ];
 
   return (
     <>
+      <PageClarityTags siteSection="legal" product="kf_software" pageType="legal" />
       <Header activeItem="" navItems={navItems} />
       <main className="bg-[#F8FAFC] min-h-screen py-14 px-5 sm:py-24 sm:px-6">
         <article className="mx-auto max-w-[900px] bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-12 shadow-sm">

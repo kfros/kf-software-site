@@ -1,6 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import { Code, Heart, ShieldCheck } from "lucide-react";
 
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "./store-links";
+
 export interface NavigationLink {
   label: string;
   href: string;
@@ -40,7 +42,7 @@ export const brandIdentity = {
 export const navigationLinks: NavigationLink[] = [
   { label: "Home", href: "/" },
   { label: "ChillPup", href: "#chillpup" },
-  { label: "Blog", href: "#blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Support", href: "#support" },
   { label: "About", href: "#about" },
 ];
@@ -69,14 +71,14 @@ export const featuredProduct = {
     {
       type: "app-store",
       label: "Download on the App Store",
-      url: "https://apps.apple.com/app/id6762043750",
+      url: APP_STORE_URL,
       active: true,
     },
     {
       type: "google-play",
-      label: "Google Play Coming soon",
-      url: "#",
-      active: false,
+      label: "Get ChillPup on Google Play",
+      url: GOOGLE_PLAY_URL,
+      active: true,
     },
   ] satisfies StoreButton[],
   features: [

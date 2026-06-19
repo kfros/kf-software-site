@@ -25,18 +25,21 @@ import { AppStoreBadge } from "@/components/AppStoreBadge";
 import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PageClarityTags } from "@/components/analytics/PageClarityTags";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "./store-links";
 
 export default function MainLanding() {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "ChillPup", href: "/chillpup/" },
-    { label: "Blog", href: "#blog" },
+    { label: "Blog", href: "/blog" },
     { label: "Support", href: "#support" },
     { label: "About", href: "#about" },
   ];
 
   return (
     <>
+      <PageClarityTags siteSection="home" product="kf_software" pageType="landing" />
       <Header activeItem="Home" navItems={navItems} />
       <main>
         <HeroSection />
@@ -159,25 +162,23 @@ function FeaturedProduct() {
               <div className="mt-8 flex flex-row items-center gap-4 flex-wrap">
                 {/* App Store Badge */}
                 <a
-                  href="https://apps.apple.com/app/id6762043750"
+                  href={APP_STORE_URL}
                   aria-label="Download ChillPup on the App Store"
                   className="transition hover:opacity-85 shrink-0"
                 >
                   <AppStoreBadge className="h-[40px] sm:h-[42px] w-auto" />
                 </a>
 
-                {/* Google Play Badge - Pending/Coming Soon */}
-                <div
-                  className="flex flex-col items-start gap-1"
-                  aria-label="ChillPup for Google Play is coming soon"
+                {/* Google Play Badge */}
+                <a
+                  href={GOOGLE_PLAY_URL}
+                  aria-label="Get ChillPup on Google Play"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition hover:opacity-85 shrink-0"
                 >
-                  <div className="opacity-40 pointer-events-none cursor-not-allowed shrink-0">
-                    <GooglePlayBadge className="h-[40px] sm:h-[42px] w-auto" />
-                  </div>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#526174] pl-2">
-                    Coming soon
-                  </span>
-                </div>
+                  <GooglePlayBadge className="h-[40px] sm:h-[42px] w-auto" />
+                </a>
               </div>
             </div>
 

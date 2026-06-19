@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { brandIdentity, heroContent } from "./content";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
+import { MicrosoftClarity } from "@/components/analytics/MicrosoftClarity";
+import { AnalyticsConsentBanner } from "@/components/analytics/AnalyticsConsentBanner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -59,6 +61,8 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         {children}
         <ScrollToTopButton />
+        <MicrosoftClarity />
+        <AnalyticsConsentBanner />
       </body>
     </html>
   );
