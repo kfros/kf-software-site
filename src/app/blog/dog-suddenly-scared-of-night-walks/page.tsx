@@ -391,19 +391,19 @@ export default function NightWalkConfidenceArticle() {
                 </h2>
                 <div className="mt-6 divide-y divide-slate-100 rounded-[24px] border border-slate-200 bg-white shadow-sm">
                   <FaqItem title="Why is my dog only scared to walk at night?">
-                    Night changes the visual landscape and acoustics. Lower visibility turns normal objects into strange shapes, moving shadows appear from streetlights, and sudden noises feel much louder without daytime background noise.
+                    <p>Night changes the visual landscape and acoustics. Lower visibility turns normal objects into strange shapes, moving shadows appear from streetlights, and sudden noises feel much louder without daytime background noise.</p>
                   </FaqItem>
                   <FaqItem title="Should I force my dog to keep walking if they freeze?">
-                    No. Forcing or dragging a dog typically increases their hesitation. If your dog freezes, let them pause, observe from a distance, and calmly turn back toward home if they remain uncomfortable.
+                    <p>No. Forcing or dragging a dog typically increases their hesitation. If your dog freezes, let them pause, observe from a distance, and calmly turn back toward home if they remain uncomfortable.</p>
                   </FaqItem>
                   <FaqItem title="Could sudden night fear be a health problem?">
-                    Yes. Changes in vision, sudden physical pain, or cognitive changes in older dogs can cause a dog to feel unsure in low light. Speak with your veterinarian to rule out medical issues first.
+                    <p>Yes. Changes in vision, sudden physical pain, or cognitive changes in older dogs can cause a dog to feel unsure in low light. Speak with your veterinarian to rule out medical issues first.</p>
                   </FaqItem>
                   <FaqItem title="Is it okay to make night walks shorter?">
-                    Yes. For a nervous dog, a calm two-minute outing can be more useful than a forced twenty-minute loop. The goal is to finish before your dog is overwhelmed, not to hit a normal distance at any cost.
+                    <p>Yes. For a nervous dog, a calm two-minute outing can be more useful than a forced twenty-minute loop. The goal is to finish before your dog is overwhelmed, not to hit a normal distance at any cost.</p>
                   </FaqItem>
                   <FaqItem title="What ChillPup routine should I use for night walk fear?">
-                    Before your next evening outing, open <strong>Night Walk Confidence</strong> in <strong>ChillPup</strong> and choose a smaller first step: a familiar route, better lighting, and permission to turn back early.
+                    <p>Before your next evening outing, open <strong>Night Walk Confidence</strong> in <strong>ChillPup</strong> and choose a smaller first step: a familiar route, better lighting, and permission to turn back early.</p>
                   </FaqItem>
                 </div>
               </section>
@@ -463,7 +463,7 @@ function FaqItem({
   return (
     <section className="p-5 sm:p-6">
       <h3 className="text-lg font-extrabold text-[#0F1A2C]">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-[#526174]">{children}</p>
+      <div className="mt-2 space-y-3 text-sm leading-6 text-[#526174]">{children}</div>
     </section>
   );
 }
