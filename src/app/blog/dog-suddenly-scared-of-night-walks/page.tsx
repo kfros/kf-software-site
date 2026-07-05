@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import {
   AlertTriangle,
   ArrowRight,
@@ -198,8 +199,8 @@ export default function NightWalkConfidenceArticle() {
             </div>
           </section>
 
-          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8 lg:py-16">
-            <div className="space-y-14">
+          <div className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,720px)_320px] lg:justify-center lg:gap-12 lg:px-8 lg:py-16">
+            <div className="space-y-14 lg:space-y-16">
               <section aria-labelledby="health-safety">
                 <div className="rounded-[28px] border border-amber-200/70 bg-[#FFFDF9] p-6 sm:p-8">
                   <div className="flex items-start gap-4">
@@ -239,15 +240,24 @@ export default function NightWalkConfidenceArticle() {
                 <h2 id="night-changes" className="text-3xl font-extrabold text-[#0F1A2C]">
                   What Changes When the Sun Goes Down
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174]">
+                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
                   A dog afraid to walk at night is responding to a shifting environment, not simply being stubborn.
                 </p>
 
-                <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {nightChanges.map((item) => (
                     <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
                       <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-[#526174]">{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-7 hidden space-y-5 lg:block">
+                  {nightChanges.map((item) => (
+                    <div key={item.title} className="border-l border-slate-200 pl-5">
+                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{item.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">{item.text}</p>
                     </div>
                   ))}
                 </div>
@@ -257,12 +267,22 @@ export default function NightWalkConfidenceArticle() {
                 <h2 id="freezes" className="text-3xl font-extrabold text-[#0F1A2C]">
                   What to Do in the Moment When Your Dog Freezes
                 </h2>
-                <div className="mt-6 space-y-4">
+
+                <div className="mt-6 space-y-4 lg:hidden">
                   {freezeSteps.map((step) => (
                     <div key={step.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
                       <h3 className="text-base font-extrabold text-[#0F1A2C]">{step.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-[#526174]">{step.text}</p>
                     </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 hidden space-y-6 lg:block">
+                  {freezeSteps.map((step) => (
+                    <section key={step.title} className="border-l border-slate-200 pl-5">
+                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{step.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">{step.text}</p>
+                    </section>
                   ))}
                 </div>
               </section>
@@ -271,11 +291,11 @@ export default function NightWalkConfidenceArticle() {
                 <h2 id="tonight" className="text-3xl font-extrabold text-[#0F1A2C]">
                   Small Changes for Tonight&apos;s Walk
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174]">
+                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
                   Give your dog a clear, manageable setup rather than trying to finish the usual route.
                 </p>
 
-                <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {tonightSteps.map((step) => (
                     <div key={step.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
                       <h3 className="text-base font-extrabold text-[#0F1A2C]">{step.title}</h3>
@@ -283,6 +303,17 @@ export default function NightWalkConfidenceArticle() {
                     </div>
                   ))}
                 </div>
+
+                <ul className="mt-6 hidden space-y-4 lg:block">
+                  {tonightSteps.map((step) => (
+                    <li key={step.title} className="flex gap-3 text-[17px] leading-8 text-[#526174]">
+                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                      <span>
+                        <strong className="text-[#0F1A2C]">{step.title}:</strong> {step.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
 
                 <div className="mt-8 rounded-[24px] border border-[#DCEFE8] bg-[#F3FBF8] p-6">
                   <p className="text-base leading-7 text-[#0F1A2C]">
@@ -295,18 +326,18 @@ export default function NightWalkConfidenceArticle() {
                 <h2 id="success" className="text-3xl font-extrabold text-[#0F1A2C]">
                   Redefining a Successful Night Walk
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174]">
+                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
                   Success isn&apos;t measured in miles. When a dog is hesitant, a win looks like:
                 </p>
                 <ul className="mt-5 space-y-3">
                   {wins.map((win) => (
-                    <li key={win} className="flex gap-3 text-base leading-7 text-[#526174]">
+                    <li key={win} className="flex gap-3 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
                       <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
                       <span>{win}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-base leading-7 text-[#526174]">
+                <p className="mt-5 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
                   Choosing a short, safe option keeps the experience positive. If your dog is struggling with stepping out during the day as well, read our guide on{" "}
                   <a href="/blog/dog-suddenly-scared-to-go-outside/" className="font-semibold text-[#0F766E] hover:underline">
                     Why Is My Dog Suddenly Scared to Go Outside?
@@ -427,7 +458,7 @@ function FaqItem({
   children,
 }: Readonly<{
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <section className="p-5 sm:p-6">
