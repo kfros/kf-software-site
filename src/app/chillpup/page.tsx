@@ -161,8 +161,33 @@ export default function ChillPupLanding() {
       <PageClarityTags siteSection="chillpup" product="chillpup" pageType="landing" />
       <Header activeItem="ChillPup" navItems={navItems} />
       <main>
+
+        {/* Problem Section */}
+        <section className="relative overflow-hidden bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white py-16 sm:py-24" id="problem">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl leading-[1.15] ">
+              When your dog is stressed, long advice is too slow.
+            </h2>
+            <p className="mt-6 text-lg sm:text-xl leading-relaxed text-[#526174] max-w-3xl mx-auto">
+              When fireworks start or guests arrive, most owners do not need another long training guide. They need a calm sequence they can follow without guessing.
+            </p>
+          </div>
+        </section>
+
+        {/* Calm Moment Banner Section */}
+        <section className="bg-white pb-12 sm:pb-16" id="calm_moment_banner">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="overflow-hidden rounded-[24px] bg-[#FCFAF7] border border-slate-200/60 shadow-sm transition hover:shadow-md duration-300">
+              <img
+                src="/images/chillpup_banner.jpg"
+                alt="A calm dog resting at home while its owner gently stays nearby."
+                className="w-full h-auto object-cover max-h-[480px]"
+              />
+            </div>
+          </div>
+        </section>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white py-16 sm:py-24">
+        <section className="bg-white py-16 sm:py-24 border-t border-slate-100">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
               {/* Copy Column */}
@@ -170,7 +195,7 @@ export default function ChillPupLanding() {
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0F766E]">
                   CHILLPUP
                 </span>
-                <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl leading-[1.15]">
+                <h1 className="text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl leading-tight">
                   ChillPup is for moments when your dog is already stressed and you do not want to search through long articles on your phone.
                 </h1>
                 <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#526174] max-w-2xl">
@@ -204,31 +229,6 @@ export default function ChillPupLanding() {
               <div className="lg:col-span-5 flex justify-center items-center">
                 <HeroPhones />
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Problem Section */}
-        <section className="bg-white py-16 sm:py-24 border-t border-slate-100" id="problem">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl leading-tight">
-              When your dog is stressed, long advice is too slow.
-            </h2>
-            <p className="mt-6 text-lg sm:text-xl leading-relaxed text-[#526174] max-w-3xl mx-auto">
-              When fireworks start or guests arrive, most owners do not need another long training guide. They need a calm sequence they can follow without guessing.
-            </p>
-          </div>
-        </section>
-
-        {/* Calm Moment Banner Section */}
-        <section className="bg-white pb-12 sm:pb-16" id="calm_moment_banner">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="overflow-hidden rounded-[24px] bg-[#FCFAF7] border border-slate-200/60 shadow-sm transition hover:shadow-md duration-300">
-              <img
-                src="/images/chillpup_banner.jpg"
-                alt="A calm dog resting at home while its owner gently stays nearby."
-                className="w-full h-auto object-cover max-h-[480px]"
-              />
             </div>
           </div>
         </section>
