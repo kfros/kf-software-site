@@ -57,6 +57,13 @@ export default function BlogPage() {
       isSafety: false
     },
     {
+      label: "Still shaken indoors",
+      href: "/blog/dog-still-shaken-after-fireworks/",
+      badge: "Noise & Fireworks",
+      icon: Volume2,
+      isSafety: false
+    },
+    {
       label: "Scared at night",
       href: "/blog/dog-suddenly-scared-of-night-walks/",
       badge: "Walk Fear",
@@ -156,7 +163,7 @@ export default function BlogPage() {
               </p>
             </div>
 
-            {/* 2x3 Card Grid */}
+            {/* Card Grid */}
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
               {pickerCards.map((card) => {
                 const Icon = card.icon;
