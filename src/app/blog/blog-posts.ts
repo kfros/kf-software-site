@@ -76,6 +76,20 @@ const rawArticles: BlogPost[] = [
     isLive: true
   },
   {
+    slug: "prepare-dog-for-fireworks-without-making-fear-worse",
+    href: "/blog/prepare-dog-for-fireworks-without-making-fear-worse/",
+    title: "How to Prepare Your Dog for Fireworks Without Making Fear Worse",
+    description: "Calm-day planning, safe indoor setup, potty timing, and clear steps before predictable fireworks.",
+    category: "Noise & Fireworks",
+    badge: "ChillPup Routine",
+    priority: "P1",
+    relatedRoutine: "Fireworks Prep: Calm-Day Practice",
+    evidenceRows: [57, 84, 96, 100],
+    riskLevel: "Medium",
+    isBoundaryContent: false,
+    isLive: true
+  },
+  {
     slug: "dog-suddenly-scared-of-night-walks",
     href: "/blog/dog-suddenly-scared-of-night-walks/",
     title: "Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier",
@@ -125,7 +139,7 @@ const rawArticles: BlogPost[] = [
     category: "Noise & Fireworks",
     badge: "Next Cluster",
     priority: "P1",
-    relatedRoutine: "Storm Calm Plan",
+    relatedRoutine: "Thunder & Fireworks Safe Space",
     evidenceRows: [61, 66, 67, 76, 78, 79, 80, 87],
     riskLevel: "Medium",
     isBoundaryContent: false,
