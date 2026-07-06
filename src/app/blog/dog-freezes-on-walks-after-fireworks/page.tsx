@@ -15,6 +15,7 @@ import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { ContactModal } from "../../contact-modal";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../store-links";
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
   title: "Dog Scared to Go Outside After Fireworks? What to Do First",
@@ -29,6 +30,12 @@ export const metadata: Metadata = {
       "A practical ChillPup guide for dogs who freeze at the door, turn back, or hesitate outside after fireworks.",
     url: "https://kf-software.com/blog/dog-freezes-on-walks-after-fireworks/",
     type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "Dog Scared to Go Outside After Fireworks? What to Do First",
+    description:
+      "If your dog is scared to go outside after fireworks, learn when to focus on home recovery, when to call a vet, and how to restart with a tiny outdoor step.",
   },
 };
 
@@ -203,9 +210,42 @@ const routineRows = [
 ];
 
 export default function PostFireworksWalkRebuildArticle() {
+  const faqs = [
+    {
+      question: "Why is my dog scared to go outside after fireworks?",
+      answer: "Loud, unpredictable bangs can make the next outdoor attempt feel unsafe to the dog. They may connect the doorway, street, or usual route with the place where the scary noise happened."
+    },
+    {
+      question: "Should I force my dog outside to pee after fireworks?",
+      answer: "No. Forcing a scared dog outside can make the next attempt harder. Use a quiet, sheltered spot close to the door and keep the attempt short. If your dog strains, cannot pee, or seems painful or unwell, contact your veterinarian."
+    },
+    {
+      question: "What if my dog is still shaking indoors?",
+      answer: "If your dog is still pacing, shaking, hiding, panting, or unable to settle indoors, wait before trying to rebuild the walk. Keep the environment quiet and let them use a safe resting place."
+    },
+    {
+      question: "How long does it take for a dog to feel normal after fireworks?",
+      answer: "Recovery timelines vary significantly for individual dogs. Some dogs settle by the next day. Others need more time and smaller steps. If the fear is severe, worsening, or not improving, speak with your veterinarian or a qualified behavior professional."
+    },
+    {
+      question: "Should I play fireworks sounds to get them used to it?",
+      answer: "No. Do not start sound exposure right after a scary event. Focus on calm recovery and very small, quiet outdoor attempts once your dog has settled indoors."
+    },
+    {
+      question: "Which ChillPup routine should I use?",
+      answer: "If your dog seems settled indoors but plants their feet at the door, use the Post-Fireworks Walk Rebuild routine to guide your first small outdoor steps."
+    }
+  ];
+
   return (
     <>
       <PageClarityTags siteSection="blog" product="chillpup" pageType="article" />
+      <ArticleJsonLd
+        title="Dog Scared to Go Outside After Fireworks? What to Do First"
+        description="If your dog is scared to go outside after fireworks, learn when to focus on home recovery, when to call a vet, and how to restart with a tiny outdoor step."
+        url="https://kf-software.com/blog/dog-freezes-on-walks-after-fireworks/"
+        faqs={faqs}
+      />
       <Header activeItem="Blog" navItems={navItems} />
 
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
@@ -229,6 +269,10 @@ export default function PostFireworksWalkRebuildArticle() {
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
                   For dogs who are settled indoors but hesitant outside after fireworks, ChillPup’s <strong>Post-Fireworks Walk Rebuild</strong> routine helps you plan a tiny first outdoor step without forcing the usual walk.
                 </p>
+
+                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> If your dog is scared to go outside after fireworks, wait until the noise is over and your dog has settled indoors. Do not force the usual route. Start with a tiny daylight step near a familiar exit, keep the leash loose, and turn back before panic builds.
+                </div>
               </div>
 
               <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">

@@ -67,63 +67,25 @@ export default function BlogPage() {
       badge: "Walk Fear",
       icon: Moon,
       isSafety: false
-    },
-    {
-      label: "Panics during thunder",
-      href: "/blog/how-to-help-dog-scared-of-thunder/",
-      badge: "Noise & Fireworks",
-      icon: Compass,
-      isSafety: false
-    },
-    {
-      label: "Suddenly shaking or panting",
-      href: "/blog/dog-shaking-and-panting-not-just-anxiety/",
-      badge: "Vet-Ready",
-      icon: Stethoscope,
-      isSafety: true
-    },
-    {
-      label: "Senior anxiety at night",
-      href: "/blog/senior-dog-suddenly-anxious-at-night/",
-      badge: "Senior Tracking",
-      icon: Clock,
-      isSafety: true
     }
   ];
 
   const supportingArticles = [
     {
-      title: "Dog Freezes on Walks After Fireworks or a Scary Event",
+      title: "Dog Scared to Go Outside After Fireworks? What to Do First",
       href: "/blog/dog-freezes-on-walks-after-fireworks/"
     },
     {
-      title: "Dog Suddenly Scared of Night Walks",
+      title: "Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier",
       href: "/blog/dog-suddenly-scared-of-night-walks/"
     },
     {
-      title: "Dog Refuses to Pee Outside After Thunder or Rain",
+      title: "Dog Won’t Pee in the Rain? What’s Normal and When to Call a Vet",
       href: "/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/"
-    },
-    {
-      title: "Escape-Proof Harness for Dogs Who Panic on Walks",
-      href: "/blog/escape-proof-harness-for-dogs-who-panic-on-walks/"
     }
   ];
 
-  const safetyArticles = [
-    {
-      title: "Dog Shaking and Panting: When It’s Not Just Anxiety",
-      href: "/blog/dog-shaking-and-panting-not-just-anxiety/"
-    },
-    {
-      title: "Senior Dog Suddenly Anxious at Night",
-      href: "/blog/senior-dog-suddenly-anxious-at-night/"
-    },
-    {
-      title: "Dog Suddenly Snapping When Touched",
-      href: "/blog/dog-suddenly-snapping-when-touched/"
-    }
-  ];
+  const safetyArticles: Array<{ title: string; href: string }> = [];
 
   return (
     <>
@@ -385,63 +347,65 @@ export default function BlogPage() {
         </section>
 
         {/* Section 5: Compact Safety Strip (When it may not be just anxiety) */}
-        <section 
-          id="safety-guides" 
-          aria-labelledby="safety-guides-title"
-          className="py-16 bg-[#FFFDF9] border-b border-slate-100"
-        >
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mb-10">
-              <div className="flex items-center gap-2 text-amber-800">
-                <ShieldAlert className="h-5 w-5 shrink-0" strokeWidth={2.2} />
-                <span className="text-xs font-bold uppercase tracking-[0.2em]">
-                  SAFETY & EXCLUSIONS
-                </span>
+        {safetyArticles.length > 0 && (
+          <section 
+            id="safety-guides" 
+            aria-labelledby="safety-guides-title"
+            className="py-16 bg-[#FFFDF9] border-b border-slate-100"
+          >
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="max-w-3xl mb-10">
+                <div className="flex items-center gap-2 text-amber-800">
+                  <ShieldAlert className="h-5 w-5 shrink-0" strokeWidth={2.2} />
+                  <span className="text-xs font-bold uppercase tracking-[0.2em]">
+                    SAFETY & EXCLUSIONS
+                  </span>
+                </div>
+                <h2 
+                  id="safety-guides-title"
+                  className="mt-2 text-3xl font-extrabold text-[#0F1A2C]"
+                >
+                  When it may not be just anxiety
+                </h2>
+                <p className="mt-3 text-base text-[#526174]">
+                  Some behavior changes need tracking and a vet conversation before trying calming routines. Check safety indicators first.
+                </p>
               </div>
-              <h2 
-                id="safety-guides-title"
-                className="mt-2 text-3xl font-extrabold text-[#0F1A2C]"
-              >
-                When it may not be just anxiety
-              </h2>
-              <p className="mt-3 text-base text-[#526174]">
-                Some behavior changes need tracking and a vet conversation before trying calming routines. Check safety indicators first.
+
+              {/* Compact Horizontal Grid for Safety */}
+              <div className="grid gap-4 md:grid-cols-3">
+                {safetyArticles.map((article) => (
+                  <a 
+                    key={article.href}
+                    href={article.href}
+                    className="flex flex-col justify-between p-5 bg-white border border-amber-200/60 rounded-2xl shadow-sm hover:border-amber-400 hover:shadow-soft transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  >
+                    <div>
+                      <span className="inline-flex items-center rounded-md bg-[#FFFbeb] px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-900 border border-amber-200/40">
+                        Safety Guide
+                      </span>
+                      <h3 className="mt-2 text-base font-bold text-[#0F1A2C] leading-snug group-hover:text-amber-900 transition duration-155">
+                        {article.title}
+                      </h3>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-amber-50 flex items-center justify-between text-xs font-bold text-amber-800">
+                      <span className="flex items-center gap-1">
+                        <AlertTriangle className="h-3.5 w-3.5" />
+                        Vet-Ready Check
+                      </span>
+                      <ArrowRight className="h-3.5 w-3.5 transform group-hover:translate-x-1 transition duration-200" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              {/* Vet disclaimer under safety strip */}
+              <p className="mt-8 text-xs leading-relaxed text-slate-500 border-t border-amber-200/30 pt-4">
+                <strong>Important Safety Note:</strong> ChillPup is not a veterinary or diagnostic app. If your dog shows pain, collapse, seizures, sudden severe symptoms, appetite changes, or unexplained shaking or panting, contact a veterinarian.
               </p>
             </div>
-
-            {/* Compact Horizontal Grid for Safety */}
-            <div className="grid gap-4 md:grid-cols-3">
-              {safetyArticles.map((article) => (
-                <a 
-                  key={article.href}
-                  href={article.href}
-                  className="flex flex-col justify-between p-5 bg-white border border-amber-200/60 rounded-2xl shadow-sm hover:border-amber-400 hover:shadow-soft transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-amber-500"
-                >
-                  <div>
-                    <span className="inline-flex items-center rounded-md bg-[#FFFbeb] px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-900 border border-amber-200/40">
-                      Safety Guide
-                    </span>
-                    <h3 className="mt-2 text-base font-bold text-[#0F1A2C] leading-snug group-hover:text-amber-900 transition duration-155">
-                      {article.title}
-                    </h3>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-amber-50 flex items-center justify-between text-xs font-bold text-amber-800">
-                    <span className="flex items-center gap-1">
-                      <AlertTriangle className="h-3.5 w-3.5" />
-                      Vet-Ready Check
-                    </span>
-                    <ArrowRight className="h-3.5 w-3.5 transform group-hover:translate-x-1 transition duration-200" />
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            {/* Vet disclaimer under safety strip */}
-            <p className="mt-8 text-xs leading-relaxed text-slate-500 border-t border-amber-200/30 pt-4">
-              <strong>Important Safety Note:</strong> ChillPup is not a veterinary or diagnostic app. If your dog shows pain, collapse, seizures, sudden severe symptoms, appetite changes, or unexplained shaking or panting, contact a veterinarian.
-            </p>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Section 6: Browse guides by situation (Clean footer link list) */}
         <section 

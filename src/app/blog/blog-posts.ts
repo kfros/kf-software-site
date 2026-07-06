@@ -29,9 +29,10 @@ export interface BlogPost {
   evidenceRows: number[];
   riskLevel: BlogRiskLevel;
   isBoundaryContent: boolean;
+  isLive?: boolean;
 }
 
-export const featuredCoreArticles: BlogPost[] = [
+const rawArticles: BlogPost[] = [
   {
     slug: "dog-suddenly-scared-to-go-outside",
     href: "/blog/dog-suddenly-scared-to-go-outside/",
@@ -43,25 +44,27 @@ export const featuredCoreArticles: BlogPost[] = [
     relatedRoutine: "Outdoor Confidence Reset",
     evidenceRows: [29, 33, 39, 41, 47, 55, 57, 59, 68, 69, 84, 96, 100],
     riskLevel: "Medium",
-    isBoundaryContent: false
+    isBoundaryContent: false,
+    isLive: true
   },
   {
     slug: "dog-freezes-on-walks-after-fireworks",
     href: "/blog/dog-freezes-on-walks-after-fireworks/",
-    title: "Dog Freezes on Walks After Fireworks or a Scary Event",
+    title: "Dog Scared to Go Outside After Fireworks? What to Do First",
     description: "How to rebuild outdoor confidence with tiny, low-pressure steps after a noise scare.",
     category: "Walk Fear",
     badge: "ChillPup Routine",
     priority: "P1",
-    relatedRoutine: "Post-Fireworks Outdoor Rebuild",
+    relatedRoutine: "Post-Fireworks Walk Rebuild",
     evidenceRows: [57, 84, 96, 100],
     riskLevel: "Medium",
-    isBoundaryContent: false
+    isBoundaryContent: false,
+    isLive: true
   },
   {
     slug: "dog-suddenly-scared-of-night-walks",
     href: "/blog/dog-suddenly-scared-of-night-walks/",
-    title: "Dog Suddenly Scared of Night Walks",
+    title: "Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier",
     description: "Why low light, past scares, and outdoor sounds can make familiar walks feel unsafe.",
     category: "Walk Fear",
     badge: "ChillPup Routine",
@@ -69,20 +72,22 @@ export const featuredCoreArticles: BlogPost[] = [
     relatedRoutine: "Night Walk Confidence",
     evidenceRows: [33, 84, 100],
     riskLevel: "Medium",
-    isBoundaryContent: false
+    isBoundaryContent: false,
+    isLive: true
   },
   {
     slug: "dog-refuses-to-pee-outside-after-thunder-or-rain",
     href: "/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/",
-    title: "Dog Refuses to Pee Outside After Thunder or Rain",
+    title: "Dog Won’t Pee in the Rain? What’s Normal and When to Call a Vet",
     description: "Safe, tiny steps for dogs who avoid wet weather, storms, or outdoor potty breaks after a scare.",
     category: "Walk Fear",
     badge: "Safety Guide",
     priority: "P1",
-    relatedRoutine: "Weather Potty Confidence",
+    relatedRoutine: "Rain / Weather Potty Confidence",
     evidenceRows: [39, 59, 69],
     riskLevel: "Medium",
-    isBoundaryContent: false
+    isBoundaryContent: false,
+    isLive: true
   },
   {
     slug: "escape-proof-harness-for-dogs-who-panic-on-walks",
@@ -95,7 +100,8 @@ export const featuredCoreArticles: BlogPost[] = [
     relatedRoutine: null,
     evidenceRows: [33, 47, 68],
     riskLevel: "High",
-    isBoundaryContent: false
+    isBoundaryContent: false,
+    isLive: false
   },
   {
     slug: "how-to-help-dog-scared-of-thunder",
@@ -108,11 +114,9 @@ export const featuredCoreArticles: BlogPost[] = [
     relatedRoutine: "Storm Calm Plan",
     evidenceRows: [61, 66, 67, 76, 78, 79, 80, 87],
     riskLevel: "Medium",
-    isBoundaryContent: false
-  }
-];
-
-export const safetyArticles: BlogPost[] = [
+    isBoundaryContent: false,
+    isLive: false
+  },
   {
     slug: "dog-shaking-and-panting-not-just-anxiety",
     href: "/blog/dog-shaking-and-panting-not-just-anxiety/",
@@ -124,7 +128,8 @@ export const safetyArticles: BlogPost[] = [
     relatedRoutine: null,
     evidenceRows: [2, 3, 7, 12, 42, 63, 88],
     riskLevel: "High",
-    isBoundaryContent: true
+    isBoundaryContent: true,
+    isLive: false
   },
   {
     slug: "senior-dog-suddenly-anxious-at-night",
@@ -137,7 +142,8 @@ export const safetyArticles: BlogPost[] = [
     relatedRoutine: null,
     evidenceRows: [1, 49, 72, 75, 81, 82, 90],
     riskLevel: "High",
-    isBoundaryContent: true
+    isBoundaryContent: true,
+    isLive: false
   },
   {
     slug: "dog-suddenly-snapping-when-touched",
@@ -150,12 +156,21 @@ export const safetyArticles: BlogPost[] = [
     relatedRoutine: null,
     evidenceRows: [60, 94, 99],
     riskLevel: "High",
-    isBoundaryContent: true
+    isBoundaryContent: true,
+    isLive: false
   }
 ];
 
-// Combines both sets in original defined order
-export const allArticles: BlogPost[] = [
-  ...featuredCoreArticles,
-  ...safetyArticles
-];
+// Exported collections filtered for live visibility
+export const featuredCoreArticles: BlogPost[] = rawArticles.filter(
+  (a) => a.isLive && a.category === "Walk Fear"
+);
+
+export const safetyArticles: BlogPost[] = rawArticles.filter(
+  (a) => a.isLive && a.category === "Vet-Ready"
+);
+
+export const allArticles: BlogPost[] = rawArticles.filter((a) => a.isLive);
+
+// Export the backlog for editorial/reference purposes
+export const backlogArticles: BlogPost[] = rawArticles.filter((a) => !a.isLive);

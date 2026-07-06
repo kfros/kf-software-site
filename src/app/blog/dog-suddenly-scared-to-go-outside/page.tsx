@@ -15,6 +15,7 @@ import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { ContactModal } from "../../contact-modal";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../store-links";
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
   title: "Why Is My Dog Suddenly Scared to Go Outside?",
@@ -29,6 +30,12 @@ export const metadata: Metadata = {
       "A practical ChillPup guide for dogs who freeze at the door, refuse walks, or turn back from familiar outdoor places.",
     url: "https://kf-software.com/blog/dog-suddenly-scared-to-go-outside/",
     type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "Why Is My Dog Suddenly Scared to Go Outside?",
+    description:
+      "If your dog suddenly refuses to go outside, learn what to check first, what not to do, and how to start with a smaller outdoor step.",
   },
 };
 
@@ -172,9 +179,42 @@ const routineRows = [
 ];
 
 export default function OutdoorConfidenceResetArticle() {
+  const faqs = [
+    {
+      question: "Why did my dog suddenly become scared to go outside?",
+      answer: "Sudden changes are usually triggered by a recent negative experience, such as a loud noise or an encounter with a loose dog, sudden changes in health or vision, uncomfortable weather, or owner tension on the leash."
+    },
+    {
+      question: "Should I force my dog to walk if they refuse?",
+      answer: "No. Forcing or dragging your dog past their comfort zone typically increases their avoidance. It is much more effective to keep trips incredibly short and let them turn back before they get overwhelmed."
+    },
+    {
+      question: "Could sudden outdoor fear be medical?",
+      answer: "Yes. Conditions that cause physical pain, sudden vision loss, hearing changes, or cognitive changes in senior dogs can cause them to feel insecure outdoors. Have your veterinarian check them over first."
+    },
+    {
+      question: "What if my dog only refuses at night?",
+      answer: "This is common due to reduced visibility, moving shadows from streetlights, or pedestrians appearing suddenly. Stick to brightly lit, highly familiar paths and shorten the route."
+    },
+    {
+      question: "What if this started after fireworks?",
+      answer: "Loud, unpredictable sounds can make the next outdoor attempt feel unsafe to the dog. Focus on indoor comfort first, and keep your initial outdoor trips limited to very quick potty breaks close to the door using the Post-Fireworks Walk Rebuild routine."
+    },
+    {
+      question: "Which ChillPup routine should I use?",
+      answer: "If the refusal is general and happens during the day, start with the Outdoor Confidence Reset. If it is tied to specific triggers like storms, darkness, or fireworks, use the dedicated specialized routine listed in the routing table above."
+    }
+  ];
+
   return (
     <>
       <PageClarityTags siteSection="blog" product="chillpup" pageType="article" />
+      <ArticleJsonLd
+        title="Why Is My Dog Suddenly Scared to Go Outside?"
+        description="If your dog suddenly refuses to go outside, learn what to check first, what not to do, and how to start with a smaller outdoor step."
+        url="https://kf-software.com/blog/dog-suddenly-scared-to-go-outside/"
+        faqs={faqs}
+      />
       <Header activeItem="Blog" navItems={navItems} />
 
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
@@ -193,7 +233,7 @@ export default function OutdoorConfidenceResetArticle() {
                   If your dog suddenly refuses to go outside, do not start by pulling harder or trying to finish the usual walk. First, check whether anything has changed: your dog’s health, the route, the weather, the time of day, recent loud noises, or a scary outdoor moment.
                 </p>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  If your dog seems painful, weak, confused, disoriented, suddenly unable to potty, or severely distressed, contact your veterinarian before treating this as a confidence issue.
+                  If your dog seems painful, weak, confused, disoriented, suddenly unable to potty, or severely distressed, contact your veterinarian before assuming this is a confidence issue.
                 </p>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
                   If your dog seems otherwise well but has started freezing at the door, planting their feet, or turning back from familiar places, start smaller. A short step outside, a familiar route, and an easy turn-back point are more useful than forcing the old routine.
@@ -201,6 +241,10 @@ export default function OutdoorConfidenceResetArticle() {
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
                   For dogs who seem otherwise well but suddenly struggle with going outside, ChillPup’s <strong>Outdoor Confidence Reset</strong> routine helps you choose a smaller, owner-guided first step instead of pushing through the usual walk.
                 </p>
+
+                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> If your dog suddenly refuses to go outside, first check for pain, illness, unsafe route changes, recent loud noises, weather, and time-of-day triggers. If no medical red flags are present, start with a smaller outdoor step instead of forcing the usual walk.
+                </div>
               </div>
 
               <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">

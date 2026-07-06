@@ -15,6 +15,7 @@ import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { ContactModal } from "../../contact-modal";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../store-links";
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
   title: "Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier",
@@ -29,6 +30,12 @@ export const metadata: Metadata = {
       "A practical ChillPup guide for dogs who manage daytime walks but hesitate, freeze, or scan the street after dark.",
     url: "https://kf-software.com/blog/dog-suddenly-scared-of-night-walks/",
     type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier",
+    description:
+      "If your dog walks fine by day but freezes at night, learn what to check first and how to make evening walks shorter, brighter, and less stressful.",
   },
 };
 
@@ -146,9 +153,38 @@ const routineRows = [
 ];
 
 export default function NightWalkConfidenceArticle() {
+  const faqs = [
+    {
+      question: "Why is my dog only scared to walk at night?",
+      answer: "Night changes the visual landscape and acoustics. Lower visibility turns normal objects into strange shapes, moving shadows appear from streetlights, and sudden noises feel much louder without daytime background noise."
+    },
+    {
+      question: "Should I force my dog to keep walking if they freeze?",
+      answer: "No. Forcing or dragging a dog typically increases their hesitation. If your dog freezes, let them pause, observe from a distance, and calmly turn back toward home if they remain uncomfortable."
+    },
+    {
+      question: "Could sudden night fear be a health problem?",
+      answer: "Yes. Changes in vision, sudden physical pain, or cognitive changes in older dogs can cause a dog to feel unsure in low light. Speak with your veterinarian to rule out medical issues first."
+    },
+    {
+      question: "Is it okay to make night walks shorter?",
+      answer: "Yes. For a nervous dog, a calm two-minute outing can be more useful than a forced twenty-minute loop. The goal is to finish before your dog is overwhelmed, not to hit a normal distance at any cost."
+    },
+    {
+      question: "What ChillPup routine should I use for night walk fear?",
+      answer: "Before your next evening outing, open Night Walk Confidence in ChillPup and choose a smaller first step: a familiar route, better lighting, and permission to turn back early."
+    }
+  ];
+
   return (
     <>
       <PageClarityTags siteSection="blog" product="chillpup" pageType="article" />
+      <ArticleJsonLd
+        title="Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier"
+        description="If your dog walks fine by day but freezes at night, learn what to check first and how to make evening walks shorter, brighter, and less stressful."
+        url="https://kf-software.com/blog/dog-suddenly-scared-of-night-walks/"
+        faqs={faqs}
+      />
       <Header activeItem="Blog" navItems={navItems} />
 
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
@@ -169,6 +205,10 @@ export default function NightWalkConfidenceArticle() {
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
                   When a dog walks fine during the day but stops at the doorway or scans the street anxiously at dark, the environment is likely the trigger. Night changes how things look, sound, and smell. For dogs who seem physically well and mainly struggle with the evening route, ChillPup’s <strong>Night Walk Confidence</strong> routine gives you a practical way to choose a smaller, calmer first step before you head out tonight.
                 </p>
+
+                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> If your dog walks normally by day but freezes at night, check for pain, vision changes, unsafe lighting, traffic, and route hazards first. If no red flags are present, make evening walks shorter, brighter, and more familiar.
+                </div>
               </div>
 
               <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">

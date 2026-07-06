@@ -15,6 +15,7 @@ import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { ContactModal } from "../../contact-modal";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../store-links";
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
   title: "Dog Won’t Pee in the Rain? What’s Normal and When to Call a Vet",
@@ -29,6 +30,12 @@ export const metadata: Metadata = {
       "A practical ChillPup guide for dogs who dislike rainy potty breaks, with clear safety signs and a short sheltered setup.",
     url: "https://kf-software.com/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/",
     type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "Dog Won’t Pee in the Rain? What’s Normal and When to Call a Vet",
+    description:
+      "If your dog avoids peeing in rain, learn when it may be normal wet-weather reluctance, when to call a vet, and how to plan a short sheltered potty attempt.",
   },
 };
 
@@ -152,9 +159,38 @@ const routineRows = [
 ];
 
 export default function RainPottyConfidenceArticle() {
+  const faqs = [
+    {
+      question: "Is it normal for dogs to avoid peeing in the rain?",
+      answer: "Yes. Many dogs dislike the physical sensation of wet grass on their belly, cold pavement on their paws, or the loud noise and wind that come with a storm."
+    },
+    {
+      question: "When should I call a vet if my dog will not pee?",
+      answer: "Stop and contact your veterinarian promptly if you notice any of the following: Your dog cannot pass urine at all despite trying. They strain repeatedly or only pass a few drops. You see blood in their urine or stool. Your dog vomits, seems unusually weak, or collapses. They show obvious signs of pain while peeing or pooping. They have repeated unsuccessful potty attempts. They suddenly stop following previously reliable house-training habits without an obvious environmental reason. If your dog cannot pass urine at all, collapses, has trouble breathing, or appears severely weak or painful, seek urgent veterinary help. If none of these signs are present and your dog otherwise behaves normally, the issue may simply be rainy-day reluctance rather than a medical emergency."
+    },
+    {
+      question: "Should I force my dog outside in bad weather?",
+      answer: "No. Dragging or forcing your dog onto wet surfaces usually increases their avoidance. Several short, calm attempts are usually easier on the dog than one long standoff in the rain."
+    },
+    {
+      question: "How can I make rainy potty breaks easier?",
+      answer: "Keep the trip under five minutes, head directly to a covered area like a building overhang or a thick tree canopy, and remain calm rather than rushing your dog."
+    },
+    {
+      question: "What ChillPup routine should I use for rainy-day potty reluctance?",
+      answer: "The Rain / Weather Potty Confidence routine gives you a practical, low-pressure way to plan short, sheltered potty breaks when your dog seems otherwise well and no medical red flags are present."
+    }
+  ];
+
   return (
     <>
       <PageClarityTags siteSection="blog" product="chillpup" pageType="article" />
+      <ArticleJsonLd
+        title="Dog Won’t Pee in the Rain? What’s Normal and When to Call a Vet"
+        description="If your dog avoids peeing in rain, learn when it may be normal wet-weather reluctance, when to call a vet, and how to plan a short sheltered potty attempt."
+        url="https://kf-software.com/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/"
+        faqs={faqs}
+      />
       <Header activeItem="Blog" navItems={navItems} />
 
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
@@ -175,6 +211,10 @@ export default function RainPottyConfidenceArticle() {
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
                   A dog slowing down or hesitating before going outside in bad weather is a common hurdle for many owners. While a rainy-day delay is usually normal, it can sometimes overlap with health changes. For dogs who seem physically well but dislike wet-weather potty breaks, ChillPup’s <strong>Rain / Weather Potty Confidence</strong> routine gives you a short way to plan one easier attempt without forcing or punishment.
                 </p>
+
+                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> If your dog will not pee in the rain but seems otherwise well, use a short, sheltered potty attempt close to the door. If your dog strains, cannot urinate, seems painful, or has repeated unexplained accidents, contact your veterinarian.
+                </div>
               </div>
 
               <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
