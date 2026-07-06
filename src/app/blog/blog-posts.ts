@@ -62,6 +62,20 @@ const rawArticles: BlogPost[] = [
     isLive: true
   },
   {
+    slug: "dog-still-shaken-after-fireworks",
+    href: "/blog/dog-still-shaken-after-fireworks/",
+    title: "Dog Still Shaken After Fireworks? How to Help Them Recover at Home",
+    description: "Quiet indoor recovery steps for dogs who are still hiding, trembling, panting, or unsettled after fireworks.",
+    category: "Noise & Fireworks",
+    badge: "ChillPup Routine",
+    priority: "P1",
+    relatedRoutine: "Post-Fireworks Recovery at Home",
+    evidenceRows: [57, 84, 96, 100],
+    riskLevel: "Medium",
+    isBoundaryContent: false,
+    isLive: true
+  },
+  {
     slug: "dog-suddenly-scared-of-night-walks",
     href: "/blog/dog-suddenly-scared-of-night-walks/",
     title: "Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier",
