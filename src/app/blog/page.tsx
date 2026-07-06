@@ -1,16 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
 import { 
-  BookOpen, 
   ArrowRight, 
   ShieldAlert, 
   Footprints, 
   Volume2, 
-  HeartHandshake, 
-  Stethoscope, 
   Moon, 
-  Compass, 
-  Clock, 
   AlertTriangle,
   ChevronRight
 } from "lucide-react";

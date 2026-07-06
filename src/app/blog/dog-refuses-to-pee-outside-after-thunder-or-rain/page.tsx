@@ -209,7 +209,7 @@ export default function RainPottyConfidenceArticle() {
                   If your dog avoids peeing in the rain but seems fine otherwise, wet weather may simply be making the potty break harder. Start with a short, sheltered potty attempt and avoid forcing them. However, if your dog cannot pass urine, strains, or shows signs of discomfort, contact your veterinarian.
                 </p>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  A dog slowing down or hesitating before going outside in bad weather is a common hurdle for many owners. While a rainy-day delay is usually normal, it can sometimes overlap with health changes. For dogs who seem physically well but dislike wet-weather potty breaks, ChillPup’s <strong>Rain / Weather Potty Confidence</strong> routine gives you a short way to plan one easier attempt without forcing or punishment.
+                  A dog slowing down or hesitating before going outside in bad weather is a common hurdle for many owners. While a rainy-day delay is usually normal, it can sometimes overlap with health changes. For dogs who seem otherwise well but dislike wet-weather potty breaks, ChillPup’s <strong>Rain / Weather Potty Confidence</strong> routine gives you a short way to plan one easier attempt without forcing or punishment.
                 </p>
 
                 <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">

@@ -203,7 +203,7 @@ export default function NightWalkConfidenceArticle() {
                   If a dog walks normally during the day but freezes, plants their feet, or refuses the evening route, check for sudden vision or health issues first. If health concerns are cleared, stop pulling them forward. Make the route shorter, brighter, and let them turn back early.
                 </p>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  When a dog walks fine during the day but stops at the doorway or scans the street anxiously at dark, the environment is likely the trigger. Night changes how things look, sound, and smell. For dogs who seem physically well and mainly struggle with the evening route, ChillPup’s <strong>Night Walk Confidence</strong> routine gives you a practical way to choose a smaller, calmer first step before you head out tonight.
+                  When a dog walks fine during the day but stops at the doorway or scans the street anxiously at dark, the environment is likely the trigger. Night changes how things look, sound, and smell. For dogs who seem otherwise well and mainly struggle with the evening route, ChillPup’s <strong>Night Walk Confidence</strong> routine gives you a practical way to choose a smaller, calmer first step before you head out tonight.
                 </p>
 
                 <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
@@ -252,7 +252,7 @@ export default function NightWalkConfidenceArticle() {
                         First, Check for Health or Safety Concerns
                       </h2>
                       <p className="mt-3 leading-7 text-[#526174]">
-                        Rule out physical issues before treating this as a confidence or environment problem. Speak with your veterinarian before treating this as a confidence issue if:
+                        Rule out physical issues before treating this as a confidence or environment problem. Speak with your veterinarian before assuming this is a confidence issue if:
                       </p>
                     </div>
                   </div>
