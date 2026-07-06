@@ -5,7 +5,6 @@ import {
   ArrowRight,
   CheckCircle2,
   Footprints,
-  Home,
   ShieldAlert,
   Sparkles,
 } from "lucide-react";
