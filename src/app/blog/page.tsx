@@ -7,7 +7,8 @@ import {
   Volume2, 
   Moon, 
   AlertTriangle,
-  ChevronRight
+  ChevronRight,
+  CloudRain
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -69,10 +70,21 @@ export default function BlogPage() {
       badge: "Walk Fear",
       icon: Moon,
       isSafety: false
+    },
+    {
+      label: "Won’t pee in rain",
+      href: "/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/",
+      badge: "Weather Potty",
+      icon: CloudRain,
+      isSafety: false
     }
   ];
 
   const supportingArticles = [
+    {
+      title: "Dog Still Shaken After Fireworks? How to Help Them Recover at Home",
+      href: "/blog/dog-still-shaken-after-fireworks/"
+    },
     {
       title: "Dog Scared to Go Outside After Fireworks? What to Do First",
       href: "/blog/dog-freezes-on-walks-after-fireworks/"
@@ -216,10 +228,10 @@ export default function BlogPage() {
                 id="walk-fear-title"
                 className="mt-2 text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl"
               >
-                Start here: Walk Fear / Outdoor Freezing
+                Start here: Walk Fear & Fireworks Recovery
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#526174]">
-                For dogs who freeze at the door, refuse walks, panic after fireworks, or struggle with outdoor confidence.
+                For dogs who freeze at the door, refuse walks, stay unsettled after fireworks, or struggle with outdoor confidence.
               </p>
             </div>
 
@@ -266,7 +278,7 @@ export default function BlogPage() {
                   >
                     <div className="flex flex-col text-left pr-4">
                       <span className="text-[11px] font-bold uppercase tracking-wider text-[#0F766E]">
-                        Walk Fear Guide
+                        ChillPup Guide
                       </span>
                       <span className="mt-1 text-sm sm:text-base font-bold text-[#0F1A2C] leading-snug group-hover:text-[#0F766E] transition duration-155">
                         {article.title}
