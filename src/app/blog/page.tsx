@@ -51,6 +51,13 @@ export default function BlogPage() {
       isSafety: false
     },
     {
+      label: "Prepare for fireworks",
+      href: "/blog/prepare-dog-for-fireworks-without-making-fear-worse/",
+      badge: "Noise & Fireworks",
+      icon: Volume2,
+      isSafety: false
+    },
+    {
       label: "Freezes after fireworks",
       href: "/blog/dog-freezes-on-walks-after-fireworks/",
       badge: "Walk Fear",
@@ -81,6 +88,10 @@ export default function BlogPage() {
   ];
 
   const supportingArticles = [
+    {
+      title: "How to Prepare Your Dog for Fireworks Without Making Fear Worse",
+      href: "/blog/prepare-dog-for-fireworks-without-making-fear-worse/"
+    },
     {
       title: "Dog Still Shaken After Fireworks? How to Help Them Recover at Home",
       href: "/blog/dog-still-shaken-after-fireworks/"
@@ -231,7 +242,7 @@ export default function BlogPage() {
                 Start here: Walk Fear & Fireworks Recovery
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#526174]">
-                For dogs who freeze at the door, refuse walks, stay unsettled after fireworks, or struggle with outdoor confidence.
+                For dogs who freeze at the door, refuse walks, prepare for fireworks, stay unsettled afterward, or struggle with outdoor confidence.
               </p>
             </div>
 
