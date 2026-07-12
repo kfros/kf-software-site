@@ -16,6 +16,7 @@ import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { ContactModal } from "../../contact-modal";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../store-links";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
+import { ArticlePhoto } from "@/components/chillpup/ArticlePhoto";
 
 export const metadata: Metadata = {
   title: "Why Is My Dog Suddenly Scared to Go Outside?",
@@ -220,7 +221,7 @@ export default function OutdoorConfidenceResetArticle() {
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
         <article>
           <section className="border-b border-slate-100/70 py-14 sm:py-18">
-            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-center">
+            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-start">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
                   <Compass className="h-3.5 w-3.5" aria-hidden="true" />
@@ -247,31 +248,39 @@ export default function OutdoorConfidenceResetArticle() {
                 </div>
               </div>
 
-              <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
-                    <Footprints className="h-6 w-6" aria-hidden="true" />
+              <div className="space-y-6">
+                <ArticlePhoto
+                  src="/assets/door/chillpup-door-sitting.jpg"
+                  alt="A small dog sitting near the door on a leash before going outside"
+                  aspect="portrait"
+                  priority={true}
+                />
+                <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
+                      <Footprints className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+                        ChillPup Routine
+                      </p>
+                      <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
+                        Outdoor Confidence Reset
+                      </h2>
+                      <p className="mt-3 text-sm leading-6 text-[#526174]">
+                        For dogs who seem otherwise well but suddenly struggle with familiar outdoor steps.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                      ChillPup Routine
-                    </p>
-                    <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
-                      Outdoor Confidence Reset
-                    </h2>
-                    <p className="mt-3 text-sm leading-6 text-[#526174]">
-                      For dogs who seem otherwise well but suddenly struggle with familiar outdoor steps.
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href="#chillpup-routine"
-                  className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
-                >
-                  Find the matching routine
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </a>
-              </aside>
+                  <a
+                    href="#chillpup-routine"
+                    className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
+                  >
+                    Find the matching routine
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </a>
+                </aside>
+              </div>
             </div>
           </section>
 
@@ -381,6 +390,14 @@ export default function OutdoorConfidenceResetArticle() {
                 </div>
               </section>
 
+              <ArticlePhoto
+                src="/assets/walk-day/chillpup-walk-day-sniffing.jpg"
+                alt="A dog calmly sniffing grass during a short outdoor walk"
+                caption="Short, familiar outdoor moments can be enough at first."
+                aspect="wide"
+                className="my-8"
+              />
+
               <section aria-labelledby="what-not-to-do">
                 <h2 id="what-not-to-do" className="text-3xl font-extrabold text-[#0F1A2C]">
                   What Not to Do
@@ -442,6 +459,14 @@ export default function OutdoorConfidenceResetArticle() {
                   </p>
                 </div>
               </section>
+
+              <ArticlePhoto
+                src="/assets/walk-day/chillpup-walk-day-watching-up.jpg"
+                alt="A dog looking up toward its owner during a walk"
+                caption="A check-in moment can be more useful than pushing forward."
+                aspect="portrait"
+                className="my-8"
+              />
 
               <section id="chillpup-routine" aria-labelledby="routine-fit">
                 <h2 id="routine-fit" className="text-3xl font-extrabold text-[#0F1A2C]">

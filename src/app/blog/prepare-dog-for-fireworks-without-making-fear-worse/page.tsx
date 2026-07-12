@@ -15,6 +15,7 @@ import { AppStoreBadge } from "@/components/AppStoreBadge";
 import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
+import { ArticlePhoto } from "@/components/chillpup/ArticlePhoto";
 import { ContactModal } from "../../contact-modal";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../../store-links";
 
@@ -287,7 +288,7 @@ export default function FireworksPrepArticle() {
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
         <article>
           <section className="border-b border-slate-100/70 py-14 sm:py-18">
-            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-center">
+            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-start">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
                   <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
@@ -310,31 +311,39 @@ export default function FireworksPrepArticle() {
                 </div>
               </div>
 
-              <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
-                    <Volume2 className="h-6 w-6" aria-hidden="true" />
+              <div className="space-y-6">
+                <ArticlePhoto
+                  src="/assets/human-interaction/chillpup-human-feeding.jpg"
+                  alt="A dog calmly taking a treat from a person"
+                  aspect="portrait"
+                  priority={true}
+                />
+                <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
+                      <Volume2 className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+                        ChillPup Routine
+                      </p>
+                      <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
+                        Fireworks Prep: Calm-Day Practice
+                      </h2>
+                      <p className="mt-3 text-sm leading-6 text-[#526174]">
+                        For calm-day planning before predictable fireworks, before the first bang turns preparation into improvisation.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                      ChillPup Routine
-                    </p>
-                    <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
-                      Fireworks Prep: Calm-Day Practice
-                    </h2>
-                    <p className="mt-3 text-sm leading-6 text-[#526174]">
-                      For calm-day planning before predictable fireworks, before the first bang turns preparation into improvisation.
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href="#chillpup-routine"
-                  className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
-                >
-                  Find the matching routine
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </a>
-              </aside>
+                  <a
+                    href="#chillpup-routine"
+                    className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
+                  >
+                    Find the matching routine
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </a>
+                </aside>
+              </div>
             </div>
           </section>
 
@@ -461,6 +470,14 @@ export default function FireworksPrepArticle() {
                 </blockquote>
               </section>
 
+              <ArticlePhoto
+                src="/assets/human-interaction/chillpup-human-petting-2.jpg"
+                alt="A dog receiving a small treat during calm practice"
+                caption="Practice rewards on calm days, before the loud event starts."
+                aspect="portrait"
+                className="my-8"
+              />
+
               <section aria-labelledby="safe-space-support">
                 <h2 id="safe-space-support" className="text-3xl font-extrabold text-[#0F1A2C]">
                   When the Fireworks Start, Switch to Safe-Space Support
@@ -472,6 +489,14 @@ export default function FireworksPrepArticle() {
                   Instead, transition to your planned resting area, keep the room quiet, and switch to active support. If your dog prefers to hide under a bed, leave them there and simply maintain a calm, steady presence in the household. During the noise, you can transition your focus to the <strong>Thunder & Fireworks Safe Space</strong> routine inside the app to help maintain a quiet indoor plan.
                 </p>
               </section>
+
+              <ArticlePhoto
+                src="/assets/rest/chillpup-rest-02.jpeg"
+                alt="A dog resting quietly at home"
+                caption="Prepare the calm place before fireworks begin."
+                aspect="wide"
+                className="my-8"
+              />
 
               <section aria-labelledby="after-fireworks">
                 <h2 id="after-fireworks" className="text-3xl font-extrabold text-[#0F1A2C]">
