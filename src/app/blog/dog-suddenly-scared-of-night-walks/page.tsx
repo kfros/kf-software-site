@@ -206,42 +206,40 @@ export default function NightWalkConfidenceArticle() {
                   </p>
                 </div>
 
-                <div className="space-y-6">
+                <div>
                   <ArticlePhoto
                     src="/assets/walk-night/chillpup-walk-night-observing.jpg"
                     alt="A dog pausing outside during an evening walk"
                     aspect="portrait"
                     priority={true}
+                    isHero={true}
                   />
-                  <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
-                        <Footprints className="h-6 w-6" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                          ChillPup Routine
-                        </p>
-                        <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
-                          Night Walk Confidence
-                        </h2>
-                        <p className="mt-3 text-sm leading-6 text-[#526174]">
-                          For dogs who manage daytime walks but need a smaller, calmer plan after dark.
-                        </p>
-                      </div>
-                    </div>
-                    <a
-                      href="#chillpup-routine"
-                      className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
-                    >
-                      Find the matching routine
-                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </aside>
                 </div>
               </div>
 
               <div className="mt-10 max-w-3xl space-y-6">
+                <div className="rounded-2xl border border-[#DCEFE8] bg-white p-4 shadow-sm flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E]">
+                      <Footprints className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#0F766E]">
+                        ChillPup Routine
+                      </p>
+                      <h3 className="text-base font-extrabold text-[#0F1A2C] mt-0.5">
+                        Night Walk Confidence
+                      </h3>
+                    </div>
+                  </div>
+                  <a
+                    href="#chillpup-routine"
+                    className="inline-flex h-9 items-center justify-center rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-[#0B5F59]"
+                  >
+                    View Routine
+                  </a>
+                </div>
+
                 <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
                   When a dog walks fine during the day but stops at the doorway or scans the street anxiously at dark, the environment is likely the trigger. Night changes how things look, sound, and smell. For dogs who seem otherwise well and mainly struggle with the evening route, ChillPup’s <strong>Night Walk Confidence</strong> routine gives you a practical way to choose a smaller, calmer first step before you head out tonight.
                 </p>
