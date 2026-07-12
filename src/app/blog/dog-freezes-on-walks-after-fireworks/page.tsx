@@ -252,62 +252,67 @@ export default function PostFireworksWalkRebuildArticle() {
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
         <article>
           <section className="border-b border-slate-100/70 py-14 sm:py-18">
-            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-start">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
-                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                  Fireworks Recovery Guide
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+                    <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                    Fireworks Recovery Guide
+                  </div>
+                  <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+                    Dog Scared to Go Outside After Fireworks? What to Do First
+                  </h1>
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
+                    If your dog is scared to go outside after fireworks, do not start by dragging them through the usual walk. First, check whether the noise is fully over and whether your dog has settled indoors.
+                  </p>
                 </div>
-                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
-                  Dog Scared to Go Outside After Fireworks? What to Do First
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
-                  If your dog is scared to go outside after fireworks, do not start by dragging them through the usual walk. First, check whether the noise is fully over and whether your dog has settled indoors.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  If your dog is still hiding, trembling, pacing, panting, or refusing normal contact indoors, focus on quiet recovery at home. Outdoor rebuilding can wait. If your dog is calm indoors but freezes at the door or turns back outside, make the first outdoor step much smaller: a doorway pause, a short sniff near the building, or a calm turn-back before they panic.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  For dogs who are settled indoors but hesitant outside after fireworks, ChillPup’s <strong>Post-Fireworks Walk Rebuild</strong> routine helps you plan a tiny first outdoor step without forcing the usual walk.
-                </p>
 
-                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
-                  <strong>Quick answer:</strong> If your dog is scared to go outside after fireworks, wait until the noise is over and your dog has settled indoors. Do not force the usual route. Start with a tiny daylight step near a familiar exit, keep the leash loose, and turn back before panic builds.
+                <div className="space-y-6">
+                  <ArticlePhoto
+                    src="/assets/door/chillpup-door-looking-up.jpg"
+                    alt="A dog near the door looking up toward its owner"
+                    aspect="wide"
+                    priority={true}
+                  />
+                  <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
+                        <Footprints className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+                          ChillPup Routine
+                        </p>
+                        <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
+                          Post-Fireworks Walk Rebuild
+                        </h2>
+                        <p className="mt-3 text-sm leading-6 text-[#526174]">
+                          For dogs who have settled indoors but hesitate at the door or outside after fireworks.
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href="#chillpup-routine"
+                      className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
+                    >
+                      Find the matching routine
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </aside>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <ArticlePhoto
-                  src="/assets/door/chillpup-door-looking-up.jpg"
-                  alt="A dog near the door looking up toward its owner"
-                  aspect="wide"
-                  priority={true}
-                />
-                <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
-                      <Footprints className="h-6 w-6" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                        ChillPup Routine
-                      </p>
-                      <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
-                        Post-Fireworks Walk Rebuild
-                      </h2>
-                      <p className="mt-3 text-sm leading-6 text-[#526174]">
-                        For dogs who have settled indoors but hesitate at the door or outside after fireworks.
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    href="#chillpup-routine"
-                    className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
-                  >
-                    Find the matching routine
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </aside>
+              <div className="mt-10 max-w-3xl space-y-6">
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  If your dog is still hiding, trembling, pacing, panting, or refusing normal contact indoors, focus on quiet recovery at home. Outdoor rebuilding can wait. If your dog is calm indoors but freezes at the door or turns back outside, make the first outdoor step much smaller: a doorway pause, a short sniff near the building, or a calm turn-back before they panic.
+                </p>
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  For dogs who are settled indoors but hesitant outside after fireworks, ChillPup’s <strong>Post-Fireworks Walk Rebuild</strong> routine helps you plan a tiny first outdoor step without forcing the usual walk.
+                </p>
+
+                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> If your dog is scared to go outside after fireworks, wait until the noise is over and your dog has settled indoors. Do not force the usual route. Start with a tiny daylight step near a familiar exit, keep the leash loose, and turn back before panic builds.
+                </div>
               </div>
             </div>
           </section>
@@ -477,10 +482,10 @@ export default function PostFireworksWalkRebuildArticle() {
               </section>
 
               <ArticlePhoto
-                src="/assets/door/chillpup-door-resting.jpg"
-                alt="A dog calmly resting near the door"
-                caption="After fireworks, the first outdoor step should stay small and predictable."
-                aspect="wide"
+                src="/assets/door/chillpup-door-sitting.jpg"
+                alt="A small dog sitting near a door before going outside"
+                caption="After fireworks, start with a small, predictable step instead of forcing the usual walk."
+                aspect="portrait"
                 className="my-8"
               />
 

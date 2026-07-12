@@ -288,61 +288,67 @@ export default function FireworksPrepArticle() {
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
         <article>
           <section className="border-b border-slate-100/70 py-14 sm:py-18">
-            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-start">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
-                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                  Fireworks Calm-Day Prep Guide
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+                    <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                    Fireworks Calm-Day Prep Guide
+                  </div>
+                  <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+                    {title}
+                  </h1>
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
+                    If you want to prepare your dog for fireworks, do not wait until the first bang to start experimenting. The safest preparation happens on a calm day, when your dog is relaxed and the house is quiet.
+                  </p>
                 </div>
-                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
-                  {title}
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
-                  If you want to prepare your dog for fireworks, do not wait until the first bang to start experimenting. The safest preparation happens on a calm day, when your dog is relaxed and the house is quiet.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  Start by planning where your dog can rest, how you will reduce pressure, and what you will do when the noise begins. Avoid last-minute sound exposure, forced walks, or testing whether your dog is over their fear.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  If your dog seems otherwise well and you are preparing before a predictable fireworks event, ChillPup’s <strong>Fireworks Prep: Calm-Day Practice</strong> routine helps you set up a short, owner-guided plan before the noisy day arrives.
-                </p>
-                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
-                  <strong>Quick answer:</strong> To prepare your dog for fireworks, use a calm day to set up a quiet resting place, practice short low-pressure routines, secure doors and windows, plan potty timing, and decide what you will do when noise starts. Do not play fireworks recordings, force exposure, or wait until your dog is already panicking to start a new plan.
+
+                <div className="space-y-6">
+                  <ArticlePhoto
+                    src="/assets/human-interaction/chillpup-human-feeding.jpg"
+                    alt="A dog calmly taking a treat from a person"
+                    aspect="portrait"
+                    priority={true}
+                  />
+                  <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
+                        <Volume2 className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+                          ChillPup Routine
+                        </p>
+                        <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
+                          Fireworks Prep: Calm-Day Practice
+                        </h2>
+                        <p className="mt-3 text-sm leading-6 text-[#526174]">
+                          For calm-day planning before predictable fireworks, before the first bang turns preparation into improvisation.
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href="#chillpup-routine"
+                      className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
+                    >
+                      Find the matching routine
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </aside>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <ArticlePhoto
-                  src="/assets/human-interaction/chillpup-human-feeding.jpg"
-                  alt="A dog calmly taking a treat from a person"
-                  aspect="portrait"
-                  priority={true}
-                />
-                <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
-                      <Volume2 className="h-6 w-6" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                        ChillPup Routine
-                      </p>
-                      <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
-                        Fireworks Prep: Calm-Day Practice
-                      </h2>
-                      <p className="mt-3 text-sm leading-6 text-[#526174]">
-                        For calm-day planning before predictable fireworks, before the first bang turns preparation into improvisation.
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    href="#chillpup-routine"
-                    className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
-                  >
-                    Find the matching routine
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </aside>
+              <div className="mt-10 max-w-3xl space-y-6">
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  Start by planning where your dog can rest, how you will reduce pressure, and what you will do when the noise begins. Avoid last-minute sound exposure, forced walks, or testing whether your dog is over their fear.
+                </p>
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  If your dog seems otherwise well and you are preparing before a predictable fireworks event, ChillPup’s <strong>Fireworks Prep: Calm-Day Practice</strong> routine helps you set up a short, owner-guided plan before the noisy day arrives.
+                </p>
+
+                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> To prepare your dog for fireworks, use a calm day to set up a quiet resting place, practice short low-pressure routines, secure doors and windows, plan potty timing, and decide what you will do when noise starts. Do not play fireworks recordings, force exposure, or wait until your dog is already panicking to start a new plan.
+                </div>
               </div>
             </div>
           </section>

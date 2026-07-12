@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { 
   ArrowRight, 
   ShieldAlert, 
@@ -250,31 +251,43 @@ export default function BlogPage() {
             <div className="grid gap-8 lg:grid-cols-12 items-stretch">
               
               {/* Large Pillar Card */}
-              <article className="lg:col-span-7 flex flex-col justify-between p-8 bg-white border border-slate-200/60 rounded-[28px] shadow-sm hover:shadow-md transition duration-300 relative group">
-                <div>
-                  <div className="flex items-center gap-2 mb-5">
-                    <span className="inline-flex items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-[#0F766E] border border-teal-100">
-                      Walk Fear
-                    </span>
-                    <span className="inline-flex items-center rounded-md bg-slate-50 px-2 py-1 text-xs font-medium text-slate-500 border border-slate-150">
-                      Pillar Guide
-                    </span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F1A2C] leading-tight group-hover:text-[#0F766E] transition duration-200">
-                    <a href="/blog/dog-suddenly-scared-to-go-outside/" className="focus:outline-none">
-                      <span className="absolute inset-0 z-0 rounded-[28px]" aria-hidden="true" />
-                      Why Is My Dog Suddenly Scared to Go Outside?
-                    </a>
-                  </h3>
-                  <p className="mt-4 text-base leading-relaxed text-[#526174]">
-                    If your dog has suddenly started refusing walks, hiding at the front door, or freezing in familiar yards, it is rarely a simple training issue. Read how to trace past noise events, check safety setups, and begin outdoor confidence resets.
-                  </p>
+              <article className="lg:col-span-7 flex flex-col justify-between bg-white border border-slate-200/60 rounded-[28px] shadow-sm hover:shadow-md transition duration-300 relative group overflow-hidden">
+                <div className="relative w-full aspect-[16/9] overflow-hidden">
+                  <Image
+                    src="/assets/door/chillpup-door-sitting.jpg"
+                    alt="A small dog sitting calmly near a door before going outside"
+                    fill
+                    unoptimized={true}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
                 </div>
-                <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-[#0F766E] relative z-10">
-                  <span>Routine: Outdoor Confidence Reset</span>
-                  <div className="flex items-center gap-1 group-hover:translate-x-1.5 transition duration-200">
-                    <span>Read the guide</span>
-                    <ArrowRight className="h-4 w-4" />
+                <div className="p-8 flex-grow flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-5">
+                      <span className="inline-flex items-center rounded-md bg-teal-50 px-2 py-1 text-xs font-medium text-[#0F766E] border border-teal-100">
+                        Walk Fear
+                      </span>
+                      <span className="inline-flex items-center rounded-md bg-slate-50 px-2 py-1 text-xs font-medium text-slate-500 border border-slate-150">
+                        Pillar Guide
+                      </span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F1A2C] leading-tight group-hover:text-[#0F766E] transition duration-200">
+                      <a href="/blog/dog-suddenly-scared-to-go-outside/" className="focus:outline-none">
+                        <span className="absolute inset-0 z-0" aria-hidden="true" />
+                        Why Is My Dog Suddenly Scared to Go Outside?
+                      </a>
+                    </h3>
+                    <p className="mt-4 text-base leading-relaxed text-[#526174]">
+                      If your dog has suddenly started refusing walks, hiding at the front door, or freezing in familiar yards, it is rarely a simple training issue. Read how to trace past noise events, check safety setups, and begin outdoor confidence resets.
+                    </p>
+                  </div>
+                  <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-[#0F766E] relative z-10">
+                    <span>Routine: Outdoor Confidence Reset</span>
+                    <div className="flex items-center gap-1 group-hover:translate-x-1.5 transition duration-200">
+                      <span>Read the guide</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
                   </div>
                 </div>
               </article>

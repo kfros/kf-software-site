@@ -232,61 +232,67 @@ export default function PostFireworksRecoveryAtHomeArticle() {
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
         <article>
           <section className="border-b border-slate-100/70 py-14 sm:py-18">
-            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-start">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
-                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                  Fireworks Home Recovery Guide
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+                    <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                    Fireworks Home Recovery Guide
+                  </div>
+                  <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+                    Dog Still Shaken After Fireworks? How to Help Them Recover at Home
+                  </h1>
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
+                    If your dog is still shaken after fireworks, do not rush straight into the normal walk or a busy household routine. First, make sure the loud noise has fully ended and check whether your dog is showing signs that need veterinary attention.
+                  </p>
                 </div>
-                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
-                  Dog Still Shaken After Fireworks? How to Help Them Recover at Home
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
-                  If your dog is still shaken after fireworks, do not rush straight into the normal walk or a busy household routine. First, make sure the loud noise has fully ended and check whether your dog is showing signs that need veterinary attention.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  If your dog is hiding, trembling, panting, pacing, refusing normal contact, or struggling to rest indoors, focus on quiet recovery at home. Keep the environment predictable, reduce pressure, and let them use a familiar safe resting place.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  If your dog seems otherwise well and starts to settle indoors, ChillPup’s <strong>Post-Fireworks Recovery at Home</strong> routine helps you choose a short, owner-guided recovery step before you try to rebuild outdoor walks.
-                </p>
-                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
-                  <strong>Quick answer:</strong> If your dog is still shaken after fireworks, first check for pain, injury, breathing trouble, collapse, repeated unsuccessful potty attempts, or severe distress. If no medical red flags are present, keep the environment quiet, let your dog rest in a familiar place, avoid forcing walks or interaction, and wait until they settle indoors before trying outdoor rebuilding.
+
+                <div className="space-y-6">
+                  <ArticlePhoto
+                    src="/assets/rest/chillpup-rest-02.jpeg"
+                    alt="A dog resting quietly at home"
+                    aspect="wide"
+                    priority={true}
+                  />
+                  <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
+                        <Home className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+                          ChillPup Routine
+                        </p>
+                        <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
+                          Post-Fireworks Recovery at Home
+                        </h2>
+                        <p className="mt-3 text-sm leading-6 text-[#526174]">
+                          For dogs who are still unsettled indoors after fireworks and need quiet, owner-guided recovery before outdoor rebuilding.
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href="#chillpup-routine"
+                      className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
+                    >
+                      Find the matching routine
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </aside>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <ArticlePhoto
-                  src="/assets/rest/chillpup-rest-02.jpeg"
-                  alt="A dog resting quietly at home"
-                  aspect="wide"
-                  priority={true}
-                />
-                <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
-                      <Home className="h-6 w-6" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                        ChillPup Routine
-                      </p>
-                      <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
-                        Post-Fireworks Recovery at Home
-                      </h2>
-                      <p className="mt-3 text-sm leading-6 text-[#526174]">
-                        For dogs who are still unsettled indoors after fireworks and need quiet, owner-guided recovery before outdoor rebuilding.
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    href="#chillpup-routine"
-                    className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
-                  >
-                    Find the matching routine
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </aside>
+              <div className="mt-10 max-w-3xl space-y-6">
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  If your dog is hiding, trembling, pacing, panting, refusing normal contact, or struggling to rest indoors, focus on quiet recovery at home. Keep the environment predictable, reduce pressure, and let them use a familiar safe resting place.
+                </p>
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  If your dog seems otherwise well and starts to settle indoors, ChillPup’s <strong>Post-Fireworks Recovery at Home</strong> routine helps you choose a short, owner-guided recovery step before you try to rebuild outdoor walks.
+                </p>
+
+                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> If your dog is still shaken after fireworks, first check for pain, injury, breathing trouble, collapse, repeated unsuccessful potty attempts, or severe distress. If no medical red flags are present, keep the environment quiet, let your dog rest in a familiar place, avoid forcing walks or interaction, and wait until they settle indoors before trying outdoor rebuilding.
+                </div>
               </div>
             </div>
           </section>

@@ -221,65 +221,70 @@ export default function OutdoorConfidenceResetArticle() {
       <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
         <article>
           <section className="border-b border-slate-100/70 py-14 sm:py-18">
-            <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:items-start">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
-                  <Compass className="h-3.5 w-3.5" aria-hidden="true" />
-                  Walk Fear Pillar Guide
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+                    <Compass className="h-3.5 w-3.5" aria-hidden="true" />
+                    Walk Fear Pillar Guide
+                  </div>
+                  <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+                    Why Is My Dog Suddenly Scared to Go Outside?
+                  </h1>
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
+                    If your dog suddenly refuses to go outside, do not start by pulling harder or trying to finish the usual walk. First, check whether anything has changed: your dog’s health, the route, the weather, the time of day, recent loud noises, or a scary outdoor moment.
+                  </p>
                 </div>
-                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
-                  Why Is My Dog Suddenly Scared to Go Outside?
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#526174]">
-                  If your dog suddenly refuses to go outside, do not start by pulling harder or trying to finish the usual walk. First, check whether anything has changed: your dog’s health, the route, the weather, the time of day, recent loud noises, or a scary outdoor moment.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  If your dog seems painful, weak, confused, disoriented, suddenly unable to potty, or severely distressed, contact your veterinarian before assuming this is a confidence issue.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  If your dog seems otherwise well but has started freezing at the door, planting their feet, or turning back from familiar places, start smaller. A short step outside, a familiar route, and an easy turn-back point are more useful than forcing the old routine.
-                </p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-[#526174]">
-                  For dogs who seem otherwise well but suddenly struggle with going outside, ChillPup’s <strong>Outdoor Confidence Reset</strong> routine helps you choose a smaller, owner-guided first step instead of pushing through the usual walk.
-                </p>
 
-                <div className="mt-6 rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
-                  <strong>Quick answer:</strong> If your dog suddenly refuses to go outside, first check for pain, illness, unsafe route changes, recent loud noises, weather, and time-of-day triggers. If no medical red flags are present, start with a smaller outdoor step instead of forcing the usual walk.
+                <div className="space-y-6">
+                  <ArticlePhoto
+                    src="/assets/door/chillpup-door-sitting.jpg"
+                    alt="A small dog sitting near the door on a leash before going outside"
+                    aspect="portrait"
+                    priority={true}
+                  />
+                  <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
+                        <Footprints className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+                          ChillPup Routine
+                        </p>
+                        <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
+                          Outdoor Confidence Reset
+                        </h2>
+                        <p className="mt-3 text-sm leading-6 text-[#526174]">
+                          For dogs who seem otherwise well but suddenly struggle with familiar outdoor steps.
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href="#chillpup-routine"
+                      className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
+                    >
+                      Find the matching routine
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </aside>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <ArticlePhoto
-                  src="/assets/door/chillpup-door-sitting.jpg"
-                  alt="A small dog sitting near the door on a leash before going outside"
-                  aspect="portrait"
-                  priority={true}
-                />
-                <aside className="rounded-[32px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-[#0F766E]">
-                      <Footprints className="h-6 w-6" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
-                        ChillPup Routine
-                      </p>
-                      <h2 className="mt-2 text-2xl font-extrabold text-[#0F1A2C]">
-                        Outdoor Confidence Reset
-                      </h2>
-                      <p className="mt-3 text-sm leading-6 text-[#526174]">
-                        For dogs who seem otherwise well but suddenly struggle with familiar outdoor steps.
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    href="#chillpup-routine"
-                    className="mt-6 inline-flex h-11 items-center justify-center rounded-xl bg-[#0F766E] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0B5F59] focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
-                  >
-                    Find the matching routine
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </a>
-                </aside>
+              <div className="mt-10 max-w-3xl space-y-6">
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  If your dog seems painful, weak, confused, disoriented, suddenly unable to potty, or severely distressed, contact your veterinarian before assuming this is a confidence issue.
+                </p>
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  If your dog seems otherwise well but has started freezing at the door, planting their feet, or turning back from familiar places, start smaller. A short step outside, a familiar route, and an easy turn-back point are more useful than forcing the old routine.
+                </p>
+                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                  For dogs who seem otherwise well but suddenly struggle with going outside, ChillPup’s <strong>Outdoor Confidence Reset</strong> routine helps you choose a smaller, owner-guided first step instead of pushing through the usual walk.
+                </p>
+
+                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                  <strong>Quick answer:</strong> If your dog suddenly refuses to go outside, first check for pain, illness, unsafe route changes, recent loud noises, weather, and time-of-day triggers. If no medical red flags are present, start with a smaller outdoor step instead of forcing the usual walk.
+                </div>
               </div>
             </div>
           </section>
