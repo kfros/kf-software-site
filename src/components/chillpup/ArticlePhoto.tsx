@@ -8,6 +8,7 @@ interface ArticlePhotoProps {
   aspect?: "wide" | "portrait" | "square";
   priority?: boolean;
   isHero?: boolean;
+  variant?: "default" | "heroCompact";
   className?: string;
 }
 
@@ -18,8 +19,27 @@ export function ArticlePhoto({
   aspect = "wide",
   priority = false,
   isHero = false,
+  variant = "default",
   className = "",
 }: ArticlePhotoProps) {
+  if (variant === "heroCompact") {
+    return (
+      <figure className={`max-w-2xl mx-auto rounded-[24px] border border-[#DCEFE8] bg-white p-2 shadow-sm ${className}`}>
+        <div className="relative overflow-hidden rounded-[18px] aspect-[16/10] max-h-[240px] sm:max-h-[280px] lg:max-h-[320px]">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            priority={priority}
+            unoptimized={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 640px"
+            className="object-cover object-center"
+          />
+        </div>
+      </figure>
+    );
+  }
+
   let aspectClass = "aspect-[16/9]";
   let widthClass = "w-full";
   if (aspect === "portrait") {
