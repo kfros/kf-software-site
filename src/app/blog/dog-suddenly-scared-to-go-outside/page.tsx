@@ -237,7 +237,7 @@ export default function OutdoorConfidenceResetArticle() {
                 src="/assets/door/chillpup-door-sitting.jpg"
                 alt="A small dog sitting near the door on a leash before going outside"
                 priority={true}
-                variant="heroCompact"
+                variant="heroCompactPortrait"
                 className="mt-6"
               />
 

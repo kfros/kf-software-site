@@ -248,7 +248,7 @@ export default function PostFireworksRecoveryAtHomeArticle() {
                 src="/assets/rest/chillpup-rest-02.jpeg"
                 alt="A dog resting quietly at home"
                 priority={true}
-                variant="heroCompact"
+                variant="heroCompactWide"
                 className="mt-6"
               />
 

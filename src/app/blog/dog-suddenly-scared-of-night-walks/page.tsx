@@ -207,7 +207,7 @@ export default function NightWalkConfidenceArticle() {
                 src="/assets/walk-night/chillpup-walk-night-observing.jpg"
                 alt="A dog pausing outside during an evening walk"
                 priority={true}
-                variant="heroCompact"
+                variant="heroCompactPortrait"
                 className="mt-6"
               />
 

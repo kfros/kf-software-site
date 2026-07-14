@@ -304,7 +304,9 @@ export default function FireworksPrepArticle() {
                 src="/assets/human-interaction/chillpup-human-feeding.jpg"
                 alt="A dog calmly taking a treat from a person"
                 priority={true}
-                variant="heroCompact"
+                variant="heroCompactPortrait"
+                fit="contain"
+                aspect="aspect-[3/4]"
                 className="mt-6"
               />
 

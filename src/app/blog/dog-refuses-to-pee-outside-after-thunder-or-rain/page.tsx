@@ -213,7 +213,7 @@ export default function RainPottyConfidenceArticle() {
                 src="/assets/door/chillpup-door-preparing.jpg"
                 alt="A dog near the door on a leash before going outside"
                 priority={true}
-                variant="heroCompact"
+                variant="heroCompactPortrait"
                 className="mt-6"
               />
 

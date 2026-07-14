@@ -268,7 +268,7 @@ export default function PostFireworksWalkRebuildArticle() {
                 src="/assets/door/chillpup-door-sitting.jpg"
                 alt="A small dog sitting near a door before going outside"
                 priority={true}
-                variant="heroCompact"
+                variant="heroCompactPortrait"
                 className="mt-6"
               />
 
