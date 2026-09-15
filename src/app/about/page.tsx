@@ -8,14 +8,18 @@ import { brandIdentity } from "@/app/content";
 import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 
 export const metadata: Metadata = {
-  title: "About | KF Software",
-  description: "Small software. Focused problems.",
+  title: {
+    absolute: "About | KF Software",
+  },
+  description:
+    "KF Software is an independent software studio founded by Kyryl Frosyniak in Wrocław, Poland.",
   alternates: {
     canonical: "https://kf-software.com/about/",
   },
   openGraph: {
     title: "About | KF Software",
-    description: "Small software. Focused problems.",
+    description:
+      "KF Software is an independent software studio founded by Kyryl Frosyniak in Wrocław, Poland.",
     url: "https://kf-software.com/about/",
     type: "website",
   },
@@ -26,6 +30,7 @@ export default function AboutPlaceholder() {
     { label: "Home", href: "/" },
     { label: "ChillPup", href: "/chillpup/" },
     { label: "Blog", href: "/blog/" },
+    { label: "Research", href: "/research/social-agency-workflows/" },
     { label: "Support", href: "/support/" },
     { label: "About", href: "/about/" },
   ];
@@ -46,7 +51,14 @@ export default function AboutPlaceholder() {
             {brandIdentity.logoText}
           </h1>
           <p className="mt-4 text-base leading-relaxed text-[#526174]">
-            KF Software builds simple, focused apps and automation tools that solve narrow, practical problems for everyday people. Based in {brandIdentity.location}, we believe in caring for our users, offering absolute privacy-consciousness, and clear choices with zero dark patterns.
+            KF Software is an independent software studio founded by Kyryl Frosyniak,
+            a software engineer based in Wrocław, Poland. It builds focused consumer
+            and business software and validates new products through direct workflow
+            research before development.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-[#526174]">
+            The studio values privacy-conscious design, clear choices, and narrow,
+            practical products without dark patterns.
           </p>
           <div className="mt-8 flex justify-center">
             <a

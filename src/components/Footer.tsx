@@ -12,6 +12,7 @@ export function Footer() {
       title: "RESOURCES",
       links: [
         { label: "Blog", href: "/blog/" },
+        { label: "Research", href: "/research/social-agency-workflows/" },
         { label: "Support", href: "/support/" },
       ],
     },

@@ -55,6 +55,7 @@ export default function BlogPlaceholderPage({ params }: PageProps) {
     { label: "Home", href: "/" },
     { label: "ChillPup", href: "/chillpup/" },
     { label: "Blog", href: "/blog/" },
+    { label: "Research", href: "/research/social-agency-workflows/" },
     { label: "Support", href: "/support/" },
     { label: "About", href: "/about/" },
   ];

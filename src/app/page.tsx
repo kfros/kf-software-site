@@ -33,6 +33,7 @@ export default function MainLanding() {
     { label: "Home", href: "/" },
     { label: "ChillPup", href: "/chillpup/" },
     { label: "Blog", href: "/blog/" },
+    { label: "Research", href: "/research/social-agency-workflows/" },
     { label: "Support", href: "#support" },
     { label: "About", href: "#about" },
   ];
@@ -45,6 +46,7 @@ export default function MainLanding() {
         <HeroSection />
         <ValueBadges />
         <FeaturedProduct />
+        <CurrentResearchSection />
         <PrinciplesGrid />
       </main>
       <Footer />
@@ -205,6 +207,36 @@ function FeaturedProduct() {
             </div>
 
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CurrentResearchSection() {
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-6 sm:py-8 lg:px-8">
+      <div className="rounded-[24px] border border-slate-200/80 bg-[#F6F8FA] p-6 sm:p-8 lg:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#1A535C]">
+            CURRENT RESEARCH
+          </p>
+          <h2 className="mt-2 text-xl sm:text-2xl font-extrabold text-[#0F1A2C] leading-tight">
+            Social-agency content workflows
+          </h2>
+          <p className="mt-2.5 text-[15px] leading-relaxed text-[#526174]">
+            KF Software is currently studying how small social-media agencies manage
+            recurring content across multiple client brands.
+          </p>
+        </div>
+        <div className="shrink-0">
+          <a
+            href="/research/social-agency-workflows/"
+            className="inline-flex h-[44px] items-center justify-center gap-2 rounded-xl bg-[#0F1A2C] px-5 sm:px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1A535C] focus:outline-none focus:ring-2 focus:ring-[#1A535C] focus:ring-offset-2"
+          >
+            <span>Read about the research</span>
+            <ArrowRight aria-hidden="true" className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>
