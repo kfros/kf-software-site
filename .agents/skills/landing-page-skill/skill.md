@@ -28,9 +28,13 @@ The human user acts as the Lead Architect and Controller. The AI agent acts as t
 * **Prohibited:** Any usage of `getServerSideProps`, Dynamic Server Runtime, or Node.js server-side features in `src/app/` routes.
 * **Data Fetching:** All data configuration must be statically injected at build time.
 
-### 2. Form Handling (Zero Serverless Runtime)
-* Form submissions must never hit a custom Node.js server or Vercel serverless function.
-* Use client-side `fetch` directly targeting the Web3Forms external API gateway.
+### 2. Form Handling & External Backend Integration
+* The frontend application must remain 100% static (`output: 'export'`).
+* Form submissions and client interactions must never hit a Next.js API route, custom Node.js server, or Vercel serverless function.
+* Client-side components may submit forms via client-side `fetch` either to:
+  1. The Web3Forms external API gateway, or
+  2. An explicitly approved, separately deployed KF-owned backend (such as a Python WSGI service hosted independently on Hostido at `api.kf-software.com`).
+* Backend service code (e.g., Python WSGI) must remain strictly isolated outside of `src/` (e.g., in `backend/`) and must never be imported into or interfere with the Next.js static build process.
 * Ensure proper UI state transformations (`idle` -> `submitting` -> `success`) within the client component using React Reactivity (`useState`), avoiding page reloads.
 
 ### 3. Tailwind CSS & UI Design System

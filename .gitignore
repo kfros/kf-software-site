@@ -3,3 +3,12 @@ node_modules
 out
 .env*.local
 *.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+backend/kitchen_exhaust/venv/
+backend/kitchen_exhaust/.env
+.pytest_cache/
+.coverage
