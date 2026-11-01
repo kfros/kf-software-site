@@ -6,7 +6,10 @@ export function Footer() {
   const navGroups = [
     {
       title: "PRODUCTS",
-      links: [{ label: "ChillPup", href: "/chillpup/" }],
+      links: [
+        { label: "ChillPup", href: "/chillpup/" },
+        { label: "Kitchen Exhaust Reports", href: "/kitchen-exhaust-reports/" },
+      ],
     },
     {
       title: "RESOURCES",
