@@ -4,7 +4,9 @@ import React, { useState, useRef } from "react";
 import { trackClarityEvent } from "@/lib/clarity";
 import { CheckCircle2, AlertCircle, Loader2, Send, FileText, Download } from "lucide-react";
 
-const API_ENDPOINT = "https://api.kf-software.com/v1/kitchen-exhaust-requests";
+const API_ENDPOINT =
+  process.env.NEXT_PUBLIC_KE_REQUEST_API_URL ??
+  "https://api.kf-software.com/v1/kitchen-exhaust-requests";
 const REQUEST_TIMEOUT_MS = 15000;
 const EMAIL_REGEX = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -268,11 +270,10 @@ export function RequestSampleForm() {
               }}
               aria-invalid={!!fieldErrors.email}
               aria-describedby={fieldErrors.email ? "email-error" : undefined}
-              className={`w-full rounded-xl border bg-white px-4 py-3 text-sm sm:text-base text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:outline-none focus:ring-2 disabled:bg-slate-50 disabled:cursor-not-allowed ${
-                fieldErrors.email
-                  ? "border-red-400 focus:ring-red-500"
-                  : "border-slate-300 focus:border-transparent focus:ring-[#1A535C]"
-              }`}
+              className={`w-full rounded-xl border bg-white px-4 py-3 text-sm sm:text-base text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:outline-none focus:ring-2 disabled:bg-slate-50 disabled:cursor-not-allowed ${fieldErrors.email
+                ? "border-red-400 focus:ring-red-500"
+                : "border-slate-300 focus:border-transparent focus:ring-[#1A535C]"
+                }`}
               placeholder="technician@servicecompany.com"
             />
             {fieldErrors.email && (
@@ -318,11 +319,10 @@ export function RequestSampleForm() {
                   ? "details-help details-error"
                   : "details-help"
               }
-              className={`w-full rounded-xl border bg-white px-4 py-3 text-sm sm:text-base text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:outline-none focus:ring-2 disabled:bg-slate-50 disabled:cursor-not-allowed resize-y min-h-[120px] ${
-                fieldErrors.projectDetails
-                  ? "border-red-400 focus:ring-red-500"
-                  : "border-slate-300 focus:border-transparent focus:ring-[#1A535C]"
-              }`}
+              className={`w-full rounded-xl border bg-white px-4 py-3 text-sm sm:text-base text-slate-900 shadow-sm transition placeholder:text-slate-400 focus:outline-none focus:ring-2 disabled:bg-slate-50 disabled:cursor-not-allowed resize-y min-h-[120px] ${fieldErrors.projectDetails
+                ? "border-red-400 focus:ring-red-500"
+                : "border-slate-300 focus:border-transparent focus:ring-[#1A535C]"
+                }`}
               placeholder="e.g. Hood interior, baffle filters, and accessible ductwork for a commercial restaurant kitchen service visit."
             />
             <p id="details-help" className="mt-1.5 text-xs text-slate-500 leading-normal">
