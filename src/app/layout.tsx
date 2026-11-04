@@ -11,6 +11,27 @@ const inter = Inter({
   display: "swap",
 });
 
+const themeBootstrapScript = `(function() {
+  try {
+    var stored = localStorage.getItem('kf-theme');
+    var isDark = false;
+    if (stored === 'dark') {
+      isDark = true;
+    } else if (stored === 'light') {
+      isDark = false;
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      isDark = true;
+    }
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
+    }
+  } catch (e) {}
+})();`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://kf-software.com"),
   title: {
@@ -25,7 +46,8 @@ export const metadata: Metadata = {
   keywords: [
     "KF Software",
     "ChillPup",
-    "dog routines",
+    "Kitchen Exhaust service reports",
+    "workflow tools",
     "privacy-conscious apps",
     "Wrocław software",
   ],
@@ -58,7 +80,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
+      </head>
+      <body className={`${inter.className} bg-canvas text-ink antialiased`} suppressHydrationWarning>
         {children}
         <ScrollToTopButton />
         <MicrosoftClarity />

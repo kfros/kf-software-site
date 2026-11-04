@@ -40,15 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "ChillPup", href: "/chillpup/" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Research", href: "/research/social-agency-workflows/" },
-  { label: "Support", href: "/support/" },
-  { label: "About", href: "/about/" },
-];
-
 const urgentSigns = [
   "Your dog cannot urinate or strains without passing anything.",
   "They show sudden weakness, lethargy, collapse, or breathing trouble.",
@@ -217,20 +208,20 @@ export default function OutdoorConfidenceResetArticle() {
         url="https://kf-software.com/blog/dog-suddenly-scared-to-go-outside/"
         faqs={faqs}
       />
-      <Header activeItem="Blog" navItems={navItems} />
+      <Header activeItem="Blog" />
 
-      <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
+      <main className="theme-chillpup min-h-screen bg-canvas text-ink">
         <article>
-          <section className="border-b border-slate-100/70 py-14 sm:py-18">
+          <section className="border-b border-border py-14 sm:py-18">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
                 <Compass className="h-3.5 w-3.5" aria-hidden="true" />
                 Walk Fear Pillar Guide
               </div>
-              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl">
                 Why Is My Dog Suddenly Scared to Go Outside?
               </h1>
-              <p className="mt-6 text-lg leading-8 text-[#526174]">
+              <p className="mt-6 text-lg leading-8 text-ink-muted">
                 If your dog suddenly refuses to go outside, do not start by pulling harder or trying to finish the usual walk. First, check whether anything has changed: your dog’s health, the route, the weather, the time of day, recent loud noises, or a scary outdoor moment.
               </p>
 
@@ -243,39 +234,39 @@ export default function OutdoorConfidenceResetArticle() {
               />
 
               <div className="mt-6 space-y-4">
-                <div className="rounded-2xl border border-[#DCEFE8] bg-white p-4 shadow-sm flex items-center justify-between gap-4">
+                <div className="rounded-2xl border border-brand/30 bg-surface p-4 shadow-sm flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
                       <Footprints className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div className="text-left">
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#0F766E]">
+                      <p className="text-xs font-bold uppercase tracking-wider text-brand">
                         ChillPup Routine
                       </p>
-                      <h3 className="text-base font-extrabold text-[#0F1A2C] mt-0.5">
+                      <h3 className="text-base font-extrabold text-ink mt-0.5">
                         Outdoor Confidence Reset
                       </h3>
                     </div>
                   </div>
                   <a
                     href="#chillpup-routine"
-                    className="inline-flex h-9 items-center justify-center rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-[#0B5F59]"
+                    className="inline-flex h-9 items-center justify-center rounded-lg bg-brand px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-brand-hover"
                   >
                     View Routine
                   </a>
                 </div>
 
-                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   If your dog seems painful, weak, confused, disoriented, suddenly unable to potty, or severely distressed, contact your veterinarian before assuming this is a confidence issue.
                 </p>
-                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   If your dog seems otherwise well but has started freezing at the door, planting their feet, or turning back from familiar places, start smaller. A short step outside, a familiar route, and an easy turn-back point are more useful than forcing the old routine.
                 </p>
-                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   For dogs who seem otherwise well but suddenly struggle with going outside, ChillPup’s <strong>Outdoor Confidence Reset</strong> routine helps you choose a smaller, owner-guided first step instead of pushing through the usual walk.
                 </p>
 
-                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                <div className="rounded-2xl border border-brand/20 bg-brand-soft/40 p-5 text-sm leading-6 text-ink">
                   <strong>Quick answer:</strong> If your dog suddenly refuses to go outside, first check for pain, illness, unsafe route changes, recent loud noises, weather, and time-of-day triggers. If no medical red flags are present, start with a smaller outdoor step instead of forcing the usual walk.
                 </div>
               </div>
@@ -285,16 +276,16 @@ export default function OutdoorConfidenceResetArticle() {
           <div className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,720px)_320px] lg:justify-center lg:gap-12 lg:px-8 lg:py-16">
             <div className="space-y-14 lg:space-y-16">
               <section aria-labelledby="health-safety">
-                <div className="rounded-[28px] border border-amber-200/70 bg-[#FFFDF9] p-6 sm:p-8">
+                <div className="rounded-[28px] border border-amber-500/30 bg-surface-raised p-6 sm:p-8">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-800">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
                       <ShieldAlert className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <div>
-                      <h2 id="health-safety" className="text-2xl font-extrabold text-[#0F1A2C]">
+                      <h2 id="health-safety" className="text-2xl font-extrabold text-ink">
                         First, Check for Health or Safety Changes
                       </h2>
-                      <p className="mt-3 leading-7 text-[#526174]">
+                      <p className="mt-3 leading-7 text-ink-muted">
                         Do not treat this as an obedience problem if your dog seems painful, weak, sick, confused, or suddenly unable to pee or poop normally. Physical changes can make a dog feel vulnerable outside, causing them to suddenly avoid walks.
                       </p>
                     </div>
@@ -302,13 +293,13 @@ export default function OutdoorConfidenceResetArticle() {
 
                   <div className="mt-7 space-y-7">
                     <section>
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">Urgent Signs to Address Immediately</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">
+                      <h3 className="text-lg font-extrabold text-ink">Urgent Signs to Address Immediately</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">
                         Contact your veterinarian promptly if you notice any of these signs:
                       </p>
                       <ul className="mt-3 space-y-2">
                         {urgentSigns.map((sign) => (
-                          <li key={sign} className="flex gap-3 text-sm leading-6 text-[#526174]">
+                          <li key={sign} className="flex gap-3 text-sm leading-6 text-ink-muted">
                             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" aria-hidden="true" />
                             <span>{sign}</span>
                           </li>
@@ -317,13 +308,13 @@ export default function OutdoorConfidenceResetArticle() {
                     </section>
 
                     <section>
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">Signs to Discuss with Your Vet Before Using a Routine</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">
+                      <h3 className="text-lg font-extrabold text-ink">Signs to Discuss with Your Vet Before Using a Routine</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">
                         Schedule a veterinary visit to check for discomfort or sensory changes if:
                       </p>
                       <ul className="mt-3 space-y-2">
                         {vetDiscussionSigns.map((sign) => (
-                          <li key={sign} className="flex gap-3 text-sm leading-6 text-[#526174]">
+                          <li key={sign} className="flex gap-3 text-sm leading-6 text-ink-muted">
                             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" aria-hidden="true" />
                             <span>{sign}</span>
                           </li>
@@ -332,8 +323,8 @@ export default function OutdoorConfidenceResetArticle() {
                     </section>
 
                     <section>
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">Environmental Hazards</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">
+                      <h3 className="text-lg font-extrabold text-ink">Environmental Hazards</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">
                         Sometimes the issue isn&apos;t medical, but the route itself is genuinely unsafe. Check for immediate hazards like heavy construction noise, active thunderstorms, fireworks, loose neighborhood dogs, heavy traffic, or unsafe footing like ice or broken glass.
                       </p>
                     </section>
@@ -342,23 +333,23 @@ export default function OutdoorConfidenceResetArticle() {
               </section>
 
               <section aria-labelledby="why-outside">
-                <h2 id="why-outside" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="why-outside" className="text-3xl font-extrabold text-ink">
                   Why Dogs Suddenly Avoid Going Outside
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   When a dog stops at the doorway or hides when the leash appears, something in their environment has disrupted their sense of predictability.
                 </p>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {avoidanceReasons.map((item) => (
-                    <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">
+                    <div key={item.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">
                         {item.text}
                         {item.href && item.linkLabel ? (
                           <>
                             {" "}If this sounds like your dog, read our guide on{" "}
-                            <a href={item.href} className="font-semibold text-[#0F766E] hover:underline">
+                            <a href={item.href} className="font-semibold text-brand hover:underline">
                               {item.linkLabel}
                             </a>.
                           </>
@@ -370,14 +361,14 @@ export default function OutdoorConfidenceResetArticle() {
 
                 <div className="mt-7 hidden space-y-5 lg:block">
                   {avoidanceReasons.map((item) => (
-                    <div key={item.title} className="border-l border-slate-200 pl-5">
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">
+                    <div key={item.title} className="border-l border-border pl-5">
+                      <h3 className="text-lg font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-ink-muted">
                         {item.text}
                         {item.href && item.linkLabel ? (
                           <>
                             {" "}If this sounds like your dog, read our guide on{" "}
-                            <a href={item.href} className="font-semibold text-[#0F766E] hover:underline">
+                            <a href={item.href} className="font-semibold text-brand hover:underline">
                               {item.linkLabel}
                             </a>.
                           </>
@@ -397,62 +388,62 @@ export default function OutdoorConfidenceResetArticle() {
               />
 
               <section aria-labelledby="what-not-to-do">
-                <h2 id="what-not-to-do" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="what-not-to-do" className="text-3xl font-extrabold text-ink">
                   What Not to Do
                 </h2>
 
                 <div className="mt-6 space-y-4 lg:hidden">
                   {avoidItems.map((item) => (
-                    <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{item.text}</p>
+                    <div key={item.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{item.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-6 hidden space-y-6 lg:block">
                   {avoidItems.map((item) => (
-                    <section key={item.title} className="border-l border-slate-200 pl-5">
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">{item.text}</p>
+                    <section key={item.title} className="border-l border-border pl-5">
+                      <h3 className="text-lg font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-ink-muted">{item.text}</p>
                     </section>
                   ))}
                 </div>
               </section>
 
               <section aria-labelledby="start-smaller">
-                <h2 id="start-smaller" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="start-smaller" className="text-3xl font-extrabold text-ink">
                   Start Smaller Than the Usual Walk
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   If your dog seems otherwise well but refuses their normal walk, you need to change your definition of success.
                 </p>
-                <blockquote className="mt-6 rounded-[24px] border border-[#DCEFE8] bg-[#F3FBF8] p-6 text-base leading-7 text-[#0F1A2C]">
+                <blockquote className="mt-6 rounded-[24px] border border-brand/30 bg-brand-soft/60 p-6 text-base leading-7 text-ink">
                   The first goal is not a normal walk. The first goal is a clean, calm attempt that does not make tomorrow harder.
                 </blockquote>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {smallerSteps.map((step) => (
-                    <div key={step.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{step.text}</p>
+                    <div key={step.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{step.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <ul className="mt-6 hidden space-y-4 lg:block">
                   {smallerSteps.map((step) => (
-                    <li key={step.title} className="flex gap-3 text-[17px] leading-8 text-[#526174]">
-                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                    <li key={step.title} className="flex gap-3 text-[17px] leading-8 text-ink-muted">
+                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
                       <span>
-                        <strong className="text-[#0F1A2C]">{step.title}:</strong> {step.text}
+                        <strong className="text-ink">{step.title}:</strong> {step.text}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-8 rounded-[24px] border border-[#DCEFE8] bg-[#F3FBF8] p-6">
-                  <p className="text-base leading-7 text-[#0F1A2C]">
+                <div className="mt-8 rounded-[24px] border border-brand/30 bg-brand-soft/60 p-6">
+                  <p className="text-base leading-7 text-ink">
                     If your dog seems otherwise well but suddenly struggles with going outside, open ChillPup’s <strong>Outdoor Confidence Reset</strong> routine and choose a smaller first step before the next attempt.
                   </p>
                 </div>
@@ -467,29 +458,29 @@ export default function OutdoorConfidenceResetArticle() {
               />
 
               <section id="chillpup-routine" aria-labelledby="routine-fit">
-                <h2 id="routine-fit" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="routine-fit" className="text-3xl font-extrabold text-ink">
                   Which ChillPup Routine Fits Your Situation?
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   If your dog seems otherwise well and no medical red flags are present, you can match their behavior to a specific plan.
                 </p>
 
-                <div className="mt-6 overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 overflow-hidden rounded-[24px] border border-border bg-surface shadow-sm">
                   <table className="w-full border-collapse text-left text-sm">
-                    <thead className="bg-slate-50 text-[#0F1A2C]">
+                    <thead className="bg-surface-muted text-ink">
                       <tr>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Situation</th>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Start with this ChillPup routine</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100">
+                    <tbody className="divide-y divide-border">
                       {routineRows.map((row) => (
                         <tr key={row.situation}>
-                          <td className="px-4 py-4 align-top text-[#526174] sm:px-6">{row.situation}</td>
-                          <td className="px-4 py-4 align-top font-semibold text-[#0F1A2C] sm:px-6">
+                          <td className="px-4 py-4 align-top text-ink-muted sm:px-6">{row.situation}</td>
+                          <td className="px-4 py-4 align-top font-semibold text-ink sm:px-6">
                             {row.href && row.linkLabel ? (
                               <>
-                                <a href={row.href} className="text-[#0F766E] hover:underline">
+                                <a href={row.href} className="text-brand hover:underline">
                                   {row.linkLabel}
                                 </a>{" "}
                                 → {row.routine}
@@ -506,19 +497,19 @@ export default function OutdoorConfidenceResetArticle() {
               </section>
 
               <section aria-labelledby="professional-help">
-                <h2 id="professional-help" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="professional-help" className="text-3xl font-extrabold text-ink">
                   When to Get Professional Help
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Contact your veterinarian first if you suspect pain, illness, vision changes, or another physical reason for the sudden outdoor refusal. If the fear is intense, getting worse, difficult to manage safely, or does not improve with shorter, low-pressure attempts, contact a qualified behavior professional or veterinary behaviorist.
                 </p>
               </section>
 
               <section aria-labelledby="faq">
-                <h2 id="faq" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="faq" className="text-3xl font-extrabold text-ink">
                   Frequently Asked Questions
                 </h2>
-                <div className="mt-6 divide-y divide-slate-100 rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 divide-y divide-border rounded-[24px] border border-border bg-surface shadow-sm">
                   <FaqItem title="Why did my dog suddenly become scared to go outside?">
                     <p>Sudden changes are usually triggered by a recent negative experience, such as a loud noise or an encounter with a loose dog, sudden changes in health or vision, uncomfortable weather, or owner tension on the leash.</p>
                   </FaqItem>
@@ -547,14 +538,14 @@ export default function OutdoorConfidenceResetArticle() {
             </div>
 
             <aside className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-[28px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+              <div className="rounded-[28px] border border-brand/30 bg-surface p-6 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
                   Try the matching routine
                 </p>
-                <h2 className="mt-3 text-2xl font-extrabold text-[#0F1A2C]">
+                <h2 className="mt-3 text-2xl font-extrabold text-ink">
                   Outdoor Confidence Reset
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-[#526174]">
+                <p className="mt-3 text-sm leading-6 text-ink-muted">
                   A short, owner-guided ChillPup routine for dogs who seem otherwise well but suddenly struggle with going outside.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
@@ -575,7 +566,7 @@ export default function OutdoorConfidenceResetArticle() {
                     <GooglePlayBadge className="h-[42px] w-auto" />
                   </a>
                 </div>
-                <p className="mt-5 border-t border-slate-100 pt-5 text-xs leading-5 text-[#526174]">
+                <p className="mt-5 border-t border-border pt-5 text-xs leading-5 text-ink-muted">
                   ChillPup is not a veterinary or diagnostic app. If your dog shows sudden severe symptoms, pain, collapse, seizures, appetite changes, or unexplained panting or shaking, contact a veterinarian.
                 </p>
               </div>
@@ -599,8 +590,8 @@ function FaqItem({
 }>) {
   return (
     <section className="p-5 sm:p-6">
-      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{title}</h3>
-      <div className="mt-2 space-y-3 text-sm leading-6 text-[#526174]">{children}</div>
+      <h3 className="text-lg font-extrabold text-ink">{title}</h3>
+      <div className="mt-2 space-y-3 text-sm leading-6 text-ink-muted">{children}</div>
     </section>
   );
 }

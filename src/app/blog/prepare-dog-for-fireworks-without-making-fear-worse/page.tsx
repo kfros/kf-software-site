@@ -44,15 +44,6 @@ export const metadata: Metadata = {
   },
 };
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "ChillPup", href: "/chillpup/" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Research", href: "/research/social-agency-workflows/" },
-  { label: "Support", href: "/support/" },
-  { label: "About", href: "/about/" },
-];
-
 const extraHelpSigns = [
   "Extreme panic, frantic bolting, escaping the yard, or destructive chewing at doors and windows to get out.",
   "Severe physical distress, collapse, unmanageable shaking, or breathing trouble.",
@@ -284,20 +275,20 @@ export default function FireworksPrepArticle() {
     <>
       <PageClarityTags siteSection="blog" product="chillpup" pageType="article" />
       <ArticleJsonLd title={title} description={description} url={url} faqs={faqs} />
-      <Header activeItem="Blog" navItems={navItems} />
+      <Header activeItem="Blog" />
 
-      <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
+      <main className="theme-chillpup min-h-screen bg-canvas text-ink">
         <article>
-          <section className="border-b border-slate-100/70 py-14 sm:py-18">
+          <section className="border-b border-border py-14 sm:py-18">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 Fireworks Calm-Day Prep Guide
               </div>
-              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl">
                 {title}
               </h1>
-              <p className="mt-6 text-lg leading-8 text-[#526174]">
+              <p className="mt-6 text-lg leading-8 text-ink-muted">
                 If you want to prepare your dog for fireworks, do not wait until the first bang to start experimenting. The safest preparation happens on a calm day, when your dog is relaxed and the house is quiet.
               </p>
 
@@ -312,36 +303,36 @@ export default function FireworksPrepArticle() {
               />
 
               <div className="mt-6 space-y-4">
-                <div className="rounded-2xl border border-[#DCEFE8] bg-white p-4 shadow-sm flex items-center justify-between gap-4">
+                <div className="rounded-2xl border border-brand/30 bg-surface p-4 shadow-sm flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
                       <Volume2 className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <div className="text-left">
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#0F766E]">
+                      <p className="text-xs font-bold uppercase tracking-wider text-brand">
                         ChillPup Routine
                       </p>
-                      <h3 className="text-base font-extrabold text-[#0F1A2C] mt-0.5">
+                      <h3 className="text-base font-extrabold text-ink mt-0.5">
                         Fireworks Prep: Calm-Day Practice
                       </h3>
                     </div>
                   </div>
                   <a
                     href="#chillpup-routine"
-                    className="inline-flex h-9 items-center justify-center rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-[#0B5F59]"
+                    className="inline-flex h-9 items-center justify-center rounded-lg bg-brand px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-brand-hover"
                   >
                     View Routine
                   </a>
                 </div>
 
-                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Start by planning where your dog can rest, how you will reduce pressure, and what you will do when the noise begins. Avoid last-minute sound exposure, forced walks, or testing whether your dog is over their fear.
                 </p>
-                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   If your dog seems otherwise well and you are preparing before a predictable fireworks event, ChillPup’s <strong>Fireworks Prep: Calm-Day Practice</strong> routine helps you set up a short, owner-guided plan before the noisy day arrives.
                 </p>
 
-                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                <div className="rounded-2xl border border-brand/20 bg-brand-soft/40 p-5 text-sm leading-6 text-ink">
                   <strong>Quick answer:</strong> To prepare your dog for fireworks, use a calm day to set up a quiet resting place, practice short low-pressure routines, secure doors and windows, plan potty timing, and decide what you will do when noise starts. Do not play fireworks recordings, force exposure, or wait until your dog is already panicking to start a new plan.
                 </div>
               </div>
@@ -351,47 +342,47 @@ export default function FireworksPrepArticle() {
           <div className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,720px)_320px] lg:justify-center lg:gap-12 lg:px-8 lg:py-16">
             <div className="space-y-14 lg:space-y-16">
               <section aria-labelledby="start-before">
-                <h2 id="start-before" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="start-before" className="text-3xl font-extrabold text-ink">
                   Start Before the Fireworks, Not During Them
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   The middle of a fireworks event is not the time to start a new routine or try out a brand-new setup. Once loud bangs have started, your dog may already be unsettled, and introducing new steps under stress is unlikely to help.
                 </p>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Useful preparation happens on a calm day. Taking the time to build a predictable setup beforehand allows you to know exactly what to do before your own stress runs high.
                 </p>
-                <blockquote className="mt-6 rounded-[24px] border border-[#DCEFE8] bg-[#F3FBF8] p-6 text-base leading-7 text-[#0F1A2C]">
+                <blockquote className="mt-6 rounded-[24px] border border-brand/30 bg-brand-soft/60 p-6 text-base leading-7 text-ink">
                   The goal is not to prove that fireworks are harmless. The goal is to make the noisy day less confusing and less pressured.
                 </blockquote>
-                <p className="mt-5 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-5 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   You are not trying to make your dog look forward to the noise; you are simply creating safe options and reducing environmental pressure so the evening feels more predictable and less pressured.
                 </p>
               </section>
 
               <section aria-labelledby="extra-help">
-                <div className="rounded-[28px] border border-amber-200/70 bg-[#FFFDF9] p-6 sm:p-8">
+                <div className="rounded-[28px] border border-amber-500/30 bg-surface-raised p-6 sm:p-8">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-800">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
                       <ShieldAlert className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <div>
-                      <h2 id="extra-help" className="text-2xl font-extrabold text-[#0F1A2C]">
+                      <h2 id="extra-help" className="text-2xl font-extrabold text-ink">
                         First, Check Whether Your Dog Needs Extra Help
                       </h2>
-                      <p className="mt-3 leading-7 text-[#526174]">
+                      <p className="mt-3 leading-7 text-ink-muted">
                         Some dogs experience severe noise reactions that carry safety risks. These situations cannot be managed by a simple owner-guided routine alone.
                       </p>
                     </div>
                   </div>
 
-                  <p className="mt-6 rounded-2xl border border-amber-200 bg-white p-4 text-sm leading-6 text-[#526174]">
+                  <p className="mt-6 rounded-2xl border border-amber-200 bg-surface p-4 text-sm leading-6 text-ink-muted">
                     If your dog has severe reactions, a history of escape attempts, injury risk, sudden health changes, or distress that is hard to manage safely, speak with your veterinarian or a qualified behavior professional before relying on a simple home routine.
                   </p>
 
-                  <h3 className="mt-7 text-lg font-extrabold text-[#0F1A2C]">Schedule a professional consultation if you have noticed:</h3>
+                  <h3 className="mt-7 text-lg font-extrabold text-ink">Schedule a professional consultation if you have noticed:</h3>
                   <ul className="mt-4 space-y-3">
                     {extraHelpSigns.map((sign) => (
-                      <li key={sign} className="flex gap-3 text-sm leading-6 text-[#526174]">
+                      <li key={sign} className="flex gap-3 text-sm leading-6 text-ink-muted">
                         <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" aria-hidden="true" />
                         <span>{sign}</span>
                       </li>
@@ -408,33 +399,33 @@ export default function FireworksPrepArticle() {
               />
 
               <section aria-labelledby="potty-walks">
-                <h2 id="potty-walks" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="potty-walks" className="text-3xl font-extrabold text-ink">
                   Plan Potty, Walks, and Outdoor Time
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Managing outdoor transitions before the noise starts reduces the risk of your dog freezing on the sidewalk later in the evening.
                 </p>
                 <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {outdoorSteps.map((step) => (
-                    <div key={step.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{step.text}</p>
+                    <div key={step.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{step.text}</p>
                     </div>
                   ))}
                 </div>
                 <ul className="mt-6 hidden space-y-4 lg:block">
                   {outdoorSteps.map((step) => (
-                    <li key={step.title} className="flex gap-3 text-[17px] leading-8 text-[#526174]">
-                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                    <li key={step.title} className="flex gap-3 text-[17px] leading-8 text-ink-muted">
+                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
                       <span>
-                        <strong className="text-[#0F1A2C]">{step.title}:</strong> {step.text}
+                        <strong className="text-ink">{step.title}:</strong> {step.text}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-5 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   If your dog struggles with stepping onto wet pavement or refuses to leave the doorway after a bad weather experience, read our guide on{" "}
-                  <a href="/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/" className="font-semibold text-[#0F766E] hover:underline">
+                  <a href="/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/" className="font-semibold text-brand hover:underline">
                     Dog Won’t Pee in the Rain? What’s Normal and When to Call a Vet
                   </a>.
                 </p>
@@ -448,25 +439,25 @@ export default function FireworksPrepArticle() {
               />
 
               <section aria-labelledby="calm-day-plan">
-                <h2 id="calm-day-plan" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="calm-day-plan" className="text-3xl font-extrabold text-ink">
                   A Simple Calm-Day Preparation Plan
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Rehearsing a quiet indoor routine on a normal day gives your dog a familiar pattern to fall back on when the environment changes.
                 </p>
                 <ol className="mt-6 space-y-4">
                   {prepPlan.map((step, index) => (
-                    <li key={step.title} className="flex gap-4 rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal-50 text-sm font-extrabold text-[#0F766E]">
+                    <li key={step.title} className="flex gap-4 rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-soft text-sm font-extrabold text-brand">
                         {index + 1}
                       </span>
-                      <span className="text-sm leading-6 text-[#526174] lg:text-base lg:leading-7">
-                        <strong className="text-[#0F1A2C]">{step.title}:</strong> {step.text}
+                      <span className="text-sm leading-6 text-ink-muted lg:text-base lg:leading-7">
+                        <strong className="text-ink">{step.title}:</strong> {step.text}
                       </span>
                     </li>
                   ))}
                 </ol>
-                <blockquote className="mt-6 rounded-[24px] border border-[#DCEFE8] bg-[#F3FBF8] p-6 text-base leading-7 text-[#0F1A2C]">
+                <blockquote className="mt-6 rounded-[24px] border border-brand/30 bg-brand-soft/60 p-6 text-base leading-7 text-ink">
                   Practice should feel boring and easy. If your dog starts scanning, panting, hiding, or avoiding the area, make the step smaller or stop.
                 </blockquote>
               </section>
@@ -480,13 +471,13 @@ export default function FireworksPrepArticle() {
               />
 
               <section aria-labelledby="safe-space-support">
-                <h2 id="safe-space-support" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="safe-space-support" className="text-3xl font-extrabold text-ink">
                   When the Fireworks Start, Switch to Safe-Space Support
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Once the fireworks begin, your preparation window is closed. Do not attempt to start a new practice routine or introduce unfamiliar steps during active noise.
                 </p>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Instead, transition to your planned resting area, keep the room quiet, and switch to active support. If your dog prefers to hide under a bed, leave them there and simply maintain a calm, steady presence in the household. During the noise, you can transition your focus to the <strong>Thunder & Fireworks Safe Space</strong> routine inside the app to help maintain a quiet indoor plan.
                 </p>
               </section>
@@ -500,19 +491,19 @@ export default function FireworksPrepArticle() {
               />
 
               <section aria-labelledby="after-fireworks">
-                <h2 id="after-fireworks" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="after-fireworks" className="text-3xl font-extrabold text-ink">
                   After the Fireworks: What Comes Next?
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Once the celebrations end, focus on a gradual return to your normal routine based on how your dog behaves inside the house.
                 </p>
                 <ul className="mt-5 space-y-4">
                   {afterRows.map((row) => (
-                    <li key={row.href} className="flex gap-3 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
-                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                    <li key={row.href} className="flex gap-3 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
+                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
                       <span>
                         {row.text}{" "}
-                        <a href={row.href} className="font-semibold text-[#0F766E] hover:underline">
+                        <a href={row.href} className="font-semibold text-brand hover:underline">
                           {row.linkLabel}
                         </a>.
                       </span>
@@ -522,28 +513,28 @@ export default function FireworksPrepArticle() {
               </section>
 
               <section id="chillpup-routine" aria-labelledby="routine-fit">
-                <h2 id="routine-fit" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="routine-fit" className="text-3xl font-extrabold text-ink">
                   Which ChillPup Routine Fits This Moment?
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Rebuilding a calm routine depends entirely on where you are in relation to the noise event. Match your current situation below:
                 </p>
-                <div className="mt-6 overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 overflow-hidden rounded-[24px] border border-border bg-surface shadow-sm">
                   <table className="w-full border-collapse text-left text-sm">
-                    <thead className="bg-slate-50 text-[#0F1A2C]">
+                    <thead className="bg-surface-muted text-ink">
                       <tr>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Situation</th>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Start with this ChillPup routine</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100">
+                    <tbody className="divide-y divide-border">
                       {routineRows.map((row) => (
                         <tr key={row.situation}>
-                          <td className="px-4 py-4 align-top text-[#526174] sm:px-6">{row.situation}</td>
-                          <td className="px-4 py-4 align-top font-semibold text-[#0F1A2C] sm:px-6">
+                          <td className="px-4 py-4 align-top text-ink-muted sm:px-6">{row.situation}</td>
+                          <td className="px-4 py-4 align-top font-semibold text-ink sm:px-6">
                             {row.href && row.linkLabel ? (
                               <>
-                                <a href={row.href} className="text-[#0F766E] hover:underline">
+                                <a href={row.href} className="text-brand hover:underline">
                                   {row.linkLabel}
                                 </a>{" "}
                                 → {row.routine}
@@ -557,18 +548,18 @@ export default function FireworksPrepArticle() {
                     </tbody>
                   </table>
                 </div>
-                <div className="mt-8 rounded-[24px] border border-[#DCEFE8] bg-[#F3FBF8] p-6">
-                  <p className="text-base leading-7 text-[#0F1A2C]">
+                <div className="mt-8 rounded-[24px] border border-brand/30 bg-brand-soft/60 p-6">
+                  <p className="text-base leading-7 text-ink">
                     If you are preparing before a predictable fireworks event and no medical red flags are present, open ChillPup’s <strong>Fireworks Prep: Calm-Day Practice</strong> routine on a quiet day. Build the plan before the first bang, not during it.
                   </p>
                 </div>
               </section>
 
               <section aria-labelledby="faq">
-                <h2 id="faq" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="faq" className="text-3xl font-extrabold text-ink">
                   Frequently Asked Questions
                 </h2>
-                <div className="mt-6 divide-y divide-slate-100 rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 divide-y divide-border rounded-[24px] border border-border bg-surface shadow-sm">
                   {faqs.map((faq) => (
                     <FaqItem key={faq.question} title={faq.question}>
                       <p>{faq.answer}</p>
@@ -579,14 +570,14 @@ export default function FireworksPrepArticle() {
             </div>
 
             <aside className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-[28px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+              <div className="rounded-[28px] border border-brand/30 bg-surface p-6 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
                   Try the matching routine
                 </p>
-                <h2 className="mt-3 text-2xl font-extrabold text-[#0F1A2C]">
+                <h2 className="mt-3 text-2xl font-extrabold text-ink">
                   Fireworks Prep: Calm-Day Practice
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-[#526174]">
+                <p className="mt-3 text-sm leading-6 text-ink-muted">
                   A short, owner-guided ChillPup routine for calm-day planning before predictable fireworks.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
@@ -607,7 +598,7 @@ export default function FireworksPrepArticle() {
                     <GooglePlayBadge className="h-[42px] w-auto" />
                   </a>
                 </div>
-                <p className="mt-5 border-t border-slate-100 pt-5 text-xs leading-5 text-[#526174]">
+                <p className="mt-5 border-t border-border pt-5 text-xs leading-5 text-ink-muted">
                   ChillPup is not a veterinary or diagnostic app. If your dog shows severe distress, injury risk, collapse, seizures, breathing trouble, or sudden major behavior changes, contact a veterinarian.
                 </p>
               </div>
@@ -635,25 +626,25 @@ function ListSection({
 }>) {
   return (
     <section aria-labelledby={id}>
-      <h2 id={id} className="text-3xl font-extrabold text-[#0F1A2C]">
+      <h2 id={id} className="text-3xl font-extrabold text-ink">
         {title}
       </h2>
-      <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+      <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
         {intro}
       </p>
       <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
         {items.map((item) => (
-          <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-            <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-[#526174]">{item.text}</p>
+          <div key={item.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+            <h3 className="text-base font-extrabold text-ink">{item.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-ink-muted">{item.text}</p>
           </div>
         ))}
       </div>
       <div className="mt-6 hidden space-y-6 lg:block">
         {items.map((item) => (
-          <section key={item.title} className="border-l border-slate-200 pl-5">
-            <h3 className="text-lg font-extrabold text-[#0F1A2C]">{item.title}</h3>
-            <p className="mt-2 text-[17px] leading-8 text-[#526174]">{item.text}</p>
+          <section key={item.title} className="border-l border-border pl-5">
+            <h3 className="text-lg font-extrabold text-ink">{item.title}</h3>
+            <p className="mt-2 text-[17px] leading-8 text-ink-muted">{item.text}</p>
           </section>
         ))}
       </div>
@@ -670,8 +661,8 @@ function FaqItem({
 }>) {
   return (
     <section className="p-5 sm:p-6">
-      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{title}</h3>
-      <div className="mt-2 space-y-3 text-sm leading-6 text-[#526174]">{children}</div>
+      <h3 className="text-lg font-extrabold text-ink">{title}</h3>
+      <div className="mt-2 space-y-3 text-sm leading-6 text-ink-muted">{children}</div>
     </section>
   );
 }

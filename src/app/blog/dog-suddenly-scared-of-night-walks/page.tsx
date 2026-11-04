@@ -40,15 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "ChillPup", href: "/chillpup/" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Research", href: "/research/social-agency-workflows/" },
-  { label: "Support", href: "/support/" },
-  { label: "About", href: "/about/" },
-];
-
 const healthChecks = [
   "The fear started overnight.",
   "An older dog suddenly seems disoriented or bumps into objects in low light.",
@@ -187,20 +178,20 @@ export default function NightWalkConfidenceArticle() {
         url="https://kf-software.com/blog/dog-suddenly-scared-of-night-walks/"
         faqs={faqs}
       />
-      <Header activeItem="Blog" navItems={navItems} />
+      <Header activeItem="Blog" />
 
-      <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
+      <main className="theme-chillpup min-h-screen bg-canvas text-ink">
         <article>
-          <section className="border-b border-slate-100/70 py-14 sm:py-18">
+          <section className="border-b border-border py-14 sm:py-18">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
                 <Moon className="h-3.5 w-3.5" aria-hidden="true" />
                 Walk Fear Guide
               </div>
-              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl">
                 Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier
               </h1>
-              <p className="mt-6 text-lg leading-8 text-[#526174]">
+              <p className="mt-6 text-lg leading-8 text-ink-muted">
                 If a dog walks normally during the day but freezes, plants their feet, or refuses the evening route, check for sudden vision or health issues first. If health concerns are cleared, stop pulling them forward. Make the route shorter, brighter, and let them turn back early.
               </p>
 
@@ -213,33 +204,33 @@ export default function NightWalkConfidenceArticle() {
               />
 
               <div className="mt-6 space-y-4">
-                <div className="rounded-2xl border border-[#DCEFE8] bg-white p-4 shadow-sm flex items-center justify-between gap-4">
+                <div className="rounded-2xl border border-brand/30 bg-surface p-4 shadow-sm flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
                       <Footprints className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div className="text-left">
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#0F766E]">
+                      <p className="text-xs font-bold uppercase tracking-wider text-brand">
                         ChillPup Routine
                       </p>
-                      <h3 className="text-base font-extrabold text-[#0F1A2C] mt-0.5">
+                      <h3 className="text-base font-extrabold text-ink mt-0.5">
                         Night Walk Confidence
                       </h3>
                     </div>
                   </div>
                   <a
                     href="#chillpup-routine"
-                    className="inline-flex h-9 items-center justify-center rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-[#0B5F59]"
+                    className="inline-flex h-9 items-center justify-center rounded-lg bg-brand px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-brand-hover"
                   >
                     View Routine
                   </a>
                 </div>
 
-                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   When a dog walks fine during the day but stops at the doorway or scans the street anxiously at dark, the environment is likely the trigger. Night changes how things look, sound, and smell. For dogs who seem otherwise well and mainly struggle with the evening route, ChillPup’s <strong>Night Walk Confidence</strong> routine gives you a practical way to choose a smaller, calmer first step before you head out tonight.
                 </p>
 
-                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                <div className="rounded-2xl border border-brand/20 bg-brand-soft/40 p-5 text-sm leading-6 text-ink">
                   <strong>Quick answer:</strong> If your dog walks normally by day but freezes at night, check for pain, vision changes, unsafe lighting, traffic, and route hazards first. If no red flags are present, make evening walks shorter, brighter, and more familiar.
                 </div>
               </div>
@@ -249,16 +240,16 @@ export default function NightWalkConfidenceArticle() {
           <div className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,720px)_320px] lg:justify-center lg:gap-12 lg:px-8 lg:py-16">
             <div className="space-y-14 lg:space-y-16">
               <section aria-labelledby="health-safety">
-                <div className="rounded-[28px] border border-amber-200/70 bg-[#FFFDF9] p-6 sm:p-8">
+                <div className="rounded-[28px] border border-amber-500/30 bg-surface-raised p-6 sm:p-8">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-800">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
                       <ShieldAlert className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <div>
-                      <h2 id="health-safety" className="text-2xl font-extrabold text-[#0F1A2C]">
+                      <h2 id="health-safety" className="text-2xl font-extrabold text-ink">
                         First, Check for Health or Safety Concerns
                       </h2>
-                      <p className="mt-3 leading-7 text-[#526174]">
+                      <p className="mt-3 leading-7 text-ink-muted">
                         Rule out physical issues before treating this as a confidence or environment problem. Speak with your veterinarian before assuming this is a confidence issue if:
                       </p>
                     </div>
@@ -266,69 +257,69 @@ export default function NightWalkConfidenceArticle() {
 
                   <ul className="mt-6 space-y-3">
                     {healthChecks.map((item) => (
-                      <li key={item} className="flex gap-3 text-sm leading-6 text-[#526174]">
+                      <li key={item} className="flex gap-3 text-sm leading-6 text-ink-muted">
                         <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" aria-hidden="true" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-6 rounded-2xl border border-amber-200 bg-white p-4 text-sm leading-6 text-[#526174]">
-                    <strong className="text-[#0F1A2C]">Urgent signs:</strong> If your dog collapses, has trouble breathing, or seems severely distressed, seek urgent veterinary help.
+                  <div className="mt-6 rounded-2xl border border-amber-200 bg-surface p-4 text-sm leading-6 text-ink-muted">
+                    <strong className="text-ink">Urgent signs:</strong> If your dog collapses, has trouble breathing, or seems severely distressed, seek urgent veterinary help.
                   </div>
 
-                  <blockquote className="mt-6 border-l-4 border-amber-400 pl-4 text-sm leading-6 text-[#526174]">
+                  <blockquote className="mt-6 border-l-4 border-amber-400 pl-4 text-sm leading-6 text-ink-muted">
                     ChillPup does not evaluate vision decline, pain, or illness. Speak with your veterinarian if you notice these signs.
                   </blockquote>
                 </div>
               </section>
 
               <section aria-labelledby="night-changes">
-                <h2 id="night-changes" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="night-changes" className="text-3xl font-extrabold text-ink">
                   What Changes When the Sun Goes Down
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   A dog afraid to walk at night is responding to a shifting environment, not simply being stubborn.
                 </p>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {nightChanges.map((item) => (
-                    <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{item.text}</p>
+                    <div key={item.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{item.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-7 hidden space-y-5 lg:block">
                   {nightChanges.map((item) => (
-                    <div key={item.title} className="border-l border-slate-200 pl-5">
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">{item.text}</p>
+                    <div key={item.title} className="border-l border-border pl-5">
+                      <h3 className="text-lg font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-ink-muted">{item.text}</p>
                     </div>
                   ))}
                 </div>
               </section>
 
               <section aria-labelledby="freezes">
-                <h2 id="freezes" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="freezes" className="text-3xl font-extrabold text-ink">
                   What to Do in the Moment When Your Dog Freezes
                 </h2>
 
                 <div className="mt-6 space-y-4 lg:hidden">
                   {freezeSteps.map((step) => (
-                    <div key={step.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{step.text}</p>
+                    <div key={step.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{step.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-6 hidden space-y-6 lg:block">
                   {freezeSteps.map((step) => (
-                    <section key={step.title} className="border-l border-slate-200 pl-5">
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{step.title}</h3>
-                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">{step.text}</p>
+                    <section key={step.title} className="border-l border-border pl-5">
+                      <h3 className="text-lg font-extrabold text-ink">{step.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-ink-muted">{step.text}</p>
                     </section>
                   ))}
                 </div>
@@ -343,35 +334,35 @@ export default function NightWalkConfidenceArticle() {
               />
 
               <section aria-labelledby="tonight">
-                <h2 id="tonight" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="tonight" className="text-3xl font-extrabold text-ink">
                   Small Changes for Tonight&apos;s Walk
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Give your dog a clear, manageable setup rather than trying to finish the usual route.
                 </p>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {tonightSteps.map((step) => (
-                    <div key={step.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{step.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{step.text}</p>
+                    <div key={step.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{step.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <ul className="mt-6 hidden space-y-4 lg:block">
                   {tonightSteps.map((step) => (
-                    <li key={step.title} className="flex gap-3 text-[17px] leading-8 text-[#526174]">
-                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                    <li key={step.title} className="flex gap-3 text-[17px] leading-8 text-ink-muted">
+                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
                       <span>
-                        <strong className="text-[#0F1A2C]">{step.title}:</strong> {step.text}
+                        <strong className="text-ink">{step.title}:</strong> {step.text}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-8 rounded-[24px] border border-[#DCEFE8] bg-[#F3FBF8] p-6">
-                  <p className="text-base leading-7 text-[#0F1A2C]">
+                <div className="mt-8 rounded-[24px] border border-brand/30 bg-brand-soft/60 p-6">
+                  <p className="text-base leading-7 text-ink">
                     Before you head out tonight, open ChillPup’s <strong>Night Walk Confidence</strong> routine to set up a shorter, clear evening route that avoids pushing your dog past their limits.
                   </p>
                 </div>
@@ -386,49 +377,49 @@ export default function NightWalkConfidenceArticle() {
               />
 
               <section aria-labelledby="success">
-                <h2 id="success" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="success" className="text-3xl font-extrabold text-ink">
                   Redefining a Successful Night Walk
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Success isn&apos;t measured in miles. When a dog is hesitant, a win looks like:
                 </p>
                 <ul className="mt-5 space-y-3">
                   {wins.map((win) => (
-                    <li key={win} className="flex gap-3 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
-                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                    <li key={win} className="flex gap-3 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
+                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
                       <span>{win}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-5 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Choosing a short, safe option keeps the experience positive. If your dog is struggling with stepping out during the day as well, read our guide on{" "}
-                  <a href="/blog/dog-suddenly-scared-to-go-outside/" className="font-semibold text-[#0F766E] hover:underline">
+                  <a href="/blog/dog-suddenly-scared-to-go-outside/" className="font-semibold text-brand hover:underline">
                     Why Is My Dog Suddenly Scared to Go Outside?
                   </a>.
                 </p>
               </section>
 
               <section id="chillpup-routine" aria-labelledby="routine-fit">
-                <h2 id="routine-fit" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="routine-fit" className="text-3xl font-extrabold text-ink">
                   Which ChillPup Routine Fits Your Situation?
                 </h2>
 
-                <div className="mt-6 overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 overflow-hidden rounded-[24px] border border-border bg-surface shadow-sm">
                   <table className="w-full border-collapse text-left text-sm">
-                    <thead className="bg-slate-50 text-[#0F1A2C]">
+                    <thead className="bg-surface-muted text-ink">
                       <tr>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Situation</th>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Start with this ChillPup routine</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100">
+                    <tbody className="divide-y divide-border">
                       {routineRows.map((row) => (
                         <tr key={row.situation}>
-                          <td className="px-4 py-4 align-top text-[#526174] sm:px-6">{row.situation}</td>
-                          <td className="px-4 py-4 align-top font-semibold text-[#0F1A2C] sm:px-6">
+                          <td className="px-4 py-4 align-top text-ink-muted sm:px-6">{row.situation}</td>
+                          <td className="px-4 py-4 align-top font-semibold text-ink sm:px-6">
                             {row.href && row.linkLabel ? (
                               <>
-                                <a href={row.href} className="text-[#0F766E] hover:underline">
+                                <a href={row.href} className="text-brand hover:underline">
                                   {row.linkLabel}
                                 </a>{" "}
                                 → {row.routine}
@@ -443,16 +434,16 @@ export default function NightWalkConfidenceArticle() {
                   </table>
                 </div>
 
-                <p className="mt-5 text-sm leading-6 text-[#526174]">
+                <p className="mt-5 text-sm leading-6 text-ink-muted">
                   ChillPup routines provide structured owner-guided steps. They are not veterinary care and do not replace advice from your veterinarian or a qualified behavior professional.
                 </p>
               </section>
 
               <section aria-labelledby="faq">
-                <h2 id="faq" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="faq" className="text-3xl font-extrabold text-ink">
                   Frequently Asked Questions
                 </h2>
-                <div className="mt-6 divide-y divide-slate-100 rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 divide-y divide-border rounded-[24px] border border-border bg-surface shadow-sm">
                   <FaqItem title="Why is my dog only scared to walk at night?">
                     <p>Night changes the visual landscape and acoustics. Lower visibility turns normal objects into strange shapes, moving shadows appear from streetlights, and sudden noises feel much louder without daytime background noise.</p>
                   </FaqItem>
@@ -473,14 +464,14 @@ export default function NightWalkConfidenceArticle() {
             </div>
 
             <aside className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-[28px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+              <div className="rounded-[28px] border border-brand/30 bg-surface p-6 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
                   Try the matching routine
                 </p>
-                <h2 className="mt-3 text-2xl font-extrabold text-[#0F1A2C]">
+                <h2 className="mt-3 text-2xl font-extrabold text-ink">
                   Night Walk Confidence
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-[#526174]">
+                <p className="mt-3 text-sm leading-6 text-ink-muted">
                   A short, owner-guided ChillPup routine for dogs who walk better during the day but hesitate after dark.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
@@ -501,7 +492,7 @@ export default function NightWalkConfidenceArticle() {
                     <GooglePlayBadge className="h-[42px] w-auto" />
                   </a>
                 </div>
-                <p className="mt-5 border-t border-slate-100 pt-5 text-xs leading-5 text-[#526174]">
+                <p className="mt-5 border-t border-border pt-5 text-xs leading-5 text-ink-muted">
                   ChillPup is not a veterinary or diagnostic app. If your dog shows sudden severe symptoms, pain, collapse, seizures, appetite changes, or unexplained panting or shaking, contact a veterinarian.
                 </p>
               </div>
@@ -525,8 +516,8 @@ function FaqItem({
 }>) {
   return (
     <section className="p-5 sm:p-6">
-      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{title}</h3>
-      <div className="mt-2 space-y-3 text-sm leading-6 text-[#526174]">{children}</div>
+      <h3 className="text-lg font-extrabold text-ink">{title}</h3>
+      <div className="mt-2 space-y-3 text-sm leading-6 text-ink-muted">{children}</div>
     </section>
   );
 }

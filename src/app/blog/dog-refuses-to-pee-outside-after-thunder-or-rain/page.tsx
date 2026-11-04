@@ -40,15 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "ChillPup", href: "/chillpup/" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Research", href: "/research/social-agency-workflows/" },
-  { label: "Support", href: "/support/" },
-  { label: "About", href: "/about/" },
-];
-
 const vetDiscussionSigns = [
   "A sudden, unexplained change in house-training habits.",
   "An older dog who suddenly starts refusing to step outside into the cold or damp.",
@@ -193,20 +184,20 @@ export default function RainPottyConfidenceArticle() {
         url="https://kf-software.com/blog/dog-refuses-to-pee-outside-after-thunder-or-rain/"
         faqs={faqs}
       />
-      <Header activeItem="Blog" navItems={navItems} />
+      <Header activeItem="Blog" />
 
-      <main className="min-h-screen bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white text-[#526174]">
+      <main className="theme-chillpup min-h-screen bg-canvas text-ink">
         <article>
-          <section className="border-b border-slate-100/70 py-14 sm:py-18">
+          <section className="border-b border-border py-14 sm:py-18">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E] shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
                 <CloudRain className="h-3.5 w-3.5" aria-hidden="true" />
                 Weather Potty Guide
               </div>
-              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl lg:text-6xl">
                 Dog Won’t Pee in the Rain? What’s Normal and When to Call a Vet
               </h1>
-              <p className="mt-6 text-lg leading-8 text-[#526174]">
+              <p className="mt-6 text-lg leading-8 text-ink-muted">
                 If your dog avoids peeing in the rain but seems fine otherwise, wet weather may simply be making the potty break harder. Start with a short, sheltered potty attempt and avoid forcing them. However, if your dog cannot pass urine, strains, or shows signs of discomfort, contact your veterinarian.
               </p>
 
@@ -219,33 +210,33 @@ export default function RainPottyConfidenceArticle() {
               />
 
               <div className="mt-6 space-y-4">
-                <div className="rounded-2xl border border-[#DCEFE8] bg-white p-4 shadow-sm flex items-center justify-between gap-4">
+                <div className="rounded-2xl border border-brand/30 bg-surface p-4 shadow-sm flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
                       <Droplets className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div className="text-left">
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#0F766E]">
+                      <p className="text-xs font-bold uppercase tracking-wider text-brand">
                         ChillPup Routine
                       </p>
-                      <h3 className="text-base font-extrabold text-[#0F1A2C] mt-0.5">
+                      <h3 className="text-base font-extrabold text-ink mt-0.5">
                         Rain / Weather Potty Confidence
                       </h3>
                     </div>
                   </div>
                   <a
                     href="#chillpup-routine"
-                    className="inline-flex h-9 items-center justify-center rounded-lg bg-[#0F766E] px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-[#0B5F59]"
+                    className="inline-flex h-9 items-center justify-center rounded-lg bg-brand px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-brand-hover"
                   >
                     View Routine
                   </a>
                 </div>
 
-                <p className="text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   A dog slowing down or hesitating before going outside in bad weather is a common hurdle for many owners. While a rainy-day delay is usually normal, it can sometimes overlap with health changes. For dogs who seem otherwise well but dislike wet-weather potty breaks, ChillPup’s <strong>Rain / Weather Potty Confidence</strong> routine gives you a short way to plan one easier attempt without forcing or punishment.
                 </p>
 
-                <div className="rounded-2xl border border-teal-100 bg-teal-50/40 p-5 text-sm leading-6 text-[#0F1A2C]">
+                <div className="rounded-2xl border border-brand/20 bg-brand-soft/40 p-5 text-sm leading-6 text-ink">
                   <strong>Quick answer:</strong> If your dog will not pee in the rain but seems otherwise well, use a short, sheltered potty attempt close to the door. If your dog strains, cannot urinate, seems painful, or has repeated unexplained accidents, contact your veterinarian.
                 </div>
               </div>
@@ -255,16 +246,16 @@ export default function RainPottyConfidenceArticle() {
           <div className="mx-auto grid max-w-5xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,720px)_320px] lg:justify-center lg:gap-12 lg:px-8 lg:py-16">
             <div className="space-y-14 lg:space-y-16">
               <section aria-labelledby="weather-check">
-                <div className="rounded-[28px] border border-amber-200/70 bg-[#FFFDF9] p-6 sm:p-8">
+                <div className="rounded-[28px] border border-amber-500/30 bg-surface-raised p-6 sm:p-8">
                   <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-800">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
                       <ShieldAlert className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <div>
-                      <h2 id="weather-check" className="text-2xl font-extrabold text-[#0F1A2C]">
+                      <h2 id="weather-check" className="text-2xl font-extrabold text-ink">
                         First: Is This Just the Weather?
                       </h2>
-                      <p className="mt-3 leading-7 text-[#526174]">
+                      <p className="mt-3 leading-7 text-ink-muted">
                         To handle this effectively, it helps to distinguish between a simple dislike of the rain and signs that require professional medical attention.
                       </p>
                     </div>
@@ -272,20 +263,20 @@ export default function RainPottyConfidenceArticle() {
 
                   <div className="mt-7 space-y-7">
                     <section>
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">1. Urgent Medical Signs</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">
+                      <h3 className="text-lg font-extrabold text-ink">1. Urgent Medical Signs</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">
                         If your dog cannot pass urine at all, collapses, has trouble breathing, or appears severely weak or painful, seek urgent veterinary help.
                       </p>
                     </section>
 
                     <section>
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">2. Signs to Discuss with a Vet Before Changing Your Routine</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">
+                      <h3 className="text-lg font-extrabold text-ink">2. Signs to Discuss with a Vet Before Changing Your Routine</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">
                         Speak with your veterinarian to rule out physical discomfort if you notice these changes:
                       </p>
                       <ul className="mt-3 space-y-2">
                         {vetDiscussionSigns.map((sign) => (
-                          <li key={sign} className="flex gap-3 text-sm leading-6 text-[#526174]">
+                          <li key={sign} className="flex gap-3 text-sm leading-6 text-ink-muted">
                             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" aria-hidden="true" />
                             <span>{sign}</span>
                           </li>
@@ -294,14 +285,14 @@ export default function RainPottyConfidenceArticle() {
                     </section>
 
                     <section>
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">3. Mild Weather Reluctance</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">
+                      <h3 className="text-lg font-extrabold text-ink">3. Mild Weather Reluctance</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">
                         If your dog displays the following habits, they are likely just avoiding the elements:
                       </p>
                       <ul className="mt-3 space-y-2">
                         {mildWeatherSigns.map((sign) => (
-                          <li key={sign} className="flex gap-3 text-sm leading-6 text-[#526174]">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                          <li key={sign} className="flex gap-3 text-sm leading-6 text-ink-muted">
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
                             <span>{sign}</span>
                           </li>
                         ))}
@@ -312,79 +303,79 @@ export default function RainPottyConfidenceArticle() {
               </section>
 
               <section aria-labelledby="rain-reasons">
-                <h2 id="rain-reasons" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="rain-reasons" className="text-3xl font-extrabold text-ink">
                   Why Some Dogs Avoid the Rain
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Most dogs who hesitate in bad weather are simply reacting to an uncomfortable shift in their environment.
                 </p>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {rainReasons.map((item) => (
-                    <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{item.text}</p>
+                    <div key={item.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{item.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-7 hidden space-y-5 lg:block">
                   {rainReasons.map((item) => (
-                    <div key={item.title} className="border-l border-slate-200 pl-5">
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">{item.text}</p>
+                    <div key={item.title} className="border-l border-border pl-5">
+                      <h3 className="text-lg font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-ink-muted">{item.text}</p>
                     </div>
                   ))}
                 </div>
               </section>
 
               <section aria-labelledby="avoid">
-                <h2 id="avoid" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="avoid" className="text-3xl font-extrabold text-ink">
                   What to Avoid When Your Dog Freezes
                 </h2>
 
                 <div className="mt-6 space-y-4 lg:hidden">
                   {avoidItems.map((item) => (
-                    <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{item.text}</p>
+                    <div key={item.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{item.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-6 hidden space-y-6 lg:block">
                   {avoidItems.map((item) => (
-                    <section key={item.title} className="border-l border-slate-200 pl-5">
-                      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-[17px] leading-8 text-[#526174]">{item.text}</p>
+                    <section key={item.title} className="border-l border-border pl-5">
+                      <h3 className="text-lg font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-[17px] leading-8 text-ink-muted">{item.text}</p>
                     </section>
                   ))}
                 </div>
               </section>
 
               <section aria-labelledby="rainy-plan">
-                <h2 id="rainy-plan" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="rainy-plan" className="text-3xl font-extrabold text-ink">
                   A Simple Plan for Rainy Days
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   Instead of attempting your usual neighborhood loop during a storm, focus on a quick and practical routine.
                 </p>
 
                 <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:hidden">
                   {rainyPlan.map((item) => (
-                    <div key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm">
-                      <h3 className="text-base font-extrabold text-[#0F1A2C]">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-[#526174]">{item.text}</p>
+                    <div key={item.title} className="rounded-2xl border border-border/70 bg-surface p-5 shadow-sm">
+                      <h3 className="text-base font-extrabold text-ink">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-ink-muted">{item.text}</p>
                     </div>
                   ))}
                 </div>
 
                 <ul className="mt-6 hidden space-y-4 lg:block">
                   {rainyPlan.map((item) => (
-                    <li key={item.title} className="flex gap-3 text-[17px] leading-8 text-[#526174]">
-                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                    <li key={item.title} className="flex gap-3 text-[17px] leading-8 text-ink-muted">
+                      <CheckCircle2 className="mt-1.5 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
                       <span>
-                        <strong className="text-[#0F1A2C]">{item.title}:</strong> {item.text}
+                        <strong className="text-ink">{item.title}:</strong> {item.text}
                       </span>
                     </li>
                   ))}
@@ -400,56 +391,56 @@ export default function RainPottyConfidenceArticle() {
               />
 
               <section aria-labelledby="progress">
-                <h2 id="progress" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="progress" className="text-3xl font-extrabold text-ink">
                   Small Signs of Progress
                 </h2>
-                <p className="mt-4 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-4 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   When a dog dislikes wet conditions, success is built through small habits rather than instant changes. A good outing might simply look like:
                 </p>
                 <ul className="mt-5 space-y-3">
                   {progressSigns.map((sign) => (
-                    <li key={sign} className="flex gap-3 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
-                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#0F766E]" aria-hidden="true" />
+                    <li key={sign} className="flex gap-3 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
+                      <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-brand" aria-hidden="true" />
                       <span>{sign}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-base leading-7 text-[#526174] lg:text-[17px] lg:leading-8">
+                <p className="mt-5 text-base leading-7 text-ink-muted lg:text-[17px] lg:leading-8">
                   If your dog handles the rain well but refuses to move once the sun sets, you can read our guide on{" "}
-                  <a href="/blog/dog-suddenly-scared-of-night-walks/" className="font-semibold text-[#0F766E] hover:underline">
+                  <a href="/blog/dog-suddenly-scared-of-night-walks/" className="font-semibold text-brand hover:underline">
                     Dog Scared of Night Walks? Gentle Ways to Make Evening Walks Easier
                   </a>. For broader outdoor hesitation, see{" "}
-                  <a href="/blog/dog-suddenly-scared-to-go-outside/" className="font-semibold text-[#0F766E] hover:underline">
+                  <a href="/blog/dog-suddenly-scared-to-go-outside/" className="font-semibold text-brand hover:underline">
                     Why Is My Dog Suddenly Scared to Go Outside?
                   </a>{" "}
                   or check our tips for seasonal disruptions like{" "}
-                  <a href="/blog/dog-freezes-on-walks-after-fireworks/" className="font-semibold text-[#0F766E] hover:underline">
+                  <a href="/blog/dog-freezes-on-walks-after-fireworks/" className="font-semibold text-brand hover:underline">
                     Dog Scared to Go Outside After Fireworks? What to Do First
                   </a>.
                 </p>
               </section>
 
               <section id="chillpup-routine" aria-labelledby="routine-fit">
-                <h2 id="routine-fit" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="routine-fit" className="text-3xl font-extrabold text-ink">
                   Which ChillPup Routine Fits Your Situation?
                 </h2>
 
-                <div className="mt-6 overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 overflow-hidden rounded-[24px] border border-border bg-surface shadow-sm">
                   <table className="w-full border-collapse text-left text-sm">
-                    <thead className="bg-slate-50 text-[#0F1A2C]">
+                    <thead className="bg-surface-muted text-ink">
                       <tr>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Situation</th>
                         <th className="px-4 py-3 font-extrabold sm:px-6">Start with this ChillPup routine</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100">
+                    <tbody className="divide-y divide-border">
                       {routineRows.map((row) => (
                         <tr key={row.situation}>
-                          <td className="px-4 py-4 align-top text-[#526174] sm:px-6">{row.situation}</td>
-                          <td className="px-4 py-4 align-top font-semibold text-[#0F1A2C] sm:px-6">
+                          <td className="px-4 py-4 align-top text-ink-muted sm:px-6">{row.situation}</td>
+                          <td className="px-4 py-4 align-top font-semibold text-ink sm:px-6">
                             {row.href && row.linkLabel ? (
                               <>
-                                <a href={row.href} className="text-[#0F766E] hover:underline">
+                                <a href={row.href} className="text-brand hover:underline">
                                   {row.linkLabel}
                                 </a>{" "}
                                 → {row.routine}
@@ -464,16 +455,16 @@ export default function RainPottyConfidenceArticle() {
                   </table>
                 </div>
 
-                <p className="mt-5 text-sm leading-6 text-[#526174]">
+                <p className="mt-5 text-sm leading-6 text-ink-muted">
                   Use ChillPup routines for everyday support when no medical red flags are present. They are not a replacement for professional veterinary care or advice from a qualified behavior professional.
                 </p>
               </section>
 
               <section aria-labelledby="faq">
-                <h2 id="faq" className="text-3xl font-extrabold text-[#0F1A2C]">
+                <h2 id="faq" className="text-3xl font-extrabold text-ink">
                   Frequently Asked Questions
                 </h2>
-                <div className="mt-6 divide-y divide-slate-100 rounded-[24px] border border-slate-200 bg-white shadow-sm">
+                <div className="mt-6 divide-y divide-border rounded-[24px] border border-border bg-surface shadow-sm">
                   <FaqItem title="Is it normal for dogs to avoid peeing in the rain?">
                     <p>Yes. Many dogs dislike the physical sensation of wet grass on their belly, cold pavement on their paws, or the loud noise and wind that come with a storm.</p>
                   </FaqItem>
@@ -512,14 +503,14 @@ export default function RainPottyConfidenceArticle() {
             </div>
 
             <aside className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-[28px] border border-[#DCEFE8] bg-white p-6 shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+              <div className="rounded-[28px] border border-brand/30 bg-surface p-6 shadow-sm">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
                   Try the matching routine
                 </p>
-                <h2 className="mt-3 text-2xl font-extrabold text-[#0F1A2C]">
+                <h2 className="mt-3 text-2xl font-extrabold text-ink">
                   Rain / Weather Potty Confidence
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-[#526174]">
+                <p className="mt-3 text-sm leading-6 text-ink-muted">
                   A short, owner-guided ChillPup routine for mild wet-weather potty reluctance when no medical red flags are present.
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
@@ -540,7 +531,7 @@ export default function RainPottyConfidenceArticle() {
                     <GooglePlayBadge className="h-[42px] w-auto" />
                   </a>
                 </div>
-                <p className="mt-5 border-t border-slate-100 pt-5 text-xs leading-5 text-[#526174]">
+                <p className="mt-5 border-t border-border pt-5 text-xs leading-5 text-ink-muted">
                   ChillPup is not a veterinary or diagnostic app. If your dog shows sudden severe symptoms, pain, collapse, seizures, appetite changes, or unexplained panting or shaking, contact a veterinarian.
                 </p>
               </div>
@@ -564,8 +555,8 @@ function FaqItem({
 }>) {
   return (
     <section className="p-5 sm:p-6">
-      <h3 className="text-lg font-extrabold text-[#0F1A2C]">{title}</h3>
-      <div className="mt-2 space-y-3 text-sm leading-6 text-[#526174]">{children}</div>
+      <h3 className="text-lg font-extrabold text-ink">{title}</h3>
+      <div className="mt-2 space-y-3 text-sm leading-6 text-ink-muted">{children}</div>
     </section>
   );
 }

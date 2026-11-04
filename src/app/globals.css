@@ -4,7 +4,65 @@
 
 :root {
   color-scheme: light;
-  background: #f4f7f6;
+  --canvas: 246 248 252;
+  --surface: 255 255 255;
+  --surface-raised: 255 255 255;
+  --surface-muted: 237 242 247;
+  --ink: 19 34 56;
+  --ink-muted: 82 97 116;
+  --border: 215 224 234;
+  --brand: 36 87 197;
+  --brand-hover: 29 69 156;
+  --brand-soft: 234 240 255;
+  --focus: 37 99 235;
+  --success: 21 128 61;
+  --danger: 185 28 28;
+
+  --product-accent: 36 87 197;
+  --product-soft: 234 240 255;
+}
+
+.dark {
+  color-scheme: dark;
+  --canvas: 11 18 32;
+  --surface: 17 27 46;
+  --surface-raised: 23 36 58;
+  --surface-muted: 23 36 58;
+  --ink: 244 247 251;
+  --ink-muted: 168 180 199;
+  --border: 42 57 80;
+  --brand: 122 167 255;
+  --brand-hover: 155 188 255;
+  --brand-soft: 23 42 78;
+  --focus: 138 180 255;
+  --success: 74 222 128;
+  --danger: 248 113 113;
+
+  --product-accent: 122 167 255;
+  --product-soft: 23 42 78;
+}
+
+/* Scoped product palettes */
+.theme-chillpup {
+  --product-accent: 15 118 110;
+  --product-soft: 204 251 241;
+}
+
+.dark .theme-chillpup,
+.dark.theme-chillpup {
+  --product-accent: 94 234 212;
+  --product-soft: 18 60 58;
+}
+
+.theme-kitchen-exhaust {
+  --product-accent: 180 83 9;
+  --product-soft: 255 241 214;
+}
+
+.dark .theme-kitchen-exhaust,
+.dark.theme-kitchen-exhaust {
+  --product-accent: 253 186 116;
+  --product-soft: 58 38 22;
 }
 
 * {
@@ -17,10 +75,9 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(26, 83, 92, 0.1), transparent 32rem),
-    linear-gradient(180deg, #f4f7f6 0%, #ffffff 44%, #f4f7f6 100%);
-  color: #142847;
+  background-color: rgb(var(--canvas));
+  color: rgb(var(--ink));
+  min-height: 100vh;
 }
 
 button,
@@ -30,5 +87,22 @@ textarea {
 }
 
 ::selection {
-  background: rgba(26, 83, 92, 0.2);
+  background: rgba(36, 87, 197, 0.2);
+  color: inherit;
+}
+
+.dark ::selection {
+  background: rgba(122, 167, 255, 0.3);
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

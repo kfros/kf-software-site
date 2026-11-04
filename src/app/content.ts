@@ -2,6 +2,10 @@ import type { LucideIcon } from "lucide-react";
 import { Code, Heart, ShieldCheck } from "lucide-react";
 
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "./store-links";
+import { primaryNavigation, NavItem } from "@/config/site-navigation";
+
+export { primaryNavigation };
+export type { NavItem };
 
 export interface NavigationLink {
   label: string;
@@ -39,20 +43,13 @@ export const brandIdentity = {
   taxIdentifiers: "NIP: 8992892536 | REGON: 388052186",
 };
 
-export const navigationLinks: NavigationLink[] = [
-  { label: "Home", href: "/" },
-  { label: "ChillPup", href: "#chillpup" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Research", href: "/research/social-agency-workflows/" },
-  { label: "Support", href: "#support" },
-  { label: "About", href: "#about" },
-];
+export const navigationLinks: NavigationLink[] = primaryNavigation;
 
 export const heroContent = {
   heading: "Small software for real-world problems.",
   subheading:
     "We build small software products from idea to launch: web apps, mobile apps, automation tools, and niche utilities.",
-  ctaPrimary: { label: "Explore ChillPup", href: "#chillpup" },
+  ctaPrimary: { label: "Explore products", href: "#products" },
   ctaSecondary: { label: "Contact us", href: "#contact" },
   badges: [
     { icon: ShieldCheck, text: "Privacy-conscious\nby design" },
@@ -102,28 +99,26 @@ export const featuredProduct = {
   ] satisfies FeatureItem[],
 };
 
+export const companyPrinciples = [
+  {
+    title: "Narrow, useful products",
+    desc: "Build for a defined problem instead of trying to cover every workflow.",
+  },
+  {
+    title: "Clear limits",
+    desc: "Describe what a product does and does not do without inflated claims.",
+  },
+  {
+    title: "Privacy by default",
+    desc: "Collect only the information needed to provide the experience.",
+  },
+  {
+    title: "Evidence before expansion",
+    desc: "Test workflows and behavior before investing in broader functionality.",
+  },
+];
+
 export const principlesSection = {
-  title: "Built with principles that matter",
-  cards: [
-    {
-      title: "No medical or diagnostic claims",
-      desc: "ChillPup is not a veterinary or diagnostic app. It provides owner-guided support only.",
-    },
-    {
-      title: "Gentle behavior principles",
-      desc: "Routines inspired by proven behavior-support approaches like gradual exposure, relaxation and positive experiences.",
-    },
-    {
-      title: "Privacy first",
-      desc: "Your data stays yours. We collect only what is necessary to run the app.",
-    },
-    {
-      title: "Clear choices",
-      desc: "No pressure, no tricks, no hidden costs. Just clear value.",
-    },
-    {
-      title: "Small & focused",
-      desc: "We build narrow, useful apps that solve real problems instead of trying to do everything.",
-    },
-  ] satisfies PrincipleCard[],
+  title: "How we build",
+  cards: companyPrinciples satisfies PrincipleCard[],
 };

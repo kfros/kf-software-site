@@ -21,15 +21,6 @@ export const metadata: Metadata = {
 };
 
 export default function TermsOfUse() {
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup/" },
-    { label: "Blog", href: "/blog/" },
-    { label: "Research", href: "/research/social-agency-workflows/" },
-    { label: "Support", href: "/support/" },
-    { label: "About", href: "/about/" },
-  ];
-
   const sections = [
     {
       number: 1,
@@ -53,7 +44,7 @@ export default function TermsOfUse() {
             href="https://reportaproblem.apple.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#1A535C] font-semibold hover:underline"
+            className="text-brand font-semibold hover:underline"
           >
             https://reportaproblem.apple.com/
           </a>
@@ -88,7 +79,7 @@ export default function TermsOfUse() {
           If you have any questions, contact us at:{" "}
           <a
             href="mailto:contact@kf-software.com"
-            className="text-[#1A535C] font-semibold hover:underline"
+            className="text-brand font-semibold hover:underline"
           >
             contact@kf-software.com
           </a>
@@ -100,31 +91,31 @@ export default function TermsOfUse() {
   return (
     <>
       <PageClarityTags siteSection="legal" product="kf_software" pageType="legal" />
-      <Header activeItem="" navItems={navItems} />
-      <main className="bg-[#F8FAFC] min-h-screen py-14 px-5 sm:py-24 sm:px-6">
-        <article className="mx-auto max-w-[900px] bg-white rounded-3xl border border-[#E2E8F0] p-6 sm:p-12 shadow-sm">
-          <div className="flex items-center gap-3.5 mb-6 text-[#1A535C]">
+      <Header />
+      <main className="bg-canvas min-h-screen py-14 px-5 sm:py-24 sm:px-6 text-ink">
+        <article className="mx-auto max-w-[900px] bg-surface rounded-3xl border border-border p-6 sm:p-12 shadow-sm">
+          <div className="flex items-center gap-3.5 mb-6 text-brand">
             <FileText className="h-8 w-8" />
             <span className="text-sm font-bold uppercase tracking-wider">LEGAL AGREEMENT</span>
           </div>
 
-          <h1 className="text-4xl font-extrabold text-[#0F1A2C] leading-tight mb-3 sm:text-5xl">
+          <h1 className="text-4xl font-extrabold text-ink leading-tight mb-3 sm:text-5xl">
             Terms of Use
           </h1>
-          <p className="text-sm text-[#526174] mb-8 font-medium">Last updated: April 2026</p>
+          <p className="text-sm text-ink-muted mb-8 font-medium">Last updated: April 2026</p>
 
-          <p className="text-[17px] leading-relaxed text-[#0F1A2C] mb-10 pb-6 border-b border-[#E2E8F0]">
+          <p className="text-[17px] leading-relaxed text-ink mb-10 pb-6 border-b border-border">
             These Terms of Use (&quot;Terms&quot;) govern your use of applications developed by KYRYL FROSYNIAK Solutions (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). By using our applications, you agree to these Terms.
           </p>
 
           <div className="space-y-10">
             {sections.map((section) => (
               <section key={section.number} className="scroll-mt-24">
-                <h2 className="text-xl font-bold text-[#0F1A2C] mb-4 sm:text-2xl flex gap-3">
-                  <span className="text-[#1A535C]">{section.number}.</span>
+                <h2 className="text-xl font-bold text-ink mb-4 sm:text-2xl flex gap-3">
+                  <span className="text-brand">{section.number}.</span>
                   {section.title}
                 </h2>
-                <div className="text-base leading-[1.8] text-[#526174]">
+                <div className="text-base leading-[1.8] text-ink-muted">
                   {section.body}
                 </div>
               </section>

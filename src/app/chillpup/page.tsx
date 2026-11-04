@@ -22,7 +22,6 @@ import { ContactModal } from "../contact-modal";
 import { HeroPhones } from "@/components/HeroPhones";
 import { AppStoreBadge } from "@/components/AppStoreBadge";
 import { GooglePlayBadge } from "@/components/GooglePlayBadge";
-
 import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "../store-links";
 
@@ -51,15 +50,6 @@ export const metadata: Metadata = {
 };
 
 export default function ChillPupLanding() {
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup/" },
-    { label: "Blog", href: "/blog/" },
-    { label: "Research", href: "/research/social-agency-workflows/" },
-    { label: "Support", href: "/support/" },
-    { label: "About", href: "/about/" },
-  ];
-
   // Steps for Solution section
   const steps = [
     {
@@ -98,22 +88,22 @@ export default function ChillPupLanding() {
       icon: Plane,
     },
     {
-      title: "Daily Calm Reset",
-      text: "A short everyday routine to practice calm attention.",
+      title: "Everyday stress & change",
+      text: "Structured steps when regular patterns get disrupted.",
       icon: Activity,
     },
   ];
 
-  // App features
+  // App Features for Split Layout
   const appFeatures = [
     {
-      title: "Practical routines",
-      text: "Step-by-step guidance you can actually use.",
+      title: "Fast check-in",
+      text: "Quick options so you do not have to think when your dog is already reacting.",
       icon: ClipboardCheck,
     },
     {
-      title: "Calm check-ins",
-      text: "Quick notes before and after a routine.",
+      title: "Gentle, step-by-step guidance",
+      text: "Short text cards designed to be read while you stay near your dog.",
       icon: Smartphone,
     },
     {
@@ -160,25 +150,24 @@ export default function ChillPupLanding() {
   return (
     <>
       <PageClarityTags siteSection="chillpup" product="chillpup" pageType="landing" />
-      <Header activeItem="ChillPup" navItems={navItems} />
-      <main>
-
+      <Header activeItem="ChillPup" />
+      <main className="theme-chillpup bg-canvas text-ink">
         {/* Problem Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-[#FAF6F0] via-[#FCFAF7] to-white py-16 sm:py-24" id="problem">
+        <section className="relative overflow-hidden bg-surface py-16 sm:py-24 border-b border-border" id="problem">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-[#0F1A2C] sm:text-5xl lg:text-6xl leading-[1.15] ">
+            <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-[1.15]">
               When your dog is stressed, long advice is too slow.
             </h2>
-            <p className="mt-6 text-lg sm:text-xl leading-relaxed text-[#526174] max-w-3xl mx-auto">
+            <p className="mt-6 text-lg sm:text-xl leading-relaxed text-ink-muted max-w-3xl mx-auto">
               When fireworks start or guests arrive, most owners do not need another long training guide. They need a calm sequence they can follow without guessing.
             </p>
           </div>
         </section>
 
         {/* Calm Moment Banner Section */}
-        <section className="bg-white pb-12 sm:pb-16" id="calm_moment_banner">
+        <section className="bg-canvas py-12 sm:py-16" id="calm_moment_banner">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="overflow-hidden rounded-[24px] bg-[#FCFAF7] border border-slate-200/60 shadow-sm transition hover:shadow-md duration-300">
+            <div className="overflow-hidden rounded-[24px] bg-surface border border-border shadow-sm transition hover:shadow-md duration-300">
               <img
                 src="/images/chillpup_banner.jpg"
                 alt="A calm dog resting at home while its owner gently stays nearby."
@@ -187,19 +176,20 @@ export default function ChillPupLanding() {
             </div>
           </div>
         </section>
+
         {/* Hero Section */}
-        <section className="bg-white py-16 sm:py-24 border-t border-slate-100">
+        <section className="bg-surface py-16 sm:py-24 border-t border-b border-border">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
               {/* Copy Column */}
               <div className="lg:col-span-7 flex flex-col justify-center text-left">
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0F766E]">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-product-accent">
                   CHILLPUP
                 </span>
-                <h1 className="text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl leading-tight">
+                <h1 className="mt-2 text-3xl font-extrabold text-ink sm:text-4xl leading-tight">
                   ChillPup is for moments when your dog is already stressed and you do not want to search through long articles on your phone.
                 </h1>
-                <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#526174] max-w-2xl">
+                <p className="mt-6 text-base sm:text-lg leading-relaxed text-ink-muted max-w-2xl">
                   Short, owner-guided routines for fireworks, loud noises, visitors, travel,
                   and everyday tension. Know what to do when your dog needs calm support.
                 </p>
@@ -235,26 +225,26 @@ export default function ChillPupLanding() {
         </section>
 
         {/* Solution Section */}
-        <section className="bg-[#FAF8F5] py-16 sm:py-24 border-t border-b border-slate-100/60" id="solution">
+        <section className="bg-surface-muted/50 py-16 sm:py-24 border-b border-border" id="solution">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl">
+              <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">
                 Simple guidance when the moment is already happening.
               </h2>
-              <p className="mt-4 text-base sm:text-lg text-[#526174]">
+              <p className="mt-4 text-base sm:text-lg text-ink-muted">
                 ChillPup gives you short routines you can follow right away, without pressure or complicated theory. It is a small independent app built by KF Software and is intentionally narrow: no camera, no microphone, no behavior diagnosis. Just short routines for moments when the owner needs a clear next step.
               </p>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {steps.map((step, index) => (
-                <div key={index} className="bg-white rounded-[24px] p-6 sm:p-8 border border-slate-200/60 shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300">
+                <div key={index} className="bg-surface rounded-[24px] p-6 sm:p-8 border border-border shadow-xs flex flex-col justify-between hover:shadow-sm transition duration-300">
                   <div>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E] font-bold text-lg mb-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-product-soft text-product-accent font-bold text-lg mb-6">
                       0{index + 1}
                     </div>
-                    <h3 className="text-lg font-bold text-[#0F1A2C] mb-3 leading-snug">{step.title}</h3>
-                    <p className="text-sm leading-relaxed text-[#526174]">{step.text}</p>
+                    <h3 className="text-lg font-bold text-ink mb-3 leading-snug">{step.title}</h3>
+                    <p className="text-sm leading-relaxed text-ink-muted">{step.text}</p>
                   </div>
                 </div>
               ))}
@@ -263,10 +253,10 @@ export default function ChillPupLanding() {
         </section>
 
         {/* Stressful Moments Feature Grid */}
-        <section className="bg-white py-16 sm:py-24" id="stressful_moments">
+        <section className="bg-surface py-16 sm:py-24 border-b border-border" id="stressful_moments">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl">
+              <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">
                 Built for real stressful moments.
               </h2>
             </div>
@@ -275,12 +265,12 @@ export default function ChillPupLanding() {
               {featureGrid.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={index} className="rounded-[24px] border border-slate-200 bg-[#FCFAF7] p-6 sm:p-8 hover:border-[#0F766E] transition duration-300">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#0F766E] shadow-sm mb-5 border border-slate-100">
+                  <div key={index} className="rounded-[24px] border border-border bg-surface-muted/60 p-6 sm:p-8 hover:border-product-accent transition duration-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-product-accent shadow-xs mb-5 border border-border">
                       <Icon className="h-5.5 w-5.5" />
                     </div>
-                    <h3 className="text-lg font-bold text-[#0F1A2C] mb-2">{feature.title}</h3>
-                    <p className="text-sm leading-relaxed text-[#526174]">{feature.text}</p>
+                    <h3 className="text-lg font-bold text-ink mb-2">{feature.title}</h3>
+                    <p className="text-sm leading-relaxed text-ink-muted">{feature.text}</p>
                   </div>
                 );
               })}
@@ -289,7 +279,7 @@ export default function ChillPupLanding() {
         </section>
 
         {/* App Features Split Layout */}
-        <section className="bg-[#FAF8F5] py-16 sm:py-24 border-t border-b border-slate-100/60" id="app_features">
+        <section className="bg-surface-muted/50 py-16 sm:py-24 border-b border-border" id="app_features">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               {/* Visual Column */}
@@ -318,7 +308,7 @@ export default function ChillPupLanding() {
 
               {/* Features Column */}
               <div className="flex flex-col justify-center">
-                <h2 className="text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl mb-8 leading-tight">
+                <h2 className="text-3xl font-extrabold text-ink sm:text-4xl mb-8 leading-tight">
                   What ChillPup helps you do.
                 </h2>
                 <div className="space-y-6 sm:space-y-8">
@@ -326,12 +316,12 @@ export default function ChillPupLanding() {
                     const Icon = feature.icon;
                     return (
                       <div key={idx} className="flex gap-4 sm:gap-5 items-start">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E]">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-product-soft text-product-accent">
                           <Icon className="h-5.5 w-5.5" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-bold text-[#0F1A2C] leading-none">{feature.title}</h3>
-                          <p className="mt-2 text-sm sm:text-base leading-relaxed text-[#526174]">{feature.text}</p>
+                          <h3 className="text-lg font-bold text-ink leading-none">{feature.title}</h3>
+                          <p className="mt-2 text-sm sm:text-base leading-relaxed text-ink-muted">{feature.text}</p>
                         </div>
                       </div>
                     );
@@ -343,10 +333,10 @@ export default function ChillPupLanding() {
         </section>
 
         {/* Principles Section */}
-        <section className="bg-white py-16 sm:py-24" id="principles">
+        <section className="bg-surface py-16 sm:py-24 border-b border-border" id="principles">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F1A2C] leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-ink leading-tight">
                 Designed to stay calm and clear.
               </h2>
             </div>
@@ -356,17 +346,18 @@ export default function ChillPupLanding() {
                 const Icon = card.icon;
                 return (
                   <div
-                    className={`flex flex-col items-center p-3 text-center bg-transparent border-none shadow-none px-4 sm:px-6 lg:px-8 relative lg:border-l lg:border-slate-200/80 ${idx === 0 ? "lg:border-l-0" : ""
-                      }`}
+                    className={`flex flex-col items-center p-3 text-center bg-transparent border-none shadow-none px-4 sm:px-6 lg:px-8 relative lg:border-l lg:border-border ${
+                      idx === 0 ? "lg:border-l-0" : ""
+                    }`}
                     key={idx}
                   >
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center text-[#0F766E] transition-colors duration-300 hover:text-emerald-600">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center text-product-accent">
                       <Icon className="h-10 w-10" strokeWidth={1.8} />
                     </div>
-                    <h3 className="text-[17px] font-extrabold text-[#0F1A2C] leading-[1.25] mb-3">
+                    <h3 className="text-[17px] font-extrabold text-ink leading-[1.25] mb-3">
                       {card.title}
                     </h3>
-                    <p className="text-[14px] leading-relaxed text-[#526174] max-w-[200px] mx-auto">
+                    <p className="text-[14px] leading-relaxed text-ink-muted max-w-[200px] mx-auto">
                       {card.text}
                     </p>
                   </div>
@@ -377,20 +368,20 @@ export default function ChillPupLanding() {
         </section>
 
         {/* Trust Disclaimer Soft Callout Box */}
-        <section className="bg-white pb-16 sm:pb-24" id="trust_disclaimer">
+        <section className="bg-canvas py-16 sm:py-24" id="trust_disclaimer">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[32px] border border-amber-200/50 bg-[#FDFBF7] p-8 sm:p-10 shadow-sm">
+            <div className="rounded-[32px] border border-border bg-surface p-8 sm:p-10 shadow-sm">
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-3 text-amber-800">
-                  <ShieldAlert className="h-6 w-6 shrink-0" strokeWidth={2} />
+                <div className="flex items-center gap-3 text-ink">
+                  <ShieldAlert className="h-6 w-6 shrink-0 text-brand" strokeWidth={2} />
                   <h2 className="text-lg sm:text-xl font-bold">Owner-guided support, not medical advice.</h2>
                 </div>
-                <p className="text-sm sm:text-base leading-relaxed text-slate-700">
+                <p className="text-sm sm:text-base leading-relaxed text-ink-muted">
                   ChillPup is not a veterinary or diagnostic app. It does not diagnose anxiety,
                   treat medical conditions, or replace professional help. It helps you follow
                   gentle, structured routines and notice what seems to help your dog over time.
                 </p>
-                <p className="text-xs sm:text-sm leading-relaxed text-[#526174] border-t border-amber-200/30 pt-4 mt-2">
+                <p className="text-xs sm:text-sm leading-relaxed text-ink-muted border-t border-border pt-4 mt-2">
                   If your dog shows severe distress, self-injury, aggression, breathing trouble,
                   collapse, or sudden behavior changes, contact a veterinarian or qualified
                   behavior professional.
@@ -401,13 +392,13 @@ export default function ChillPupLanding() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="bg-white py-16 sm:py-20" id="final_cta">
+        <section className="bg-surface py-16 sm:py-20 border-t border-border" id="final_cta">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[28px] border border-[#E7DCCB] bg-[#F8F6F1] px-6 py-10 sm:px-12 sm:py-16 text-center shadow-sm">
-              <h2 className="text-3xl font-extrabold text-[#0F1A2C] sm:text-4xl leading-tight">
+            <div className="rounded-[28px] border border-border bg-surface-muted px-6 py-10 sm:px-12 sm:py-16 text-center shadow-sm">
+              <h2 className="text-3xl font-extrabold text-ink sm:text-4xl leading-tight">
                 Ready when your dog needs a calmer moment.
               </h2>
-              <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+              <p className="mt-4 text-base sm:text-lg text-ink-muted max-w-2xl mx-auto">
                 Keep short, gentle routines close for fireworks, visitors, travel, and everyday tension.
               </p>
               <div className="mt-8 flex flex-row items-center justify-center gap-4 flex-wrap">

@@ -1,26 +1,26 @@
+import React from "react";
 import {
   ArrowRight,
-  Check,
-  Download,
   Mail,
-  ClipboardCheck,
-  TrendingUp,
-  BadgeCheck,
+  ShieldCheck,
+  Code,
+  Heart,
   Compass,
   ShieldAlert,
-  HeartHandshake,
   Lock,
-  Ban,
-  Code,
+  TrendingUp,
+  FileText,
+  Camera,
+  Smartphone,
+  ExternalLink,
 } from "lucide-react";
 import {
   brandIdentity,
-  featuredProduct,
   heroContent,
-  principlesSection,
+  featuredProduct,
+  companyPrinciples,
 } from "./content";
 import { ContactModal } from "./contact-modal";
-import { HeroPhones } from "@/components/HeroPhones";
 import { AppStoreBadge } from "@/components/AppStoreBadge";
 import { GooglePlayBadge } from "@/components/GooglePlayBadge";
 import { Header } from "@/components/Header";
@@ -29,25 +29,15 @@ import { PageClarityTags } from "@/components/analytics/PageClarityTags";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "./store-links";
 
 export default function MainLanding() {
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "ChillPup", href: "/chillpup/" },
-    { label: "Blog", href: "/blog/" },
-    { label: "Research", href: "/research/social-agency-workflows/" },
-    { label: "Support", href: "#support" },
-    { label: "About", href: "#about" },
-  ];
-
   return (
     <>
       <PageClarityTags siteSection="home" product="kf_software" pageType="landing" />
-      <Header activeItem="Home" navItems={navItems} />
-      <main>
+      <Header activeItem="Home" />
+      <main className="bg-canvas text-ink">
         <HeroSection />
         <ValueBadges />
-        <FeaturedProduct />
-        <CurrentResearchSection />
-        <PrinciplesGrid />
+        <ProductsSection />
+        <PrinciplesSection />
       </main>
       <Footer />
       <ContactModal />
@@ -55,42 +45,112 @@ export default function MainLanding() {
   );
 }
 
-
 function HeroSection() {
   return (
     <section
-      className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-14 sm:px-6 sm:pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-24"
+      className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 sm:pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:pb-24"
       id="home"
     >
       <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-accent">
+        <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand">
           {brandIdentity.tagline}
         </p>
-        <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-tight text-brand-primary sm:text-5xl lg:text-6xl">
+        <h1 className="mt-4 max-w-2xl text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl leading-[1.12]">
           {heroContent.heading}
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+        <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-ink-muted">
           {heroContent.subheading}
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col gap-3.5 sm:flex-row">
           <a
-            className="inline-flex h-[52px] items-center justify-center gap-[10px] rounded-[18px] bg-[#0F1A2C] px-[28px] font-bold text-white shadow-sm transition hover:bg-[#16243A] focus:outline-none focus:ring-2 focus:ring-[#0F1A2C] focus:ring-offset-2"
-            href={heroContent.ctaPrimary.href}
+            className="inline-flex h-[48px] sm:h-[52px] items-center justify-center gap-2.5 rounded-[16px] bg-brand px-6 sm:px-7 font-bold text-white shadow-sm transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+            href="#products"
           >
-            <span>{heroContent.ctaPrimary.label}</span>
-            <ArrowRight aria-hidden="true" className="h-5 w-5 opacity-90" />
+            <span>Explore products</span>
+            <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </a>
           <a
-            className="inline-flex h-[52px] items-center justify-center gap-[10px] rounded-[18px] border border-[#CBD5E1] bg-transparent px-[28px] font-bold text-[#0F1A2C] transition hover:bg-[#F8FAFC] hover:border-[#0F1A2C] focus:outline-none focus:ring-2 focus:ring-[#0F1A2C] focus:ring-offset-2"
-            href={heroContent.ctaSecondary.href}
+            className="inline-flex h-[48px] sm:h-[52px] items-center justify-center gap-2.5 rounded-[16px] border border-border bg-surface px-6 sm:px-7 font-bold text-ink transition hover:bg-surface-muted hover:border-ink focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+            href="#contact"
           >
-            <Mail aria-hidden="true" className="h-5 w-5 opacity-80" />
-            <span>{heroContent.ctaSecondary.label}</span>
+            <Mail aria-hidden="true" className="h-4 w-4 opacity-80" />
+            <span>Contact us</span>
           </a>
         </div>
       </div>
 
-      <HeroPhones />
+      {/* Multi-product showcase */}
+      <div className="flex flex-col gap-4">
+        {/* ChillPup showcase card */}
+        <div className="theme-chillpup rounded-3xl border border-border bg-surface p-5 sm:p-6 shadow-sm transition hover:shadow-soft">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-surface-muted overflow-hidden shrink-0 border border-border p-0.5">
+                <img
+                  src="/images/chillpup-icon.png"
+                  alt="ChillPup app icon"
+                  className="w-full h-full object-cover rounded-xl"
+                  width={56}
+                  height={56}
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-base sm:text-lg font-bold text-ink">ChillPup</h2>
+                  <span className="inline-flex items-center rounded-full bg-product-soft px-2.5 py-0.5 text-[11px] font-bold text-product-accent uppercase tracking-wider">
+                    Live product
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-ink-muted mt-0.5">
+                  Owner-guided routines for stressful dog moments.
+                </p>
+              </div>
+            </div>
+            <a
+              href="/chillpup/"
+              aria-label="View ChillPup"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-surface-muted text-ink-muted hover:text-product-accent hover:bg-product-soft transition focus:outline-none focus:ring-2 focus:ring-focus"
+            >
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+
+        {/* Kitchen Exhaust showcase card */}
+        <div className="theme-kitchen-exhaust rounded-3xl border border-border bg-surface p-5 sm:p-6 shadow-sm transition hover:shadow-soft">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-surface-muted overflow-hidden shrink-0 border border-border">
+                <img
+                  src="/kitchen-exhaust/hood-interior-after.jpg"
+                  alt="Kitchen exhaust report demo thumbnail"
+                  className="w-full h-full object-cover"
+                  width={56}
+                  height={56}
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-base sm:text-lg font-bold text-ink">Kitchen Exhaust Reports</h2>
+                  <span className="inline-flex items-center rounded-full bg-product-soft px-2.5 py-0.5 text-[11px] font-bold text-product-accent uppercase tracking-wider">
+                    Workflow experiment
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-ink-muted mt-0.5">
+                  Field photos and notes turned into a customer-ready PDF report.
+                </p>
+              </div>
+            </div>
+            <a
+              href="/kitchen-exhaust-reports/"
+              aria-label="View Kitchen Exhaust report demo"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-surface-muted text-ink-muted hover:text-product-accent hover:bg-product-soft transition focus:outline-none focus:ring-2 focus:ring-focus"
+            >
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -98,20 +158,18 @@ function HeroSection() {
 function ValueBadges() {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 lg:px-8">
-      <div className="grid gap-8 md:grid-cols-3 md:divide-x md:divide-slate-200">
+      <div className="grid gap-6 md:grid-cols-3 md:divide-x md:divide-border rounded-2xl border border-border bg-surface p-6 shadow-xs">
         {heroContent.badges.map((badge, idx) => {
           const Icon = badge.icon;
-
           return (
             <div
-              className={`flex flex-col items-center justify-center p-4 text-center bg-transparent border-none shadow-none ${idx > 0 ? "md:pl-8" : ""
-                }`}
+              className={`flex items-center gap-4 ${idx > 0 ? "md:pl-6" : ""}`}
               key={badge.text}
             >
-              <div className="mb-4 flex h-[42px] w-[42px] items-center justify-center text-[#0F1A2C]">
-                <Icon aria-hidden="true" className="h-9 w-9" strokeWidth={1.85} />
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-muted text-brand">
+                <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={2} />
               </div>
-              <p className="text-[15px] font-medium leading-[1.35] text-[#0F1A2C] whitespace-pre-line text-center">
+              <p className="text-sm font-semibold text-ink leading-snug whitespace-pre-line">
                 {badge.text}
               </p>
             </div>
@@ -122,56 +180,83 @@ function ValueBadges() {
   );
 }
 
-function FeaturedProduct() {
-  const featureIcons = [ClipboardCheck, TrendingUp, BadgeCheck, Compass];
-
+function ProductsSection() {
   return (
-    <section
-      className="bg-white py-16 sm:py-20"
-      id={featuredProduct.id}
-    >
+    <section className="py-16 sm:py-20 bg-surface-muted/50 border-y border-border" id="products">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] border border-[#E2E8F0] bg-[#F6F8FA] p-6 sm:p-10 lg:p-14 shadow-sm">
-          <div className="grid gap-10 lg:grid-cols-[auto_1fr_1.15fr] lg:gap-12 items-center">
+        <div className="max-w-2xl mb-12">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+            OUR WORK
+          </p>
+          <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+            Products & experiments
+          </h2>
+          <p className="mt-3 text-base text-ink-muted leading-relaxed">
+            We develop focused software tools for specific real-world workflows, distinguishing
+            active public products from exploratory customer experiments.
+          </p>
+        </div>
 
-            {/* App Icon Column */}
-            <div className="flex justify-center lg:justify-start">
-              <div className="w-[96px] h-[96px] sm:w-[108px] sm:h-[108px] lg:w-[128px] lg:h-[128px] rounded-[24px] sm:rounded-[28px] bg-white shadow-soft overflow-hidden shrink-0 flex items-center justify-center p-0 border border-slate-100">
-                <img
-                  src="/images/chillpup-icon.png"
-                  alt="ChillPup app icon"
-                  className="w-full h-full object-cover"
-                />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {/* Panel 1: ChillPup */}
+          <div className="theme-chillpup rounded-3xl border border-border bg-surface p-6 sm:p-10 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-6">
+                <span className="inline-flex items-center rounded-full bg-product-soft px-3 py-1 text-xs font-bold text-product-accent uppercase tracking-wider">
+                  Live product
+                </span>
+                <div className="h-10 w-10 rounded-xl overflow-hidden border border-border">
+                  <img
+                    src="/images/chillpup-icon.png"
+                    alt="ChillPup icon"
+                    className="w-full h-full object-cover"
+                    width={40}
+                    height={40}
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Product Copy & Badges Column */}
-            <div className="flex flex-col">
-              <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-[#0F4C5C]">
-                {featuredProduct.badge}
-              </p>
-              <h3 className="mt-4 text-[32px] lg:text-[40px] font-extrabold text-[#0F1A2C] leading-none">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
                 {featuredProduct.title}
               </h3>
-              <p className="mt-3 text-[20px] lg:text-[24px] font-bold text-[#0F4C5C] leading-[1.25]">
+              <p className="mt-2 text-base font-bold text-product-accent leading-snug">
                 {featuredProduct.subtitle}
               </p>
-              <p className="mt-5 text-[16px] leading-[1.65] text-[#526174]">
+              <p className="mt-4 text-sm sm:text-base text-ink-muted leading-relaxed">
                 {featuredProduct.description}
               </p>
 
-              {/* Store Badges */}
-              <div className="mt-8 flex flex-row items-center gap-4 flex-wrap">
-                {/* App Store Badge */}
+              <div className="mt-6 space-y-2.5">
+                {featuredProduct.features.map((feature) => (
+                  <div key={feature.title} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink-muted">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-product-accent shrink-0" />
+                    <span>
+                      <strong className="text-ink font-semibold">{feature.title}:</strong> {feature.desc}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-border flex flex-col gap-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="/chillpup/"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand text-white px-5 py-2.5 text-sm font-semibold shadow-sm transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+                >
+                  <span>Explore ChillPup</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 flex-wrap">
                 <a
                   href={APP_STORE_URL}
                   aria-label="Download ChillPup on the App Store"
                   className="transition hover:opacity-85 shrink-0"
                 >
-                  <AppStoreBadge className="h-[40px] sm:h-[42px] w-auto" />
+                  <AppStoreBadge className="h-[36px] w-auto" />
                 </a>
-
-                {/* Google Play Badge */}
                 <a
                   href={GOOGLE_PLAY_URL}
                   aria-label="Get ChillPup on Google Play"
@@ -179,33 +264,88 @@ function FeaturedProduct() {
                   rel="noopener noreferrer"
                   className="transition hover:opacity-85 shrink-0"
                 >
-                  <GooglePlayBadge className="h-[40px] sm:h-[42px] w-auto" />
+                  <GooglePlayBadge className="h-[36px] w-auto" />
                 </a>
               </div>
             </div>
+          </div>
 
-            {/* Features Column with vertical separator */}
-            <div className="lg:border-l lg:border-slate-200 lg:pl-12 flex flex-col gap-6 lg:gap-7 self-stretch justify-center">
-              {featuredProduct.features.map((feature, idx) => {
-                const Icon = featureIcons[idx] || Check;
-                return (
-                  <div key={feature.title} className="flex gap-4 items-start">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-[#0F766E]">
-                      <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={1.85} />
-                    </div>
-                    <div>
-                      <h4 className="text-[17px] font-bold text-[#0F1A2C] leading-none">
-                        {feature.title}
-                      </h4>
-                      <p className="mt-1.5 text-[15px] leading-[1.45] text-[#526174]">
-                        {feature.desc}
-                      </p>
-                    </div>
+          {/* Panel 2: Kitchen Exhaust Reports */}
+          <div className="theme-kitchen-exhaust rounded-3xl border border-border bg-surface p-6 sm:p-10 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-3 mb-6">
+                <span className="inline-flex items-center rounded-full bg-product-soft px-3 py-1 text-xs font-bold text-product-accent uppercase tracking-wider">
+                  Workflow experiment
+                </span>
+                <div className="flex items-center gap-1.5 text-xs text-ink-muted">
+                  <Camera className="h-4 w-4 text-product-accent" aria-hidden="true" />
+                  <span>Field Reporting</span>
+                </div>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
+                Kitchen Exhaust Reports
+              </h3>
+              <p className="mt-2 text-base font-bold text-product-accent leading-snug">
+                Customer-ready PDF service reports from technician photos and notes.
+              </p>
+              <p className="mt-4 text-sm sm:text-base text-ink-muted leading-relaxed">
+                A demonstration workflow that turns provided technician notes and
+                before-and-after photos into a customer-ready service report without
+                asking technicians to adopt a new field app.
+              </p>
+
+              {/* Visual preview: paired photos */}
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <div className="overflow-hidden rounded-xl border border-border bg-surface-muted">
+                  <div className="p-1.5 bg-surface text-[10px] font-bold uppercase tracking-wider text-product-accent border-b border-border text-center">
+                    Before
                   </div>
-                );
-              })}
+                  <img
+                    src="/kitchen-exhaust/hood-interior-before.jpg"
+                    alt="Sample kitchen exhaust hood interior before cleaning"
+                    width={400}
+                    height={300}
+                    className="w-full h-auto aspect-[4/3] object-cover"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-xl border border-border bg-surface-muted">
+                  <div className="p-1.5 bg-surface text-[10px] font-bold uppercase tracking-wider text-product-accent border-b border-border text-center">
+                    After
+                  </div>
+                  <img
+                    src="/kitchen-exhaust/hood-interior-after.jpg"
+                    alt="Sample kitchen exhaust hood interior after cleaning"
+                    width={400}
+                    height={300}
+                    className="w-full h-auto aspect-[4/3] object-cover"
+                  />
+                </div>
+              </div>
+
+              <p className="mt-3 text-xs text-ink-muted leading-normal">
+                Fictional demonstration case. The photographs and sample report are AI-generated demonstration materials for workflow evaluation.
+              </p>
             </div>
 
+            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
+              <a
+                href="/kitchen-exhaust-reports/"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand text-white px-5 py-2.5 text-sm font-semibold shadow-sm transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+              >
+                <span>View report demo</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a
+                href="/kitchen-exhaust/pinecrest-family-diner-sample-report.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-product-accent hover:underline"
+              >
+                <FileText className="h-4 w-4" aria-hidden="true" />
+                <span>Sample PDF</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -213,113 +353,46 @@ function FeaturedProduct() {
   );
 }
 
-function CurrentResearchSection() {
-  return (
-    <section className="mx-auto max-w-6xl px-4 py-6 sm:py-8 lg:px-8">
-      <div className="rounded-[24px] border border-slate-200/80 bg-[#F6F8FA] p-6 sm:p-8 lg:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#1A535C]">
-            CURRENT RESEARCH
-          </p>
-          <h2 className="mt-2 text-xl sm:text-2xl font-extrabold text-[#0F1A2C] leading-tight">
-            Social-agency content workflows
-          </h2>
-          <p className="mt-2.5 text-[15px] leading-relaxed text-[#526174]">
-            KF Software is currently studying how small social-media agencies manage
-            recurring content across multiple client brands.
-          </p>
-        </div>
-        <div className="shrink-0">
-          <a
-            href="/research/social-agency-workflows/"
-            className="inline-flex h-[44px] items-center justify-center gap-2 rounded-xl bg-[#0F1A2C] px-5 sm:px-6 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1A535C] focus:outline-none focus:ring-2 focus:ring-[#1A535C] focus:ring-offset-2"
-          >
-            <span>Read about the research</span>
-            <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PrinciplesGrid() {
-  const principleIcons = [ShieldAlert, HeartHandshake, Lock, Ban, Code];
+function PrinciplesSection() {
+  const principleIcons = [Compass, ShieldAlert, Lock, Code];
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16 sm:py-24 lg:px-8 bg-transparent">
-      {/* Centered Heading */}
-      <div className="text-left sm:text-center max-w-3xl mx-auto mb-16">
-        <h2
-          className="text-[28px] sm:text-[34px] font-extrabold text-[#0F1A2C] leading-tight"
-          id="about"
-        >
-          {principlesSection.title}
+    <section className="mx-auto max-w-6xl px-4 py-16 sm:py-24 lg:px-8">
+      <div className="max-w-2xl mx-auto text-left sm:text-center mb-16">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+          ENGINEERING ETHOS
+        </p>
+        <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+          How we build
         </h2>
+        <p className="mt-3 text-base text-ink-muted leading-relaxed">
+          The guiding principles behind every project, product, and workflow we create.
+        </p>
       </div>
 
-      {/* Five-Item Principles Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-12 lg:gap-y-0 items-start">
-        {principlesSection.cards.map((card, idx) => {
-          const Icon = principleIcons[idx] || ShieldAlert;
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {companyPrinciples.map((principle, idx) => {
+          const Icon = principleIcons[idx] || Compass;
           return (
             <div
-              className={`flex flex-col items-center p-3 text-center bg-transparent border-none shadow-none px-4 sm:px-6 lg:px-8 relative lg:border-l lg:border-slate-200/80 ${idx === 0 ? "lg:border-l-0" : ""
-                }`}
-              key={card.title}
+              key={principle.title}
+              className="rounded-2xl border border-border bg-surface p-6 shadow-xs flex flex-col justify-between"
             >
-              {/* Icon Container */}
-              <div className="mb-5 flex h-[48px] w-[48px] sm:h-[56px] sm:w-[56px] items-center justify-center text-[#0F1A2C] transition-colors duration-300 hover:text-[#2F8F6B] cursor-pointer">
-                <Icon aria-hidden="true" className="h-11 w-11 sm:h-14 sm:w-14" strokeWidth={1.85} />
+              <div>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-surface-muted text-brand">
+                  <Icon className="h-6 w-6" aria-hidden="true" strokeWidth={1.85} />
+                </div>
+                <h3 className="text-base font-bold text-ink mb-2">
+                  {principle.title}
+                </h3>
+                <p className="text-sm text-ink-muted leading-relaxed">
+                  {principle.desc}
+                </p>
               </div>
-              {/* Title */}
-              <h3 className="text-[17px] font-extrabold text-[#0F1A2C] leading-[1.25] mb-3">
-                {card.title}
-              </h3>
-              {/* Description */}
-              <p className="text-[15px] leading-[1.55] text-[#526174] max-w-[220px] mx-auto">
-                {card.desc}
-              </p>
             </div>
           );
         })}
       </div>
-
-      {/* Support & Blog Blocks */}
-      <div className="mt-20 sm:mt-24 grid gap-6 md:grid-cols-2">
-        <section
-          className="rounded-[24px] bg-[#0F1A2C] p-6 sm:p-8 text-white shadow-soft transition-all duration-300 hover:bg-[#16243A] flex flex-col justify-between"
-          id="support"
-        >
-          <div>
-            <h3 className="text-xl sm:text-2xl font-extrabold leading-tight">Support</h3>
-            <p className="mt-3 text-[15px] leading-[1.55] text-white/80">
-              Need help with ChillPup or a KF Software product? Send us a clear
-              message and we will help you find the next step.
-            </p>
-          </div>
-          <div className="mt-6">
-            <a
-              className="inline-flex h-[42px] items-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-[#0F1A2C] transition hover:text-[#1A535C] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0F1A2C]"
-              href="#contact"
-            >
-              <span>Contact support</span>
-              <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </a>
-          </div>
-        </section>
-        <section className="rounded-[24px] border border-[#E2E8F0] bg-white p-6 sm:p-8 shadow-sm hover:border-[#0F1A2C] transition-all duration-300 flex flex-col justify-between" id="blog">
-          <div>
-            <h3 className="text-xl sm:text-2xl font-extrabold leading-tight text-[#0F1A2C]">Blog</h3>
-            <p className="mt-3 text-[15px] leading-[1.55] text-[#526174]">
-              Notes about small software, practical automation, and building
-              focused products will appear here.
-            </p>
-          </div>
-        </section>
-      </div>
     </section>
   );
 }
-
-
