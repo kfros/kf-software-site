@@ -7,6 +7,7 @@ import {
   Home,
   ShieldAlert,
   Sparkles,
+  ArrowLeft,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -217,6 +218,12 @@ export default function PostFireworksRecoveryAtHomeArticle() {
         title="Dog Still Shaken After Fireworks? How to Help Them Recover at Home"
         description="If your dog is still shaken after fireworks, learn when to call a vet, what not to do, and how to support quiet indoor recovery before rebuilding walks."
         url="https://kf-software.com/blog/dog-still-shaken-after-fireworks/"
+        breadcrumbs={[
+          { name: "Home", item: "https://kf-software.com/" },
+          { name: "ChillPup", item: "https://kf-software.com/chillpup/" },
+          { name: "Guides", item: "https://kf-software.com/chillpup/guides/" },
+          { name: "Dog Still Shaken After Fireworks? How to Help Them Recover at Home", item: "https://kf-software.com/blog/dog-still-shaken-after-fireworks/" },
+        ]}
         faqs={faqs}
       />
       <Header activeItem="Blog" />
@@ -225,7 +232,14 @@ export default function PostFireworksRecoveryAtHomeArticle() {
         <article>
           <section className="border-b border-border py-14 sm:py-18">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
+                            <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-medium text-ink-muted">
+                <a href="/" className="hover:text-ink transition">Home</a>
+                <span aria-hidden="true">/</span>
+                <a href="/chillpup/" className="hover:text-ink transition">ChillPup</a>
+                <span aria-hidden="true">/</span>
+                <a href="/chillpup/guides/" className="hover:text-brand font-semibold transition">Guides</a>
+              </nav>
+<div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 Fireworks Home Recovery Guide
               </div>
@@ -539,6 +553,15 @@ export default function PostFireworksRecoveryAtHomeArticle() {
                 </p>
               </div>
             </aside>
+          </div>
+          <div className="mx-auto max-w-5xl px-4 pb-12 sm:px-6 lg:px-8 border-t border-border pt-8 mt-12">
+            <a
+              href="/chillpup/guides/"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brand-hover focus:outline-none focus:underline"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              <span>Back to ChillPup Guides</span>
+            </a>
           </div>
         </article>
       </main>

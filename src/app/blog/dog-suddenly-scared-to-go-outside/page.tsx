@@ -7,6 +7,7 @@ import {
   Compass,
   Footprints,
   ShieldAlert,
+  ArrowLeft,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -206,6 +207,12 @@ export default function OutdoorConfidenceResetArticle() {
         title="Why Is My Dog Suddenly Scared to Go Outside?"
         description="If your dog suddenly refuses to go outside, learn what to check first, what not to do, and how to start with a smaller outdoor step."
         url="https://kf-software.com/blog/dog-suddenly-scared-to-go-outside/"
+        breadcrumbs={[
+          { name: "Home", item: "https://kf-software.com/" },
+          { name: "ChillPup", item: "https://kf-software.com/chillpup/" },
+          { name: "Guides", item: "https://kf-software.com/chillpup/guides/" },
+          { name: "Why Is My Dog Suddenly Scared to Go Outside?", item: "https://kf-software.com/blog/dog-suddenly-scared-to-go-outside/" },
+        ]}
         faqs={faqs}
       />
       <Header activeItem="Blog" />
@@ -214,7 +221,14 @@ export default function OutdoorConfidenceResetArticle() {
         <article>
           <section className="border-b border-border py-14 sm:py-18">
             <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
+                            <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-medium text-ink-muted">
+                <a href="/" className="hover:text-ink transition">Home</a>
+                <span aria-hidden="true">/</span>
+                <a href="/chillpup/" className="hover:text-ink transition">ChillPup</a>
+                <span aria-hidden="true">/</span>
+                <a href="/chillpup/guides/" className="hover:text-brand font-semibold transition">Guides</a>
+              </nav>
+<div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-surface/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-brand shadow-sm">
                 <Compass className="h-3.5 w-3.5" aria-hidden="true" />
                 Walk Fear Pillar Guide
               </div>
@@ -571,6 +585,15 @@ export default function OutdoorConfidenceResetArticle() {
                 </p>
               </div>
             </aside>
+          </div>
+          <div className="mx-auto max-w-5xl px-4 pb-12 sm:px-6 lg:px-8 border-t border-border pt-8 mt-12">
+            <a
+              href="/chillpup/guides/"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brand-hover focus:outline-none focus:underline"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              <span>Back to ChillPup Guides</span>
+            </a>
           </div>
         </article>
       </main>

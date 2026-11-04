@@ -4,9 +4,9 @@ export interface NavItem {
 }
 
 export const primaryNavigation: NavItem[] = [
-  { label: "Home", href: "/" },
   { label: "ChillPup", href: "/chillpup/" },
   { label: "Kitchen Exhaust", href: "/kitchen-exhaust-reports/" },
+  { label: "Engineering", href: "/engineering/" },
   { label: "Blog", href: "/blog/" },
   { label: "About", href: "/about/" },
 ];
@@ -17,4 +17,3 @@ export const kitchenExhaustSubnavigation: NavItem[] = [
   { label: "Free sample", href: "#contact" },
   { label: "FAQ", href: "#faq" },
 ];
-

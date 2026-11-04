@@ -47,7 +47,7 @@ interface HeaderProps {
             <a
               className="group flex items-center gap-3.5 sm:gap-4 shrink-0 focus:outline-none focus:ring-2 focus:ring-focus rounded-lg"
               href="/"
-              aria-label="KF Software home"
+              aria-label="KF Software Home"
             >
               <KfLogoMark className="text-ink h-10 w-10 sm:h-11 sm:w-11 shrink-0" />
               <span className="flex flex-col">

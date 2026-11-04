@@ -15,6 +15,7 @@ import {
   Smartphone,
   ShieldCheck,
   Compass,
+  ArrowRight,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -213,6 +214,14 @@ export default function ChillPupLanding() {
                                     >
                                       <GooglePlayBadge className="h-[40px] sm:h-[42px] w-auto" />
                                     </a>
+
+                                    <a
+                                      href="/chillpup/guides/"
+                                      className="inline-flex h-[40px] sm:h-[42px] items-center justify-center gap-1.5 rounded-xl border border-border bg-surface px-5 text-sm font-semibold text-ink transition hover:bg-surface-muted focus:outline-none focus:ring-2 focus:ring-focus shrink-0"
+                                    >
+                                      <span>Browse free guides</span>
+                                      <ArrowRight className="h-4 w-4 text-brand" aria-hidden="true" />
+                                    </a>
                                   </div>
                                 </div>
 
@@ -386,6 +395,32 @@ export default function ChillPupLanding() {
                                                                     behavior professional.
                                                                   </p>
                                                                 </div>
+                                                            </div>
+                                                          </div>
+                                                        </section>
+
+                                                        {/* ChillPup Guides Knowledge Base Banner */}
+                                                        <section className="bg-canvas py-16 border-t border-border" id="guides">
+                                                          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                                                            <div className="rounded-[28px] border border-border bg-surface p-8 sm:p-10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                                              <div className="max-w-2xl">
+                                                                <span className="text-xs font-bold uppercase tracking-[0.2em] text-product-accent">
+                                                                  KNOWLEDGE BASE
+                                                                </span>
+                                                                <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-ink">
+                                                                  ChillPup Behavioral Guides
+                                                                </h2>
+                                                                <p className="mt-3 text-base text-ink-muted leading-relaxed">
+                                                                  Read our practical, step-by-step guides for dogs scared of fireworks, night walks, rain, or door freezing. Complete with clear veterinary safety thresholds.
+                                                                </p>
+                                                              </div>
+                                                              <a
+                                                                href="/chillpup/guides/"
+                                                                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 text-sm font-semibold text-white shadow-xs transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2 shrink-0"
+                                                              >
+                                                                <span>Explore ChillPup Guides</span>
+                                                                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                                                              </a>
                                                             </div>
                                                           </div>
                                                         </section>

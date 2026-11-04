@@ -12,9 +12,16 @@ export function Footer() {
       ],
     },
     {
+      title: "SERVICES",
+      links: [
+        { label: "Engineering", href: "/engineering/" },
+      ],
+    },
+    {
       title: "RESOURCES",
       links: [
-        { label: "Blog", href: "/blog/" },
+        { label: "KF Software Blog", href: "/blog/" },
+        { label: "ChillPup Guides", href: "/chillpup/guides/" },
         { label: "Support", href: "/support/" },
       ],
     },
@@ -23,11 +30,6 @@ export function Footer() {
       links: [
         { label: "About", href: "/about/" },
         { label: "Business Details", href: "/business-details/" },
-      ],
-    },
-    {
-      title: "LEGAL",
-      links: [
         { label: "Privacy Policy", href: "/privacy-policy/" },
         { label: "Terms of Use", href: "/terms-of-use/" },
       ],

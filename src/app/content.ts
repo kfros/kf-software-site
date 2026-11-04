@@ -37,11 +37,31 @@ export interface PrincipleCard {
 export const brandIdentity = {
   logoText: "KF SOFTWARE",
   tagline: "Small software. Focused problems.",
+  clarifyingSignature: "KF Software by Kyryl Frosyniak",
+  founderName: "Kyryl Frosyniak",
   legalName: "KYRYL FROSYNIAK Solutions",
   location: "Wrocław, Poland",
   email: "contact@kf-software.com",
   taxIdentifiers: "NIP: 8992892536 | REGON: 388052186",
 };
+
+export const publicPillars = [
+  {
+    id: "products",
+    label: "Products",
+    description: "Focused software products and workflow experiments.",
+  },
+  {
+    id: "engineering",
+    label: "Engineering",
+    description: "Senior backend engineering for defined technical problems.",
+  },
+  {
+    id: "journal",
+    label: "Journal",
+    description: "First-hand engineering, product, discovery, and ChillPup notes.",
+  },
+];
 
 export const navigationLinks: NavigationLink[] = primaryNavigation;
 

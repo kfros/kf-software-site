@@ -5,6 +5,7 @@ import { brandIdentity, heroContent } from "./content";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { MicrosoftClarity } from "@/components/analytics/MicrosoftClarity";
 import { AnalyticsConsentBanner } from "@/components/analytics/AnalyticsConsentBanner";
+import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -84,6 +85,7 @@ export default function RootLayout({
           <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
         </head>
         <body className={`${inter.className} bg-canvas text-ink antialiased`} suppressHydrationWarning>
+          <OrganizationJsonLd />
           {children}
           <ScrollToTopButton />
           <MicrosoftClarity />
