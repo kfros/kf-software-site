@@ -51,3 +51,4 @@ KF Software strictly protects the proprietary information, architecture, and ide
 3. **Confidentiality Review:** Conduct a line-by-line review against Section 3.
 4. **Manual Owner Approval:** Only the studio founder (Kyryl Frosyniak) may approve changing status from `draft` to `published`.
 5. **Static Export Verification:** Run `npm run typecheck`, `npm run lint`, and `npm run build` to verify clean static export and sitemap integration.
+

@@ -220,3 +220,4 @@ function HubGuideCard({ guide }: { guide: ArticleRecord }) {
     </article>
   );
 }
+
