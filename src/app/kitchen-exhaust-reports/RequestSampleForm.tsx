@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { trackClarityEvent } from "@/lib/clarity";
+import {
+  trackKePdfOpen,
+  trackKePdfDownload,
+  trackKeFormStart,
+  trackKeFormSubmitAttempt,
+  trackKeFormSubmitSuccess,
+  trackKeFormSubmitError,
+  AllowedErrorType,
+} from "@/lib/clarity";
 import { CheckCircle2, AlertCircle, Loader2, Send, FileText, Download } from "lucide-react";
 
 const API_ENDPOINT =
@@ -36,10 +44,10 @@ export function RequestSampleForm() {
   const emailInputRef = useRef<HTMLInputElement>(null);
   const detailsInputRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleInteraction = () => {
+  const handleFieldInput = () => {
     if (!formStartedRef.current) {
       formStartedRef.current = true;
-      trackClarityEvent("ke_form_started");
+      trackKeFormStart();
     }
   };
 
@@ -68,7 +76,6 @@ export function RequestSampleForm() {
       setFieldErrors(errors);
       setFormError("Please correct the errors in the form before submitting.");
       setStatus("error");
-      trackClarityEvent("ke_form_submit_error");
 
       // Focus the first invalid field
       if (errors.email) {
@@ -102,7 +109,7 @@ export function RequestSampleForm() {
     const trimmedEmail = email.trim();
     const normalizedDetails = projectDetails.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
 
-    trackClarityEvent("ke_form_submit_attempt");
+    trackKeFormSubmitAttempt();
     setStatus("submitting");
 
     const controller = new AbortController();
@@ -131,7 +138,7 @@ export function RequestSampleForm() {
         const data = await response.json().catch(() => null);
         if (data && data.accepted === true) {
           setStatus("success");
-          trackClarityEvent("ke_form_submit_success");
+          trackKeFormSubmitSuccess();
           setTimeout(() => {
             statusSummaryRef.current?.focus();
           }, 50);
@@ -141,7 +148,7 @@ export function RequestSampleForm() {
         // Malformed 201 payload
         setFormError(FALLBACK_ERROR);
         setStatus("error");
-        trackClarityEvent("ke_form_submit_error");
+        trackKeFormSubmitError("unexpected");
         setTimeout(() => {
           statusSummaryRef.current?.focus();
         }, 50);
@@ -151,26 +158,30 @@ export function RequestSampleForm() {
       const errorMsg = ERROR_MESSAGES[response.status] || FALLBACK_ERROR;
       setFormError(errorMsg);
       setStatus("error");
-      trackClarityEvent("ke_form_submit_error");
+      trackKeFormSubmitError("server");
       setTimeout(() => {
         statusSummaryRef.current?.focus();
       }, 50);
     } catch (err: unknown) {
       clearTimeout(timeoutId);
 
-      if (
-        err instanceof Error &&
-        (err.name === "AbortError" ||
+      let errorType: AllowedErrorType = "unexpected";
+      if (err instanceof Error) {
+        if (err.name === "AbortError") {
+          errorType = "timeout";
+        } else if (
+          err.name === "TypeError" ||
           err.message.toLowerCase().includes("network") ||
-          err.message.toLowerCase().includes("fetch"))
-      ) {
-        setFormError(NETWORK_OR_TIMEOUT_ERROR);
-      } else {
-        setFormError(NETWORK_OR_TIMEOUT_ERROR);
+          err.message.toLowerCase().includes("fetch") ||
+          err.message.toLowerCase().includes("failed to fetch")
+        ) {
+          errorType = "network";
+        }
       }
 
+      setFormError(NETWORK_OR_TIMEOUT_ERROR);
       setStatus("error");
-      trackClarityEvent("ke_form_submit_error");
+      trackKeFormSubmitError(errorType);
       setTimeout(() => {
         statusSummaryRef.current?.focus();
       }, 50);
@@ -260,9 +271,8 @@ export function RequestSampleForm() {
                   autoComplete="email"
                   disabled={status === "submitting"}
                   value={email}
-                  onFocus={handleInteraction}
                   onChange={(e) => {
-                    handleInteraction();
+                    handleFieldInput();
                     setEmail(e.target.value);
                     if (fieldErrors.email) {
                       setFieldErrors((prev) => ({ ...prev, email: undefined }));
@@ -305,9 +315,8 @@ export function RequestSampleForm() {
                     maxLength={2000}
                     disabled={status === "submitting"}
                     value={projectDetails}
-                    onFocus={handleInteraction}
                     onChange={(e) => {
-                      handleInteraction();
+                      handleFieldInput();
                       setProjectDetails(e.target.value);
                       if (fieldErrors.projectDetails) {
                         setFieldErrors((prev) => ({ ...prev, projectDetails: undefined }));
@@ -376,11 +385,11 @@ export function RequestSampleForm() {
 
                 export function SamplePdfViewer() {
   const handleView = () => {
-                  trackClarityEvent("ke_demo_view_click");
+                  trackKePdfOpen();
   };
 
   const handleDownload = () => {
-                  trackClarityEvent("ke_demo_download_click");
+                  trackKePdfDownload();
   };
 
                 return (

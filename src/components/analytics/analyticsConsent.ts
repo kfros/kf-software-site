@@ -28,4 +28,9 @@ export function saveConsentDecision(decision: ConsentDecision): void {
       analytics_Storage: decision === "accepted" ? "granted" : "denied"
     });
   }
+
+  // Notify active listeners on the page about consent update
+  window.dispatchEvent(
+    new CustomEvent("kf_consent_change", { detail: decision })
+  );
 }

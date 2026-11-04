@@ -111,6 +111,9 @@ export default function KitchenExhaustReportsPage() {
         siteSection="kitchen_exhaust"
         product="report_service"
         pageType="demo_landing"
+        experiment="ke_v1"
+        experimentSurface="kitchen_exhaust_reports"
+        enableCampaignAttribution={true}
       />
       <Header
         activeItem="Kitchen Exhaust"
