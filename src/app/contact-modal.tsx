@@ -111,100 +111,100 @@ export function ContactModal() {
         onClick={closeModal}
         type="button"
       />
-      <section className="relative w-full max-w-lg rounded-3xl bg-surface border border-border p-6 shadow-soft sm:p-8 text-ink">
-        <button
-          aria-label="Close contact form"
-          className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink-muted transition hover:bg-surface-muted hover:text-ink focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
-          onClick={closeModal}
-          type="button"
-        >
-          <X aria-hidden="true" className="h-5 w-5" />
-        </button>
+        <section className="relative w-full max-w-lg rounded-3xl bg-surface border border-border p-6 shadow-soft sm:p-8 text-ink">
+          <button
+            aria-label="Close contact form"
+            className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink-muted transition hover:bg-surface-muted hover:text-ink focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+            onClick={closeModal}
+            type="button"
+          >
+            <X aria-hidden="true" className="h-5 w-5" />
+          </button>
 
-        {formState === "success" ? (
-          <div className="py-10 text-center">
-            <CheckCircle2
-              aria-hidden="true"
-              className="mx-auto h-12 w-12 text-success"
-            />
-            <h2 className="mt-5 text-2xl font-bold text-ink">
-              Thank you for your request.
-            </h2>
-            <p className="mt-3 text-ink-muted">
-              We will get back to you shortly.
-            </p>
-          </div>
-        ) : (
+          {formState === "success" ? (
+            <div className="py-10 text-center">
+              <CheckCircle2
+                aria-hidden="true"
+                className="mx-auto h-12 w-12 text-success"
+              />
+                <h2 className="mt-5 text-2xl font-bold text-ink">
+                  Thank you for your request.
+                </h2>
+                  <p className="mt-3 text-ink-muted">
+                    We will get back to you shortly.
+                  </p>
+                </div>
+                ) : (
           <>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
-              Contact
-            </p>
-            <h2 className="mt-2 pr-10 text-2xl font-bold text-ink">
-              Tell us what you need.
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-ink-muted">
-              Send a short note and we will reply from contact@kf-software.com.
-            </p>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                      Contact
+                    </p>
+                      <h2 className="mt-2 pr-10 text-2xl font-bold text-ink">
+                        Tell us what you need.
+                      </h2>
+                        <p className="mt-2 text-sm leading-6 text-ink-muted">
+                          Send a short note and we will reply from contact@kf-software.com.
+                        </p>
 
-            <form className="mt-6 space-y-4" onSubmit={handleSubmit} data-clarity-mask="true">
-              <input name="access_key" type="hidden" />
-              <label className="block">
-                <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-ink">
-                  <Mail aria-hidden="true" className="h-4 w-4" />
-                  Email
-                </span>
-                <input
-                  autoComplete="email"
-                  className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-ink outline-none transition placeholder:text-ink-muted/50 focus:border-transparent focus:ring-2 focus:ring-focus disabled:cursor-not-allowed disabled:bg-surface-muted"
-                  disabled={isSubmitting}
-                  name="email"
-                  placeholder="you@example.com"
-                  required
-                  type="email"
-                />
-              </label>
+                        <form className="mt-6 space-y-4" onSubmit={handleSubmit} data-clarity-mask="true">
+                          <input name="access_key" type="hidden" />
+                          <label className="block">
+                              <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-ink">
+                                <Mail aria-hidden="true" className="h-4 w-4" />
+                                Email
+                              </span>
+                              <input
+                                autoComplete="email"
+                                className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-ink outline-none transition placeholder:text-ink-muted/50 focus:border-transparent focus:ring-2 focus:ring-focus disabled:cursor-not-allowed disabled:bg-surface-muted"
+                                disabled={isSubmitting}
+                                name="email"
+                                placeholder="you@example.com"
+                                required
+                                type="email"
+                              />
+                          </label>
 
-              <label className="block">
-                <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-ink">
-                  <MessageSquare aria-hidden="true" className="h-4 w-4" />
-                  Message
-                </span>
-                <textarea
-                  className="min-h-32 w-full resize-y rounded-xl border border-border bg-surface px-4 py-3 text-ink outline-none transition placeholder:text-ink-muted/50 focus:border-transparent focus:ring-2 focus:ring-focus disabled:cursor-not-allowed disabled:bg-surface-muted"
-                  disabled={isSubmitting}
-                  name="message"
-                  placeholder="How can we help?"
-                  required
-                />
-              </label>
+                          <label className="block">
+                              <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-ink">
+                                <MessageSquare aria-hidden="true" className="h-4 w-4" />
+                                Message
+                              </span>
+                              <textarea
+                                className="min-h-32 w-full resize-y rounded-xl border border-border bg-surface px-4 py-3 text-ink outline-none transition placeholder:text-ink-muted/50 focus:border-transparent focus:ring-2 focus:ring-focus disabled:cursor-not-allowed disabled:bg-surface-muted"
+                                disabled={isSubmitting}
+                                name="message"
+                                placeholder="How can we help?"
+                                required
+                              />
+                          </label>
 
-              {errorMessage ? (
-                <p className="rounded-xl border border-danger/20 bg-danger/10 px-4 py-3 text-sm text-danger">
-                  {errorMessage}
-                </p>
+                          {errorMessage ? (
+                              <p className="rounded-xl border border-danger/20 bg-danger/10 px-4 py-3 text-sm text-danger">
+                                {errorMessage}
+                              </p>
               ) : null}
 
-              <button
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                disabled={isSubmitting}
-                type="submit"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2
-                      aria-hidden="true"
-                      className="h-5 w-5 animate-spin"
-                    />
-                    Sending
-                  </>
-                ) : (
-                  "Send message"
-                )}
-              </button>
-            </form>
+                              <button
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                disabled={isSubmitting}
+                                type="submit"
+                              >
+                                {isSubmitting ? (
+                                  <>
+                                    <Loader2
+                                      aria-hidden="true"
+                                      className="h-5 w-5 animate-spin"
+                                    />
+                                    Sending
+                                  </>
+                                ) : (
+                                  "Send message"
+                                )}
+                              </button>
+                            </form>
           </>
         )}
-      </section>
-    </div>
-  );
+                      </section>
+                    </div>
+                    );
 }

@@ -24,31 +24,31 @@ export function AnalyticsConsentBanner() {
   }
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 bg-surface-raised/95 border border-border rounded-2xl p-5 shadow-xl text-ink transition-all duration-300 animate-fade-in backdrop-blur-md">
-      <div className="flex flex-col gap-4">
-        <div>
-          <h3 className="text-xs font-bold tracking-[0.15em] uppercase text-ink-muted">
-            Privacy & Cookies
-          </h3>
-          <p className="mt-2 text-sm text-ink-muted leading-relaxed">
-            We use Microsoft Clarity to understand user behavior and improve our product pages. We do not track ads or collect personal details. You can accept or decline analytics cookie tracking.
-          </p>
+      <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 bg-surface-raised/95 border border-border rounded-2xl p-5 shadow-xl text-ink transition-all duration-300 animate-fade-in backdrop-blur-md">
+        <div className="flex flex-col gap-4">
+          <div>
+              <h3 className="text-xs font-bold tracking-[0.15em] uppercase text-ink-muted">
+                Privacy & Cookies
+              </h3>
+                <p className="mt-2 text-sm text-ink-muted leading-relaxed">
+                  We use Microsoft Clarity to understand user behavior and improve our product pages. We do not track ads or collect personal details. You can accept or decline analytics cookie tracking.
+                </p>
+              </div>
+              <div className="flex gap-3 justify-end">
+                <button
+                  onClick={() => handleDecision("rejected")}
+                  className="px-4 py-2 text-xs font-semibold text-ink-muted border border-border rounded-xl transition hover:bg-surface-muted hover:text-ink focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+                >
+                  Reject analytics
+                </button>
+                <button
+                  onClick={() => handleDecision("accepted")}
+                  className="px-4 py-2 text-xs font-semibold text-white bg-brand rounded-xl transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+                >
+                  Accept analytics
+                </button>
+              </div>
+          </div>
         </div>
-        <div className="flex gap-3 justify-end">
-          <button
-            onClick={() => handleDecision("rejected")}
-            className="px-4 py-2 text-xs font-semibold text-ink-muted border border-border rounded-xl transition hover:bg-surface-muted hover:text-ink focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
-          >
-            Reject analytics
-          </button>
-          <button
-            onClick={() => handleDecision("accepted")}
-            className="px-4 py-2 text-xs font-semibold text-white bg-brand rounded-xl transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
-          >
-            Accept analytics
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+        );
 }

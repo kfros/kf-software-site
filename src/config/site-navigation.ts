@@ -17,3 +17,4 @@ export const kitchenExhaustSubnavigation: NavItem[] = [
   { label: "Free sample", href: "#contact" },
   { label: "FAQ", href: "#faq" },
 ];
+

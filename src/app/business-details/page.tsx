@@ -36,24 +36,24 @@ export default function BusinessDetailsPage() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-[65vh] flex flex-col justify-center bg-canvas text-ink py-16 sm:py-24">
-        <div className="mx-auto w-full max-w-xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-surface-muted text-brand shadow-xs mb-6 border border-border">
-              <Building2 className="h-8 w-8" aria-hidden="true" />
-            </div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
-              COMPANY
-            </p>
-            <h1 className="mt-3 text-3xl font-extrabold text-ink sm:text-4xl">
-              Business Details
-            </h1>
-          </div>
+        <Header />
+        <main className="min-h-[65vh] flex flex-col justify-center bg-canvas text-ink py-16 sm:py-24">
+          <div className="mx-auto w-full max-w-xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-surface-muted text-brand shadow-xs mb-6 border border-border">
+                  <Building2 className="h-8 w-8" aria-hidden="true" />
+                </div>
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                    COMPANY
+                  </p>
+                    <h1 className="mt-3 text-3xl font-extrabold text-ink sm:text-4xl">
+                      Business Details
+                    </h1>
+                  </div>
 
-          <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
-            <dl className="divide-y divide-border">
-              {businessFields.map((field) => (
+                      <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
+                        <dl className="divide-y divide-border">
+                          {businessFields.map((field) => (
                 <div
                   key={field.label}
                   className="py-3.5 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4"
@@ -89,8 +89,8 @@ export default function BusinessDetailsPage() {
             </a>
           </div>
         </div>
-      </main>
-      <Footer />
-    </>
-  );
+                    </main>
+                    <Footer />
+                  </>
+                  );
 }

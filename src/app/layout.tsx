@@ -80,15 +80,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
-      </head>
-      <body className={`${inter.className} bg-canvas text-ink antialiased`} suppressHydrationWarning>
-        {children}
-        <ScrollToTopButton />
-        <MicrosoftClarity />
-        <AnalyticsConsentBanner />
-      </body>
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
+        </head>
+        <body className={`${inter.className} bg-canvas text-ink antialiased`} suppressHydrationWarning>
+          {children}
+          <ScrollToTopButton />
+          <MicrosoftClarity />
+          <AnalyticsConsentBanner />
+        </body>
     </html>
   );
 }
