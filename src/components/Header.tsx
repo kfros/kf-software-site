@@ -87,7 +87,7 @@ interface HeaderProps {
                 <div className="hidden lg:flex items-center gap-3">
                   <ThemeToggle />
                   <a
-                    className="inline-flex h-[40px] sm:h-[46px] items-center justify-center gap-2 rounded-[16px] bg-brand text-white px-5 sm:px-6 text-sm font-semibold shadow-sm transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+                    className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-brand text-white px-5 text-sm font-semibold shadow-xs transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
                     href={ctaHref}
                   >
                     <Mail aria-hidden="true" className="h-4 w-4 opacity-80" />
@@ -143,7 +143,7 @@ interface HeaderProps {
                     {/* Contact action inside mobile menu */}
                       <div className="mt-6 border-t border-border pt-6">
                         <a
-                          className="inline-flex h-[46px] w-full items-center justify-center gap-2 rounded-[16px] bg-brand px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
+                          className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 text-sm font-semibold text-white shadow-xs transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2"
                           href={ctaHref}
                           onClick={() => setIsOpen(false)}
                         >

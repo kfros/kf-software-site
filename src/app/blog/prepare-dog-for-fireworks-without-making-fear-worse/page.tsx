@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import {
   AlertTriangle,
-  ArrowRight,
   CheckCircle2,
-  Home,
   ShieldAlert,
   Sparkles,
   Volume2,

@@ -85,7 +85,7 @@ export function Footer() {
 
               {/* Business Details Card */}
               <div className="w-full lg:w-[320px] lg:min-w-[300px] lg:max-w-[360px] shrink-0">
-                    <div className="bg-surface-muted border border-border rounded-[16px] p-5 sm:p-6 text-ink">
+                <div className="bg-surface-muted border border-border rounded-2xl p-5 sm:p-6 text-ink">
                       <div className="flex flex-col gap-2 text-[14px] leading-[1.8]">
                         <p className="font-semibold text-ink">KYRYL FROSYNIAK Solutions</p>
                         <p className="text-ink-muted">Wrocław, Poland</p>

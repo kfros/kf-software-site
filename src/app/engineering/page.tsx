@@ -2,15 +2,10 @@ import React from "react";
 import type { Metadata } from "next";
 import {
   ArrowRight,
-  Code2,
-  Cpu,
   Database,
-  Layers,
   RefreshCw,
   Server,
   ShieldCheck,
-  Sparkles,
-  CheckCircle2,
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -90,11 +85,10 @@ export default function EngineeringPage() {
       <main className="min-h-screen bg-canvas text-ink py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* Hero */}
-          <section className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-muted px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-ink-muted">
-              <Sparkles className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
-              Engineering
-            </div>
+          <section className="max-w-3xl pb-12 sm:pb-16 border-b border-border">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand">
+              Backend Engineering Services
+            </span>
             <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl leading-tight">
               Senior backend engineering for complex systems.
             </h1>
@@ -118,11 +112,11 @@ export default function EngineeringPage() {
             </div>
           </section>
 
-          {/* Capability Areas Grid */}
-          <section className="mt-16 sm:mt-20" aria-labelledby="capabilities-heading">
+          {/* Editorial Capability Index */}
+          <section className="py-16 sm:py-20 border-b border-border" aria-labelledby="capabilities-heading">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-border">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-brand">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand">
                   Core Capabilities
                 </span>
                 <h2 id="capabilities-heading" className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
@@ -134,22 +128,22 @@ export default function EngineeringPage() {
               </p>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
               {capabilityAreas.map((area) => {
                 const Icon = area.icon;
                 return (
                   <div
                     key={area.title}
-                    className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs transition hover:border-brand/40"
+                    className="flex items-start gap-4 p-2 rounded-xl"
                   >
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-muted text-brand border border-border mt-0.5">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
                     <div>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-muted border border-border text-brand">
-                        <Icon className="h-6 w-6" aria-hidden="true" />
-                      </div>
-                      <h3 className="mt-5 text-lg font-bold text-ink">
+                      <h3 className="text-base font-bold text-ink">
                         {area.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                      <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-ink-muted">
                         {area.description}
                       </p>
                     </div>
@@ -159,10 +153,10 @@ export default function EngineeringPage() {
             </div>
           </section>
 
-          {/* How an engagement starts */}
-          <section className="mt-16 sm:mt-20 rounded-[28px] border border-border bg-surface-raised p-8 sm:p-10 lg:p-12 shadow-sm" aria-labelledby="engagement-heading">
-            <div className="max-w-2xl">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand">
+          {/* Engagement Sequence */}
+          <section className="py-16 sm:py-20 border-b border-border" aria-labelledby="engagement-heading">
+            <div className="max-w-2xl mb-10">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand">
                 Working Together
               </span>
               <h2 id="engagement-heading" className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
@@ -173,20 +167,20 @@ export default function EngineeringPage() {
               </p>
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {engagementSteps.map((step) => (
                 <div
                   key={step.step}
                   className="rounded-2xl border border-border bg-surface p-6 shadow-xs flex flex-col justify-between"
                 >
                   <div>
-                    <span className="text-xs font-mono font-bold text-brand block mb-2">
+                    <span className="font-mono text-xs font-bold text-brand block mb-2">
                       STEP {step.step}
                     </span>
                     <h3 className="text-base font-bold text-ink">
                       {step.title}
                     </h3>
-                    <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-ink-muted">
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-ink-muted">
                       {step.description}
                     </p>
                   </div>
@@ -194,7 +188,8 @@ export default function EngineeringPage() {
               ))}
             </div>
 
-            <div className="mt-10 rounded-2xl border border-border bg-surface-muted p-5 sm:p-6">
+            {/* Studio boundaries callout */}
+            <div className="mt-10 rounded-xl border border-border bg-surface-muted p-5 sm:p-6">
               <h4 className="text-sm font-bold text-ink mb-1.5">
                 Studio Boundaries & Focus
               </h4>
@@ -215,7 +210,7 @@ export default function EngineeringPage() {
           </section>
 
           {/* Cross links */}
-          <section className="mt-16 sm:mt-20 border-t border-border pt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm text-ink-muted">
+          <section className="pt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm text-ink-muted">
             <p>
               Looking for our software products instead?
             </p>
@@ -242,4 +237,3 @@ export default function EngineeringPage() {
     </>
   );
 }
-

@@ -73,13 +73,13 @@ export default function ChillPupGuidesHubPage() {
           </section>
 
           {/* App download strip */}
-          <section className="mt-8 rounded-2xl border border-border bg-surface p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-xs">
+          <section className="mt-8 rounded-xl border border-border bg-surface p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-xs">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-soft text-brand">
                 <Footprints className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                <p className="text-xs font-mono font-bold uppercase tracking-wider text-brand">
                   Mobile Companion
                 </p>
                 <p className="text-sm font-semibold text-ink">
@@ -108,7 +108,7 @@ export default function ChillPupGuidesHubPage() {
           </section>
 
           {/* Veterinary Safety Boundary */}
-          <section className="mt-8 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 sm:p-6 text-ink">
+          <section className="mt-8 rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 sm:p-6 text-ink">
             <div className="flex items-start gap-3.5">
               <ShieldAlert className="h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" aria-hidden="true" />
               <div className="text-xs sm:text-sm leading-relaxed text-ink-muted space-y-1">

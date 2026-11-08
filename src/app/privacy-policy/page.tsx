@@ -70,12 +70,12 @@ export default function PrivacyPolicy() {
     <>
       <PageClarityTags siteSection="legal" product="kf_software" pageType="legal" />
             <Header />
-            <main className="bg-canvas min-h-screen py-14 px-5 sm:py-24 sm:px-6 text-ink">
-              <article className="mx-auto max-w-[900px] bg-surface rounded-3xl border border-border p-6 sm:p-12 shadow-sm">
-                <div className="flex items-center gap-3.5 mb-6 text-brand">
-                  <Shield className="h-8 w-8" />
-                  <span className="text-sm font-bold uppercase tracking-wider">LEGAL AGREEMENT</span>
-                </div>
+      <main className="bg-canvas min-h-screen py-12 px-4 sm:py-20 sm:px-6 text-ink">
+        <article className="mx-auto max-w-[900px] bg-surface rounded-2xl border border-border p-6 sm:p-10 shadow-xs">
+          <div className="flex items-center gap-3 mb-6 text-brand">
+            <Shield className="h-6 w-6" />
+            <span className="font-mono text-xs font-bold uppercase tracking-wider">LEGAL AGREEMENT</span>
+          </div>
 
                   <h1 className="text-4xl font-extrabold text-ink leading-tight mb-3 sm:text-5xl">
                     Privacy Policy
