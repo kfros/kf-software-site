@@ -94,7 +94,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-base font-bold text-ink">Products</h3>
                 <p className="text-xs sm:text-sm leading-relaxed text-ink-muted">
-                  Focused software products and workflow experiments, including ChillPup and Kitchen Exhaust Reports.
+                  Focused software products and workflow experiments, including ChillPup.
                 </p>
                 <div className="pt-2">
                   <a

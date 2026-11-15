@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Cash-Timing Research Demo | KF Software</title>
+  <meta name="description" content="Research demo with fictional numbers exploring how unpaid bills, clearing timing, and a minimum reserve affect safe pre-paycheck transfers.">
+  <style>
+    :root {
+      --canvas: #f6f8fc;
+      --surface: #ffffff;
+      --surface-muted: #edf2f7;
+      --ink: #132238;
+      --ink-muted: #526174;
+      --border: #d7e0ea;
+      --brand: #2457c5;
+      --brand-hover: #1d459c;
+      --brand-soft: #eaf0ff;
+      --success: #15803d;
+      --success-soft: #dcfce7;
+      --danger: #b91c1c;
+      --danger-soft: #fee2e2;
+      --warn: #92400e;
+      --warn-soft: #fef3c7;
+      --focus: #2563eb;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--canvas);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--brand);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .demo-banner {
+      background-color: var(--warn-soft);
+      border: 1px solid #f59e0b;
+      color: var(--warn);
+      border-radius: 12px;
+      padding: 0.875rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.925rem;
+    }
+
+    .demo-banner strong {
+      display: block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    header.page-header {
+      margin-bottom: 1.75rem;
+    }
+
+    .maker-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin: 0 0 0.4rem;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      margin: 0 0 0.65rem;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      color: var(--ink-muted);
+      margin: 0;
+      max-width: 68ch;
+      font-size: 1rem;
+    }
+
+    .card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 2px rgba(19, 34, 56, 0.04);
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.125rem;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .scenario-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0.5rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background-color: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--surface-muted);
+    }
+
+    .btn[aria-pressed="true"] {
+      background-color: var(--brand);
+      border-color: var(--brand);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: var(--surface-muted);
+    }
+
+    .btn-small {
+      min-height: 34px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.875rem;
+    }
+
+    .metric {
+      background-color: var(--surface-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+
+    .metric.highlight {
+      background-color: var(--brand-soft);
+      border-color: #bfd3ff;
+    }
+
+    .metric.shortfall-active {
+      background-color: var(--danger-soft);
+      border-color: #fca5a5;
+    }
+
+    .metric-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-value {
+      display: block;
+      font-size: 1.45rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+    }
+
+    .metric.highlight .metric-value {
+      color: var(--brand);
+    }
+
+    .metric.shortfall-active .metric-value {
+      color: var(--danger);
+    }
+
+    .metric-note {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin-top: 0.2rem;
+    }
+
+    .bills-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .bill-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background-color: var(--surface);
+    }
+
+    .bill-item.cleared {
+      background-color: var(--surface-muted);
+    }
+
+    .bill-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .bill-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+
+    .bill-meta {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .bill-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .bill-amount {
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      font-size: 1rem;
+    }
+
+    .status-pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .status-unpaid {
+      background-color: var(--warn-soft);
+      color: var(--warn);
+    }
+
+    .status-cleared {
+      background-color: var(--success-soft);
+      color: var(--success);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 540px;
+    }
+
+    th, td {
+      padding: 0.7rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background-color: var(--surface-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .neg {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .pos {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .csv-block {
+      background-color: var(--surface-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 0;
+    }
+
+    .rules-list {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+      color: var(--ink-muted);
+      font-size: 0.92rem;
+    }
+
+    .rules-list li + li {
+      margin-top: 0.35rem;
+    }
+
+    footer.page-footer {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding: 2.25rem 1.5rem 3.5rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="demo-banner" role="note">
+      <strong>Research demo with fictional numbers</strong>
+      This standalone prototype by KF Software uses preset fictional checking balances, bills, and paychecks.
+      Results are conditional on the listed bills only and do not account for unlisted spending, bank holds, or pending card authorizations.
+      It is not financial advice and does not connect to any live bank balance.
+    </div>
+
+    <header class="page-header">
+      <p class="maker-eyebrow">KF Software · Standalone Research Prototype</p>
+      <h1>Cash-Timing Before Next Paycheck</h1>
+      <p class="lead">
+        Explore how unpaid bills, a bill clearing from checking, and a target reserve determine the maximum transfer before the next confirmed paycheck.
+      </p>
+    </header>
+
+    <main>
+      <section class="card" aria-labelledby="scenario-heading">
+        <div class="card-header">
+          <h2 id="scenario-heading">1. Preset Fictional Scenarios</h2>
+          <button type="button" class="btn btn-secondary btn-small" id="reset-btn">
+            Reset scenario
+          </button>
+        </div>
+        <div class="scenario-bar" role="group" aria-label="Choose a fictional scenario">
+          <button type="button" class="btn scenario-btn" data-scenario="reference" aria-pressed="true">
+            Reference ($2,200 balance)
+          </button>
+          <button type="button" class="btn scenario-btn" data-scenario="shortfall" aria-pressed="false">
+            Shortfall ($1,200 balance)
+          </button>
+          <button type="button" class="btn scenario-btn" data-scenario="tight-reserve" aria-pressed="false">
+            Thin Margin ($1,450 balance)
+          </button>
+        </div>
+        <p id="scenario-meta" class="metric-note" style="margin-top: 0.75rem;"></p>
+      </section>
+
+      <section class="card" aria-labelledby="summary-heading">
+        <div class="card-header">
+          <h2 id="summary-heading">2. Scenario Summary</h2>
+          <span id="as-of-badge" class="metric-note" style="margin: 0;"></span>
+        </div>
+        <div class="metrics-grid" aria-live="polite">
+          <div class="metric">
+            <span class="metric-label">Posted checking balance</span>
+            <span class="metric-value" id="posted-balance">$0</span>
+            <span class="metric-note" id="posted-note">Current posted funds</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Lowest balance before paycheck</span>
+            <span class="metric-value" id="lowest-balance">$0</span>
+            <span class="metric-note" id="lowest-note">After pending bills</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Chosen reserve</span>
+            <span class="metric-value" id="desired-reserve">$0</span>
+            <span class="metric-note">Minimum buffer required</span>
+          </div>
+          <div class="metric highlight">
+            <span class="metric-label">Maximum transfer</span>
+            <span class="metric-value" id="max-transfer">$0</span>
+            <span class="metric-note">Safe within listed bills</span>
+          </div>
+          <div class="metric" id="shortfall-card">
+            <span class="metric-label">Shortfall</span>
+            <span class="metric-value" id="shortfall-amount">$0</span>
+            <span class="metric-note" id="shortfall-note">No shortfall</span>
+          </div>
+        </div>
+        <p class="metric-note" id="paycheck-note" style="margin-top: 0.9rem;"></p>
+      </section>
+
+      <section class="card" aria-labelledby="bills-heading">
+        <div class="card-header">
+          <h2 id="bills-heading">3. Dated Bills (Toggle Unpaid / Cleared)</h2>
+        </div>
+        <p class="metric-note" style="margin: 0 0 0.9rem;">
+          Marking an unpaid bill as cleared reduces the displayed posted checking balance by that bill's amount once and removes it from the pending list.
+        </p>
+        <ul class="bills-list" id="bills-list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="ledger-heading">
+        <div class="card-header">
+          <h2 id="ledger-heading">4. Dated Projection Ledger</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Event</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="num">Change</th>
+                <th scope="col" class="num">Projected Balance</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="csv-heading">
+        <div class="card-header">
+          <h2 id="csv-heading">5. Fictional Inputs CSV (For Spreadsheet Comparison)</h2>
+          <button type="button" class="btn btn-secondary btn-small" id="copy-csv-btn">
+            Copy CSV
+          </button>
+        </div>
+        <pre class="csv-block" id="csv-output"></pre>
+        <p id="copy-status" class="metric-note" aria-live="polite" style="margin-top: 0.5rem;"></p>
+      </section>
+
+      <section class="card" aria-labelledby="rules-heading">
+        <h2 id="rules-heading">Calculation Rules Used in This Demo</h2>
+        <ul class="rules-list">
+          <li>An unpaid bill remains reserved when its due date arrives or passes.</li>
+          <li>A cleared bill leaves the pending list only when the displayed posted balance is reduced by the same amount once.</li>
+          <li>An unreceived paycheck is not counted as current funds before its confirmation date.</li>
+          <li>The chosen reserve is applied to the lowest projected balance before the next confirmed paycheck.</li>
+          <li>If the resulting transferable amount is negative, maximum transfer is shown as $0 and the shortfall is shown separately.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <span>KF Software · Research demo with fictional numbers (no cookies, no analytics, no data sent).</span>
+      <a href="/privacy-policy/">KF Software Privacy Policy</a>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var SCENARIOS = {
+        reference: {
+          id: "reference",
+          label: "Reference ($2,200 balance)",
+          description: "Standard cushion before payday: posted balance covers both bills and the $200 reserve.",
+          asOf: "2026-11-14",
+          openingPostedBalance: 2200,
+          desiredReserve: 200,
+          nextPaycheck: {
+            date: "2026-11-18",
+            label: "Confirmed payroll deposit",
+            amount: 1500
+          },
+          bills: [
+            { id: "b1", date: "2026-11-14", label: "Electric & water bill (due today)", amount: 315 },
+            { id: "b2", date: "2026-11-16", label: "Rent installment (due before paycheck)", amount: 900 }
+          ]
+        },
+        shortfall: {
+          id: "shortfall",
+          label: "Shortfall ($1,200 balance)",
+          description: "Opening balance of $1,200 with the same $315 and $900 bills and $200 reserve produces $0 transferable and a $215 shortfall.",
+          asOf: "2026-11-14",
+          openingPostedBalance: 1200,
+          desiredReserve: 200,
+          nextPaycheck: {
+            date: "2026-11-18",
+            label: "Confirmed payroll deposit",
+            amount: 1500
+          },
+          bills: [
+            { id: "b1", date: "2026-11-14", label: "Electric & water bill (due today)", amount: 315 },
+            { id: "b2", date: "2026-11-16", label: "Rent installment (due before paycheck)", amount: 900 }
+          ]
+        },
+        "tight-reserve": {
+          id: "tight-reserve",
+          label: "Thin Margin ($1,450 balance)",
+          description: "Bills are covered, but a higher $300 reserve leaves only $70 transferable before the next paycheck.",
+          asOf: "2026-11-14",
+          openingPostedBalance: 1450,
+          desiredReserve: 300,
+          nextPaycheck: {
+            date: "2026-11-18",
+            label: "Confirmed payroll deposit",
+            amount: 1500
+          },
+          bills: [
+            { id: "b1", date: "2026-11-14", label: "Internet & phone bill (due today)", amount: 180 },
+            { id: "b2", date: "2026-11-16", label: "Rent installment (due before paycheck)", amount: 900 }
+          ]
+        }
+      };
+
+      var activeScenarioId = "reference";
+      var clearedIds = {};
+
+      var scenarioButtons = document.querySelectorAll(".scenario-btn");
+      var resetBtn = document.getElementById("reset-btn");
+      var copyCsvBtn = document.getElementById("copy-csv-btn");
+      var copyStatusEl = document.getElementById("copy-status");
+
+      function formatUsd(amount) {
+        var abs = Math.abs(amount);
+        var formatted = "$" + abs.toLocaleString("en-US");
+        return amount < 0 ? "-" + formatted : formatted;
+      }
+
+      function computeState() {
+        var scenario = SCENARIOS[activeScenarioId];
+        var clearedSum = 0;
+        var pendingBills = [];
+
+        for (var i = 0; i < scenario.bills.length; i++) {
+          var bill = scenario.bills[i];
+          if (clearedIds[bill.id]) {
+            clearedSum += bill.amount;
+          } else {
+            pendingBills.push(bill);
+          }
+        }
+
+        var currentPosted = scenario.openingPostedBalance - clearedSum;
+
+        // Sort pending bills chronologically for the pre-paycheck ledger
+        pendingBills.sort(function (a, b) {
+          return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+        });
+
+        var running = currentPosted;
+        var lowestBeforePaycheck = currentPosted;
+        var ledgerRows = [
+          {
+            date: scenario.asOf,
+            event: "Posted checking balance" + (clearedSum > 0 ? " (after cleared bills)" : " (opening)"),
+            status: "Posted",
+            change: 0,
+            balance: running,
+            isOpening: true
+          }
+        ];
+
+        for (var j = 0; j < pendingBills.length; j++) {
+          var pb = pendingBills[j];
+          if (pb.date < scenario.nextPaycheck.date) {
+            running -= pb.amount;
+            if (running < lowestBeforePaycheck) {
+              lowestBeforePaycheck = running;
+            }
+            ledgerRows.push({
+              date: pb.date,
+              event: pb.label,
+              status: "Unpaid (reserved)",
+              change: -pb.amount,
+              balance: running
+            });
+          }
+        }
+
+        var postPaycheckBalance = running + scenario.nextPaycheck.amount;
+        ledgerRows.push({
+          date: scenario.nextPaycheck.date,
+          event: scenario.nextPaycheck.label + " (not counted as current funds)",
+          status: "Scheduled",
+          change: scenario.nextPaycheck.amount,
+          balance: postPaycheckBalance
+        });
+
+        var rawAvailable = lowestBeforePaycheck - scenario.desiredReserve;
+        var maxTransfer = rawAvailable > 0 ? rawAvailable : 0;
+        var shortfall = rawAvailable < 0 ? Math.abs(rawAvailable) : 0;
+
+        return {
+          scenario: scenario,
+          currentPosted: currentPosted,
+          lowestBeforePaycheck: lowestBeforePaycheck,
+          maxTransfer: maxTransfer,
+          shortfall: shortfall,
+          ledgerRows: ledgerRows
+        };
+      }
+
+      function render() {
+        var state = computeState();
+        var s = state.scenario;
+
+        for (var i = 0; i < scenarioButtons.length; i++) {
+          var btn = scenarioButtons[i];
+          btn.setAttribute("aria-pressed", btn.getAttribute("data-scenario") === activeScenarioId ? "true" : "false");
+        }
+
+        document.getElementById("scenario-meta").textContent = s.description;
+        document.getElementById("as-of-badge").textContent = "As of " + s.asOf;
+        document.getElementById("posted-balance").textContent = formatUsd(state.currentPosted);
+        document.getElementById("lowest-balance").textContent = formatUsd(state.lowestBeforePaycheck);
+        document.getElementById("desired-reserve").textContent = formatUsd(s.desiredReserve);
+        document.getElementById("max-transfer").textContent = formatUsd(state.maxTransfer);
+        document.getElementById("shortfall-amount").textContent = formatUsd(state.shortfall);
+
+        var shortfallCard = document.getElementById("shortfall-card");
+        var shortfallNote = document.getElementById("shortfall-note");
+        if (state.shortfall > 0) {
+          shortfallCard.classList.add("shortfall-active");
+          shortfallNote.textContent = "Needed to meet listed bills + reserve";
+        } else {
+          shortfallCard.classList.remove("shortfall-active");
+          shortfallNote.textContent = "No shortfall";
+        }
+
+        document.getElementById("paycheck-note").textContent =
+          "Next confirmed paycheck: " + formatUsd(s.nextPaycheck.amount) + " on " + s.nextPaycheck.date +
+          " (excluded from current funds and pre-paycheck minimum).";
+
+        // Render bills
+        var billsList = document.getElementById("bills-list");
+        billsList.innerHTML = "";
+        for (var b = 0; b < s.bills.length; b++) {
+          (function (bill) {
+            var isCleared = Boolean(clearedIds[bill.id]);
+            var li = document.createElement("li");
+            li.className = "bill-item" + (isCleared ? " cleared" : "");
+
+            var info = document.createElement("div");
+            info.className = "bill-info";
+
+            var title = document.createElement("span");
+            title.className = "bill-title";
+            title.textContent = bill.label;
+
+            var meta = document.createElement("span");
+            meta.className = "bill-meta";
+            meta.textContent = "Due " + bill.date;
+
+            info.appendChild(title);
+            info.appendChild(meta);
+
+            var actions = document.createElement("div");
+            actions.className = "bill-actions";
+
+            var pill = document.createElement("span");
+            pill.className = "status-pill " + (isCleared ? "status-cleared" : "status-unpaid");
+            pill.textContent = isCleared ? "Cleared" : "Unpaid";
+
+            var amt = document.createElement("span");
+            amt.className = "bill-amount";
+            amt.textContent = formatUsd(bill.amount);
+
+            var toggleBtn = document.createElement("button");
+            toggleBtn.type = "button";
+            toggleBtn.className = "btn btn-small";
+            toggleBtn.textContent = isCleared ? "Mark unpaid" : "Mark cleared";
+            toggleBtn.setAttribute("aria-pressed", isCleared ? "true" : "false");
+            toggleBtn.addEventListener("click", function () {
+              clearedIds[bill.id] = !isCleared;
+              copyStatusEl.textContent = "";
+              render();
+            });
+
+            actions.appendChild(pill);
+            actions.appendChild(amt);
+            actions.appendChild(toggleBtn);
+
+            li.appendChild(info);
+            li.appendChild(actions);
+            billsList.appendChild(li);
+          })(s.bills[b]);
+        }
+
+        // Render ledger
+        var ledgerBody = document.getElementById("ledger-body");
+        ledgerBody.innerHTML = "";
+        for (var r = 0; r < state.ledgerRows.length; r++) {
+          var row = state.ledgerRows[r];
+          var tr = document.createElement("tr");
+
+          var tdDate = document.createElement("td");
+          tdDate.textContent = row.date;
+
+          var tdEvent = document.createElement("td");
+          tdEvent.textContent = row.event;
+
+          var tdStatus = document.createElement("td");
+          tdStatus.textContent = row.status;
+
+          var tdChange = document.createElement("td");
+          tdChange.className = "num";
+          if (row.isOpening) {
+            tdChange.textContent = "—";
+          } else {
+            tdChange.textContent = (row.change > 0 ? "+" : "") + formatUsd(row.change);
+            tdChange.classList.add(row.change < 0 ? "neg" : "pos");
+          }
+
+          var tdBal = document.createElement("td");
+          tdBal.className = "num";
+          tdBal.textContent = formatUsd(row.balance);
+          if (row.balance < 0) {
+            tdBal.classList.add("neg");
+          }
+
+          tr.appendChild(tdDate);
+          tr.appendChild(tdEvent);
+          tr.appendChild(tdStatus);
+          tr.appendChild(tdChange);
+          tr.appendChild(tdBal);
+          ledgerBody.appendChild(tr);
+        }
+
+        // Render CSV
+        var csvLines = [
+          "date,type,description,status,amount_usd",
+          s.asOf + ",posted_balance,Current posted checking balance,posted," + state.currentPosted
+        ];
+        for (var c = 0; c < s.bills.length; c++) {
+          var cb = s.bills[c];
+          var cbStatus = clearedIds[cb.id] ? "cleared" : "unpaid";
+          csvLines.push(cb.date + ",bill,\"" + cb.label + "\"," + cbStatus + ",-" + cb.amount);
+        }
+        csvLines.push(s.asOf + ",reserve,Desired minimum reserve,target,-" + s.desiredReserve);
+        csvLines.push(s.nextPaycheck.date + ",paycheck,\"" + s.nextPaycheck.label + "\",scheduled," + s.nextPaycheck.amount);
+        document.getElementById("csv-output").textContent = csvLines.join("\n");
+      }
+
+      for (var i = 0; i < scenarioButtons.length; i++) {
+        scenarioButtons[i].addEventListener("click", function () {
+          activeScenarioId = this.getAttribute("data-scenario");
+          clearedIds = {};
+          copyStatusEl.textContent = "";
+          render();
+        });
+      }
+
+      resetBtn.addEventListener("click", function () {
+        clearedIds = {};
+        copyStatusEl.textContent = "";
+        render();
+      });
+
+      copyCsvBtn.addEventListener("click", function () {
+        var text = document.getElementById("csv-output").textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            copyStatusEl.textContent = "CSV copied to clipboard.";
+          }, function () {
+            copyStatusEl.textContent = "Copy failed. You can select and copy the CSV text above manually.";
+          });
+        } else {
+          copyStatusEl.textContent = "Clipboard API unavailable. Select and copy the CSV text above manually.";
+        }
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
+

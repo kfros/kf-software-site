@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import {
   setClarityTag,
-  applyKitchenExhaustExperimentTags,
   CLARITY_TAGS,
 } from "@/lib/clarity";
 import { getConsentDecision } from "./analyticsConsent";
@@ -14,7 +13,6 @@ interface PageClarityTagsProps {
   pageType: string;
   experiment?: string;
   experimentSurface?: string;
-  enableCampaignAttribution?: boolean;
 }
 
 export function PageClarityTags({
@@ -23,7 +21,6 @@ export function PageClarityTags({
   pageType,
   experiment,
   experimentSurface,
-  enableCampaignAttribution,
 }: PageClarityTagsProps) {
   useEffect(() => {
     function applyTags() {
@@ -40,9 +37,6 @@ export function PageClarityTags({
       }
       if (experimentSurface) {
         setClarityTag(CLARITY_TAGS.EXPERIMENT_SURFACE, experimentSurface);
-      }
-      if (enableCampaignAttribution) {
-        applyKitchenExhaustExperimentTags();
       }
     }
 
@@ -67,7 +61,6 @@ export function PageClarityTags({
     pageType,
     experiment,
     experimentSurface,
-    enableCampaignAttribution,
   ]);
 
   return null;

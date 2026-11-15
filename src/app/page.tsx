@@ -2,7 +2,6 @@ import React from "react";
 import {
   ArrowRight,
   Mail,
-  FileText,
   CheckCircle2,
   Code2,
   ShieldCheck,
@@ -33,7 +32,6 @@ export default function MainLanding() {
       <main className="bg-canvas text-ink">
         <HeroSection />
         <WorkIndexSection />
-        <FeaturedArtifactSection />
         <EngineeringStudioSection />
         {latestArticles.length > 0 && (
           <PublicationsSection articles={latestArticles} />
@@ -111,7 +109,7 @@ function HeroSection() {
                 Studio Overview
               </span>
               <span className="font-mono text-[11px] text-ink-muted">
-                2 Active Tracks
+                1 Active Track
               </span>
             </div>
 
@@ -140,35 +138,6 @@ function HeroSection() {
                     </div>
                     <p className="mt-1 text-xs text-ink-muted line-clamp-2 leading-relaxed">
                       Owner-guided calming routines for stressful dog moments. Available on iOS & Android.
-                    </p>
-                  </div>
-                </div>
-              </a>
-
-              {/* Kitchen Exhaust preview row */}
-              <a
-                href="/kitchen-exhaust-reports/"
-                className="group block rounded-xl border border-border bg-surface-muted/60 p-4 transition hover:bg-surface-muted hover:border-brand/40 focus:outline-none focus:ring-2 focus:ring-focus"
-              >
-                <div className="flex items-start gap-3.5">
-                  <div className="h-11 w-11 rounded-xl overflow-hidden shrink-0 border border-border bg-surface">
-                    <img
-                      src="/kitchen-exhaust/hood-interior-after.jpg"
-                      alt="Kitchen Exhaust sample report thumbnail"
-                      className="w-full h-full object-cover"
-                      width={44}
-                      height={44}
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2">
-                      <h2 className="text-sm font-bold text-ink group-hover:text-brand transition">
-                        Kitchen Exhaust Reports
-                      </h2>
-                      <StatusLabel status="WORKFLOW EXPERIMENT" />
-                    </div>
-                    <p className="mt-1 text-xs text-ink-muted line-clamp-2 leading-relaxed">
-                      Customer-ready service PDF reports assembled from field photos and technician notes.
                     </p>
                   </div>
                 </div>
@@ -302,111 +271,6 @@ function WorkIndexSection() {
               </div>
             </div>
           </article>
-
-          {/* Index Item 2: Kitchen Exhaust Reports */}
-          <article className="theme-kitchen-exhaust py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex flex-wrap items-center gap-3">
-                <StatusLabel status="WORKFLOW EXPERIMENT" />
-                <span className="text-xs font-mono text-ink-muted">
-                  Commercial Field Service · Concierge Workflow
-                </span>
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
-                Kitchen Exhaust Reports — Customer-ready PDF reports from technician photos.
-              </h3>
-
-              <p className="text-sm sm:text-base text-ink-muted leading-relaxed max-w-2xl">
-                A demonstration workflow that turns provided technician notes and before-and-after photos into a customer-ready service report without asking technicians to adopt a new field app.
-              </p>
-
-              <div className="pt-2 space-y-2 text-xs sm:text-sm text-ink-muted">
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-product-accent shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>
-                    <strong className="text-ink font-semibold">Paired field photography:</strong> Side-by-side before and after evidence per serviced component.
-                  </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-product-accent shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>
-                    <strong className="text-ink font-semibold">Zero software friction:</strong> Crews keep gathering photos and notes as they already do.
-                  </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-product-accent shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>
-                    <strong className="text-ink font-semibold">One free sample report:</strong> Evaluated as a bounded concierge test for commercial contractors.
-                  </span>
-                </div>
-              </div>
-
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <a
-                  href="/kitchen-exhaust-reports/"
-                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-brand text-white px-5 text-sm font-semibold shadow-xs transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus"
-                >
-                  <span>View report demo</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-                <a
-                  href="/kitchen-exhaust/pinecrest-family-diner-sample-report.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-border bg-surface px-5 text-sm font-semibold text-ink shadow-xs transition hover:bg-surface-muted focus:outline-none focus:ring-2 focus:ring-focus"
-                >
-                  <FileText className="h-4 w-4 opacity-80" aria-hidden="true" />
-                  <span>Sample PDF document</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Artifact Frame: Before/After photo pair */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
-                <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-xs text-ink-muted">
-                  <span className="font-mono text-[11px] uppercase tracking-wider font-semibold">
-                    Demonstration Component Exhibit
-                  </span>
-                  <span>Hood Interior</span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="overflow-hidden rounded-xl border border-border bg-surface-muted">
-                    <div className="p-1.5 bg-surface text-[10px] font-mono font-bold uppercase tracking-wider text-product-accent border-b border-border text-center">
-                      Before
-                    </div>
-                    <img
-                      src="/kitchen-exhaust/hood-interior-before.jpg"
-                      alt="Sample kitchen exhaust hood interior before service"
-                      width={400}
-                      height={300}
-                      className="w-full h-auto aspect-[4/3] object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="overflow-hidden rounded-xl border border-border bg-surface-muted">
-                    <div className="p-1.5 bg-surface text-[10px] font-mono font-bold uppercase tracking-wider text-product-accent border-b border-border text-center">
-                      After
-                    </div>
-                    <img
-                      src="/kitchen-exhaust/hood-interior-after.jpg"
-                      alt="Sample kitchen exhaust hood interior after service"
-                      width={400}
-                      height={300}
-                      className="w-full h-auto aspect-[4/3] object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-
-                <p className="mt-3 text-[11px] text-ink-muted leading-relaxed">
-                  Fictional demonstration case. The photographs and sample report are AI-generated demonstration materials for workflow evaluation.
-                </p>
-              </div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -414,115 +278,7 @@ function WorkIndexSection() {
 }
 
 /**
- * 3. Featured Work Area
- * Gives a real artifact generous space instead of duplicating product cards
- */
-function FeaturedArtifactSection() {
-  return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-surface-muted/40 border-b border-border">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-12">
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand">
-            Featured Workflow Artifact
-          </span>
-          <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-ink tracking-tight">
-            From raw field notes to customer deliverable
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-ink-muted leading-relaxed">
-            Examining how real unstructured service evidence transforms into a structured multi-page document without requiring technicians to change how they work on site.
-          </p>
-        </div>
-
-        {/* 3-Step Sequence Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="rounded-2xl border border-border bg-surface p-6 shadow-xs flex flex-col justify-between">
-            <div>
-              <span className="font-mono text-xs font-bold text-brand block mb-2">
-                STAGE 01
-              </span>
-              <h3 className="text-base font-bold text-ink mb-2">
-                Raw Field Evidence
-              </h3>
-              <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-                Technicians gather before-and-after phone photos and brief notes as they inspect hoods, ducts, filters, and exhaust fans.
-              </p>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-surface p-6 shadow-xs flex flex-col justify-between">
-            <div>
-              <span className="font-mono text-xs font-bold text-brand block mb-2">
-                STAGE 02
-              </span>
-              <h3 className="text-base font-bold text-ink mb-2">
-                Concierge Assembly
-              </h3>
-              <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-                Materials are organized, paired into side-by-side component exhibits, and formatted with facility and contractor metadata.
-              </p>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-surface p-6 shadow-xs flex flex-col justify-between">
-            <div>
-              <span className="font-mono text-xs font-bold text-brand block mb-2">
-                STAGE 03
-              </span>
-              <h3 className="text-base font-bold text-ink mb-2">
-                Finished Customer Report
-              </h3>
-              <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
-                A clean, multi-page PDF document ready for delivery to building managers, restaurant owners, or insurance files.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* The Document Exhibit Banner */}
-        <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8 lg:p-10 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-muted text-ink shrink-0 border border-border">
-              <FileText className="h-6 w-6" aria-hidden="true" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand">
-                  Sample Deliverable
-                </span>
-                <span className="text-xs text-ink-muted font-mono">· PDF</span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-ink">
-                Pinecrest Family Diner — Kitchen Exhaust Inspection Report
-              </h3>
-              <p className="mt-1 text-xs sm:text-sm text-ink-muted max-w-xl leading-relaxed">
-                Review the multi-page demonstration document assembled from paired component photography and service observations.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <a
-              href="/kitchen-exhaust-reports/#sample-report"
-              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-brand text-white px-5 text-sm font-semibold shadow-xs transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus"
-            >
-              <span>View sample document</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a
-              href="/kitchen-exhaust-reports/#contact"
-              className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl border border-border bg-surface px-5 text-sm font-semibold text-ink shadow-xs transition hover:bg-surface-muted focus:outline-none focus:ring-2 focus:ring-focus"
-            >
-              <span>Request free sample</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/**
- * 4. Compact Engineering / Studio Section
+ * 3. Compact Engineering / Studio Section
  * Direct individual contributor execution with route to /engineering/
  */
 function EngineeringStudioSection() {
@@ -669,7 +425,7 @@ function ContactSection() {
           Discuss a project or request a demonstration.
         </h2>
         <p className="mt-4 text-base sm:text-lg text-ink-muted max-w-2xl mx-auto leading-relaxed">
-          Whether you want to evaluate the Kitchen Exhaust reporting workflow, discuss ChillPup, or inquire about senior backend engineering, we reply directly.
+          Whether you want to discuss ChillPup or inquire about senior backend engineering, we reply directly.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

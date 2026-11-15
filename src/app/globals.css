@@ -54,17 +54,6 @@
   --product-soft: 18 60 58;
 }
 
-.theme-kitchen-exhaust {
-  --product-accent: 180 83 9;
-  --product-soft: 255 241 214;
-}
-
-.dark .theme-kitchen-exhaust,
-.dark.theme-kitchen-exhaust {
-  --product-accent: 253 186 116;
-  --product-soft: 58 38 22;
-}
-
 * {
   box-sizing: border-box;
 }

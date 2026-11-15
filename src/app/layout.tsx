@@ -47,7 +47,6 @@ export const metadata: Metadata = {
   keywords: [
     "KF Software",
     "ChillPup",
-    "Kitchen Exhaust service reports",
     "workflow tools",
     "privacy-conscious apps",
     "Wrocław software",
