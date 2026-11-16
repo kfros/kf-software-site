@@ -12,3 +12,5 @@ backend/kitchen_exhaust/venv/
 backend/kitchen_exhaust/.env
 .pytest_cache/
 .coverage
+
+/.next-dev/
