@@ -8,6 +8,7 @@ export function Footer() {
       title: "PRODUCTS",
       links: [
         { label: "ChillPup", href: "/chillpup/" },
+        { label: "Free payday balance calculator", href: "/tools/payday-balance/" },
       ],
     },
     {

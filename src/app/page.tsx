@@ -109,7 +109,7 @@ function HeroSection() {
                 Studio Overview
               </span>
               <span className="font-mono text-[11px] text-ink-muted">
-                1 Active Track
+                2 Active Tracks
               </span>
             </div>
 
@@ -267,6 +267,50 @@ function WorkIndexSection() {
                 </div>
                 <p className="mt-3 text-xs text-ink-muted leading-normal">
                   Real ChillPup interface: owner-guided routine selection designed for immediate clarity.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          {/* Index Item 2: Payday balance calculator */}
+          <article className="py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <StatusLabel status="Free browser tool" />
+                <span className="text-xs font-mono text-ink-muted">
+                  Web Utility · Local Browser Calculation
+                </span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-ink tracking-tight">
+                Payday balance calculator
+              </h3>
+
+              <p className="text-sm sm:text-base text-ink-muted leading-relaxed max-w-2xl">
+                Estimate what you could move before payday after bills, planned spending and a buffer. No sign-up or bank connection; your financial figures stay in your browser.
+              </p>
+
+              <div className="pt-2">
+                <a
+                  href="/tools/payday-balance/"
+                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-xl bg-brand text-white px-5 text-sm font-semibold shadow-xs transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus"
+                >
+                  <span>Open the payday balance calculator</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-border text-xs text-ink-muted">
+                  <span className="font-mono text-[11px] uppercase tracking-wider font-semibold">
+                    Tool Scope · One Account
+                  </span>
+                  <span>USD · EUR · GBP · PLN</span>
+                </div>
+                <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
+                  Subtracts unpaid bills due on or before your next expected payday, planned everyday spending, and your chosen buffer to show either the estimated amount you could move or the shortfall against your plan.
                 </p>
               </div>
             </div>
