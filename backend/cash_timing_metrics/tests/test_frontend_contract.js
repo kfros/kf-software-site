@@ -392,6 +392,51 @@ async function runDomAndPrivacyTests() {
   env2.elements["calc-form"].trigger("submit");
   assert.strictEqual(env2.elements["result-panel"].classList.contains("hidden"), false);
   assert.strictEqual(env2.elements["result-amount"].textContent, "$1,000.00");
+  assert.strictEqual(env2.elements["result-hero"].classList.contains("is-positive"), true);
+  assert.strictEqual(env2.elements["result-hero"].classList.contains("is-shortfall"), false);
+  assert.strictEqual(env2.elements["result-hero"].classList.contains("is-zero"), false);
+
+  // Verify palette alignment scenarios: positive (485) => shortfall (115) => zero (0) => positive (485)
+  const env3 = makeDomEnv(mkStorage(), mkStorage(), []);
+  env3.elements["load-example-btn"].trigger("click");
+  env3.elements["spending-allowance"].value = "300.00";
+  env3.elements["spending-allowance"].trigger("input");
+  env3.elements["calc-form"].trigger("submit");
+  assert.strictEqual(env3.elements["result-amount"].textContent, "$485.00");
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-positive"), true);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-shortfall"), false);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-zero"), false);
+
+  // Shortfall: balance 1600 => shortfall $115.00
+  env3.elements["balance"].value = "1600.00";
+  env3.elements["balance"].trigger("input");
+  env3.elements["calc-form"].trigger("submit");
+  assert.strictEqual(env3.elements["result-amount"].textContent, "$115.00");
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-positive"), false);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-shortfall"), true);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-zero"), false);
+
+  // Zero without shortfall: balance 1715 => $0.00 neutral
+  env3.elements["balance"].value = "1715.00";
+  env3.elements["balance"].trigger("input");
+  env3.elements["calc-form"].trigger("submit");
+  assert.strictEqual(env3.elements["result-amount"].textContent, "$0.00");
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-positive"), false);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-shortfall"), false);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-zero"), true);
+
+  // After 315 clears: balance 1885 and first bill marked alreadyDeducted => $485.00 positive
+  env3.elements["balance"].value = "1885.00";
+  env3.elements["balance"].trigger("input");
+  const firstBillRow = env3.elements["bills-container"].children[0];
+  const dedCheckbox = firstBillRow.children[4].children[0].children[0];
+  dedCheckbox.checked = true;
+  dedCheckbox.trigger("change");
+  env3.elements["calc-form"].trigger("submit");
+  assert.strictEqual(env3.elements["result-amount"].textContent, "$485.00");
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-positive"), true);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-shortfall"), false);
+  assert.strictEqual(env3.elements["result-hero"].classList.contains("is-zero"), false);
 }
 
 runDomAndPrivacyTests().then(() => {

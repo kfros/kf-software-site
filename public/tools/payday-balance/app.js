@@ -393,11 +393,19 @@
     }
   }
 
+  function resetResultStateClasses() {
+    resultHero.classList.remove("is-positive");
+    resultHero.classList.remove("is-shortfall");
+    resultHero.classList.remove("is-zero");
+  }
+
   function renderResult(res) {
     resultPanel.classList.remove("hidden");
     staleWarning.classList.add("hidden");
     state.hasCalculated = true;
     state.isStale = false;
+
+    resetResultStateClasses();
 
     var cur = res.currency;
     if (res.shortfallToPlanMinor > 0) {
@@ -408,8 +416,14 @@
         "Estimated amount you could move: " + Engine.formatMinor(0, cur) +
         ". Includes your chosen buffer; this does not necessarily mean your bank account will overdraw.";
       shortfallNoteEl.classList.remove("hidden");
+    } else if (res.estimatedTransferMinor > 0) {
+      resultHero.classList.add("is-positive");
+      resultLabel.textContent = "Estimated amount you could move";
+      resultAmount.textContent = Engine.formatMinor(res.estimatedTransferMinor, cur);
+      shortfallNoteEl.textContent = "";
+      shortfallNoteEl.classList.add("hidden");
     } else {
-      resultHero.classList.remove("is-shortfall");
+      resultHero.classList.add("is-zero");
       resultLabel.textContent = "Estimated amount you could move";
       resultAmount.textContent = Engine.formatMinor(res.estimatedTransferMinor, cur);
       shortfallNoteEl.textContent = "";
@@ -494,6 +508,7 @@
     var res = Engine.calculatePaydayBalance(getFormInputPayload());
     if (!res.ok) {
       resultPanel.classList.add("hidden");
+      resetResultStateClasses();
       state.hasCalculated = false;
       state.isStale = false;
 
@@ -564,6 +579,7 @@
     });
 
     resultPanel.classList.add("hidden");
+    resetResultStateClasses();
     state.hasCalculated = false;
     state.isStale = false;
   }
@@ -587,6 +603,7 @@
     deleteSavedInputs();
 
     resultPanel.classList.add("hidden");
+    resetResultStateClasses();
     staleWarning.classList.add("hidden");
     state.hasCalculated = false;
     state.isStale = false;
