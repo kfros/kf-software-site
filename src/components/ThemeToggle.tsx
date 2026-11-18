@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
 const STORAGE_KEY = "kf-theme";
+let inMemoryManualTheme: "light" | "dark" | null = null;
 
 function getSystemTheme(): "light" | "dark" {
   try {
@@ -16,19 +17,40 @@ function getSystemTheme(): "light" | "dark" {
   return "light";
 }
 
-function getInitialTheme(): "light" | "dark" {
+function readStoredManualTheme(): "light" | "dark" | null {
   try {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored === "dark" || stored === "light") {
         return stored;
       }
-      return getSystemTheme();
     }
   } catch {
-    // Graceful fallback
+    return inMemoryManualTheme;
   }
-  return "light";
+  return inMemoryManualTheme;
+}
+
+function applyThemeToDocument(target: "light" | "dark"): void {
+  if (typeof document === "undefined") return;
+  if (target === "dark") {
+    document.documentElement.classList.add("dark");
+    document.documentElement.style.colorScheme = "dark";
+  } else {
+    document.documentElement.classList.remove("dark");
+    document.documentElement.style.colorScheme = "light";
+  }
+}
+
+function getInitialTheme(): "light" | "dark" {
+  const manual = readStoredManualTheme();
+  if (manual) {
+    return manual;
+  }
+  if (typeof document !== "undefined" && document.documentElement.classList.contains("dark")) {
+    return "dark";
+  }
+  return getSystemTheme();
 }
 
 export function ThemeToggle({ className = "" }: { className?: string }) {
@@ -38,58 +60,63 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
   useEffect(() => {
     const current = getInitialTheme();
     setTheme(current);
+    applyThemeToDocument(current);
     setMounted(true);
 
-    const handleStorageOrEvent = () => {
-      const updated = getInitialTheme();
-      setTheme(updated);
+    const syncFromStoreOrSystem = () => {
+      const manual = readStoredManualTheme();
+      const resolved = manual || getSystemTheme();
+      setTheme(resolved);
+      applyThemeToDocument(resolved);
+    };
+
+    const handleStorageEvent = (e: StorageEvent) => {
+      if (e.key === null || e.key === STORAGE_KEY) {
+        if (e.newValue === "dark" || e.newValue === "light") {
+          inMemoryManualTheme = e.newValue;
+        } else if (e.newValue === null) {
+          inMemoryManualTheme = null;
+        }
+        syncFromStoreOrSystem();
+      }
     };
 
     const mediaQuery = window.matchMedia?.("(prefers-color-scheme: dark)");
     const handleMediaChange = (e: MediaQueryListEvent) => {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (!stored) {
-          const next = e.matches ? "dark" : "light";
-          setTheme(next);
-          if (next === "dark") {
-            document.documentElement.classList.add("dark");
-            document.documentElement.style.colorScheme = "dark";
-          } else {
-            document.documentElement.classList.remove("dark");
-            document.documentElement.style.colorScheme = "light";
-          }
-        }
-      } catch {
-        // Ignore
+      if (!readStoredManualTheme()) {
+        const next = e.matches ? "dark" : "light";
+        setTheme(next);
+        applyThemeToDocument(next);
       }
     };
 
-    window.addEventListener("kf-theme-change", handleStorageOrEvent);
+    window.addEventListener("kf-theme-change", syncFromStoreOrSystem);
+    window.addEventListener("storage", handleStorageEvent);
     mediaQuery?.addEventListener("change", handleMediaChange);
 
     return () => {
-      window.removeEventListener("kf-theme-change", handleStorageOrEvent);
+      window.removeEventListener("kf-theme-change", syncFromStoreOrSystem);
+      window.removeEventListener("storage", handleStorageEvent);
       mediaQuery?.removeEventListener("change", handleMediaChange);
     };
   }, []);
 
   const toggleTheme = () => {
     const nextTheme = theme === "dark" ? "light" : "dark";
+    inMemoryManualTheme = nextTheme;
     setTheme(nextTheme);
+    applyThemeToDocument(nextTheme);
 
     try {
-      if (nextTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        document.documentElement.style.colorScheme = "dark";
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.style.colorScheme = "light";
-      }
       localStorage.setItem(STORAGE_KEY, nextTheme);
+    } catch {
+      // Graceful degradation in memory if localStorage is blocked
+    }
+
+    try {
       window.dispatchEvent(new Event("kf-theme-change"));
     } catch {
-      // Graceful degradation if localStorage is blocked
+      // Ignore
     }
   };
 
@@ -119,4 +146,3 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     </button>
   );
 }
-

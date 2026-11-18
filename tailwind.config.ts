@@ -27,6 +27,7 @@ const config: Config = {
         },
         "brand-hover": "rgb(var(--brand-hover) / <alpha-value>)",
         "brand-soft": "rgb(var(--brand-soft) / <alpha-value>)",
+        "on-brand": "rgb(var(--on-brand) / <alpha-value>)",
         focus: "rgb(var(--focus) / <alpha-value>)",
         success: "rgb(var(--success) / <alpha-value>)",
         danger: "rgb(var(--danger) / <alpha-value>)",

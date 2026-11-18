@@ -1,25 +1,32 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getConsentDecision, saveConsentDecision, ConsentDecision } from "./analyticsConsent";
+import { isIsolatedFinancialRoute } from "./routeGate";
 
 export function AnalyticsConsentBanner() {
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (isIsolatedFinancialRoute(pathname)) {
+      setIsVisible(false);
+      return;
+    }
     // Check consent state on mount to avoid hydration mismatch
     const decision = getConsentDecision();
     if (decision === undefined) {
       setIsVisible(true);
     }
-  }, []);
+  }, [pathname]);
 
   const handleDecision = (decision: ConsentDecision) => {
     saveConsentDecision(decision);
     setIsVisible(false);
   };
 
-  if (!isVisible) {
+  if (!isVisible || isIsolatedFinancialRoute(pathname)) {
     return null;
   }
 

@@ -1,0 +1,563 @@
+.payday-calculator {
+  --payday-control-border: #7A899C;
+  --payday-brand-border: #BFD3FF;
+  --payday-success-soft: #DCFCE7;
+  --payday-success-border: #86C99C;
+  --payday-danger-soft: #FEE2E2;
+  --payday-danger-border: #FCA5A5;
+  --payday-invalid-surface: #FFFAFB;
+  --payday-warn: #92400E;
+  --payday-warn-soft: #FEF3C7;
+  --payday-warn-border: #F59E0B;
+  --payday-placeholder: #64748B;
+  color: rgb(var(--ink));
+  line-height: 1.55;
+}
+
+.dark .payday-calculator {
+  --payday-control-border: #647899;
+  --payday-brand-border: #3B5B9E;
+  --payday-success-soft: #0F2E22;
+  --payday-success-border: #227A48;
+  --payday-danger-soft: #35161E;
+  --payday-danger-border: #993344;
+  --payday-invalid-surface: #26141C;
+  --payday-warn: #FCD34D;
+  --payday-warn-soft: #2E2210;
+  --payday-warn-border: #B45309;
+  --payday-placeholder: #8B9BB4;
+}
+
+.payday-calculator a {
+  color: rgb(var(--brand));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.payday-calculator a:hover {
+  color: rgb(var(--brand-hover));
+}
+
+.payday-calculator a:focus-visible,
+.payday-calculator button:focus-visible,
+.payday-calculator input:focus-visible,
+.payday-calculator select:focus-visible {
+  outline: 2px solid rgb(var(--focus));
+  outline-offset: 2px;
+}
+
+.payday-calculator .container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.payday-calculator .page-header {
+  margin-bottom: 1.5rem;
+}
+
+.payday-calculator .eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--brand));
+}
+
+.payday-calculator h1 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.65rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .lead {
+  margin: 0;
+  color: rgb(var(--ink-muted));
+  max-width: 66ch;
+}
+
+.payday-calculator .card {
+  background-color: rgb(var(--surface));
+  border: 1px solid rgb(var(--border));
+  border-radius: 16px;
+  padding: 1.15rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 2px rgba(19, 34, 56, 0.04);
+}
+
+.payday-calculator .card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.payday-calculator h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgb(var(--ink));
+}
+
+.payday-calculator h3 {
+  margin: 1.1rem 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .notice-box {
+  background-color: rgb(var(--brand-soft));
+  border: 1px solid var(--payday-brand-border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .mode-banner {
+  background-color: var(--payday-warn-soft);
+  border: 1px solid var(--payday-warn-border);
+  color: var(--payday-warn);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.payday-calculator .noscript-box {
+  background-color: var(--payday-warn-soft);
+  border: 1px solid var(--payday-warn-border);
+  color: var(--payday-warn);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.payday-calculator .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.payday-calculator .badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  background-color: rgb(var(--surface-muted));
+  color: rgb(var(--ink-muted));
+  border: 1px solid rgb(var(--border));
+}
+
+.payday-calculator .form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .payday-calculator .container {
+    padding: 2rem 1.5rem 3.5rem;
+  }
+  .payday-calculator .card {
+    padding: 1.5rem;
+  }
+  .payday-calculator .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.payday-calculator .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.payday-calculator .field label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .field-hint {
+  font-size: 0.8rem;
+  color: rgb(var(--ink-muted));
+}
+
+.payday-calculator .field-error {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgb(var(--danger));
+  min-height: 1.1em;
+}
+
+.payday-calculator input[type="text"],
+.payday-calculator input[type="date"],
+.payday-calculator select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--payday-control-border);
+  background-color: rgb(var(--surface));
+  color: rgb(var(--ink));
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.payday-calculator input::placeholder {
+  color: var(--payday-placeholder);
+  opacity: 1;
+}
+
+.payday-calculator input[aria-invalid="true"],
+.payday-calculator select[aria-invalid="true"] {
+  border-color: rgb(var(--danger));
+  background-color: var(--payday-invalid-surface);
+}
+
+.payday-calculator .bills-section {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(var(--border));
+}
+
+.payday-calculator .bills-list {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.payday-calculator .bill-row {
+  border: 1px solid rgb(var(--border));
+  border-radius: 12px;
+  padding: 0.9rem;
+  background-color: rgb(var(--canvas));
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 720px) {
+  .payday-calculator .bill-row {
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+    align-items: start;
+  }
+}
+
+.payday-calculator .bill-deducted-wrap {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.payday-calculator .checkbox-label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: rgb(var(--ink));
+  cursor: pointer;
+}
+
+.payday-calculator .checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  accent-color: rgb(var(--brand));
+}
+
+.payday-calculator .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--payday-control-border);
+  background-color: rgb(var(--surface));
+  color: rgb(var(--ink));
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.payday-calculator .btn:hover:not(:disabled) {
+  background-color: rgb(var(--surface-muted));
+}
+
+.payday-calculator .btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.payday-calculator .btn-primary {
+  background-color: rgb(var(--brand));
+  border-color: rgb(var(--brand));
+  color: rgb(var(--on-brand));
+}
+
+.payday-calculator .btn-primary:hover:not(:disabled) {
+  background-color: rgb(var(--brand-hover));
+  border-color: rgb(var(--brand-hover));
+}
+
+.payday-calculator .btn-secondary {
+  background-color: rgb(var(--surface-muted));
+  border-color: var(--payday-control-border);
+}
+
+.payday-calculator .btn-danger {
+  color: rgb(var(--danger));
+  border-color: var(--payday-danger-border);
+}
+
+.payday-calculator .btn-danger:hover:not(:disabled) {
+  background-color: var(--payday-danger-soft);
+}
+
+.payday-calculator .btn-small {
+  min-height: 36px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.payday-calculator .actions-row {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.payday-calculator .persistence-box {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background-color: rgb(var(--surface-muted));
+  border: 1px solid rgb(var(--border));
+}
+
+.payday-calculator .stale-warning {
+  background-color: var(--payday-warn-soft);
+  border: 1px solid var(--payday-warn-border);
+  color: var(--payday-warn);
+  border-radius: 10px;
+  padding: 0.75rem 0.95rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.payday-calculator .result-hero,
+.payday-calculator .result-hero.is-zero {
+  border-radius: 14px;
+  padding: 1.15rem;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--surface-muted));
+  margin-bottom: 1rem;
+}
+
+.payday-calculator .result-hero.is-positive {
+  background-color: var(--payday-success-soft);
+  border-color: var(--payday-success-border);
+}
+
+.payday-calculator .result-hero.is-shortfall {
+  background-color: var(--payday-danger-soft);
+  border-color: var(--payday-danger-border);
+}
+
+.payday-calculator .result-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(var(--ink));
+  margin: 0 0 0.25rem;
+}
+
+.payday-calculator .result-amount {
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .result-hero.is-positive .result-amount {
+  color: rgb(var(--success));
+}
+
+.payday-calculator .result-hero.is-shortfall .result-amount {
+  color: rgb(var(--danger));
+}
+
+.payday-calculator .result-meta {
+  margin: 0.45rem 0 0;
+  font-size: 0.88rem;
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .breakdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  border: 1px solid rgb(var(--border));
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.payday-calculator .breakdown-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.95rem;
+  border-bottom: 1px solid rgb(var(--border));
+  font-size: 0.92rem;
+}
+
+.payday-calculator .breakdown-list li:last-child {
+  border-bottom: none;
+}
+
+.payday-calculator .breakdown-list .num {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.payday-calculator .table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgb(var(--border));
+  border-radius: 12px;
+}
+
+.payday-calculator table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.payday-calculator th,
+.payday-calculator td {
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid rgb(var(--border));
+}
+
+.payday-calculator th {
+  background-color: rgb(var(--surface-muted));
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgb(var(--ink-muted));
+}
+
+.payday-calculator tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.payday-calculator .pill {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.payday-calculator .pill-included {
+  background-color: rgb(var(--brand-soft));
+  border: 1px solid var(--payday-brand-border);
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .pill-excluded {
+  background-color: rgb(var(--surface-muted));
+  border: 1px solid rgb(var(--border));
+  color: rgb(var(--ink-muted));
+}
+
+.payday-calculator .limitations-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.88rem;
+  color: rgb(var(--ink-muted));
+}
+
+.payday-calculator .consent-card {
+  border: 1px solid var(--payday-brand-border);
+  background-color: rgb(var(--brand-soft));
+  color: rgb(var(--ink));
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.payday-calculator .consent-card .privacy-status {
+  color: rgb(var(--ink));
+}
+
+.payday-calculator .privacy-status {
+  font-size: 0.88rem;
+  color: rgb(var(--ink-muted));
+  margin: 0.5rem 0;
+}
+
+.payday-calculator .reference-box {
+  margin: 0.6rem 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  background-color: rgb(var(--surface-muted));
+  border: 1px solid rgb(var(--border));
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.payday-calculator .reference-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.payday-calculator .prose p {
+  margin: 0.55rem 0;
+  color: rgb(var(--ink-muted));
+}
+
+.payday-calculator .prose ul {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+  color: rgb(var(--ink-muted));
+}
+
+.payday-calculator .hidden {
+  display: none !important;
+}

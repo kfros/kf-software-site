@@ -16,10 +16,6 @@ export default function nextConfig(phase) {
           async rewrites() {
             return [
               {
-                source: "/tools/payday-balance/",
-                destination: "/tools/payday-balance/index.html",
-              },
-              {
                 source: "/research/cash-timing/",
                 destination: "/research/cash-timing/index.html",
               },

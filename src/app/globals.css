@@ -14,6 +14,7 @@
   --brand: 36 87 197;
   --brand-hover: 29 69 156;
   --brand-soft: 234 240 255;
+  --on-brand: 255 255 255;
   --focus: 37 99 235;
   --success: 21 128 61;
   --danger: 185 28 28;
@@ -34,6 +35,7 @@
   --brand: 122 167 255;
   --brand-hover: 155 188 255;
   --brand-soft: 23 42 78;
+  --on-brand: 11 18 32;
   --focus: 138 180 255;
   --success: 74 222 128;
   --danger: 248 113 113;

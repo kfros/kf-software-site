@@ -7,11 +7,11 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
 
-  var CONSENT_KEY = "cash_timing_usage_consent_v2";
-  var TOKEN_KEY = "cash_timing_browser_v2";
-  var SESSION_ATTRIB_KEY = "cash_timing_session_attrib_v2";
-  var DEDUP_KEY_PREFIX = "cash_timing_dedup_v2_";
+  var CONSENT_KEY = "cash_timing_metrics_consent_v3";
+  var IDENTITY_KEY = "cash_timing_metrics_browser_v3";
   var NINETY_DAYS_MS = 90 * 24 * 60 * 60 * 1000;
+  var POSTHOG_EU_ENDPOINT = "https://eu.i.posthog.com/i/v0/e/";
+  var PRODUCTION_ORIGIN = "https://kf-software.com";
 
   var SOURCE_ENUM = [
     "facebook",
@@ -24,11 +24,14 @@
     "youtube",
     "google",
     "bing",
+    "creator",
+    "site_internal",
     "other_referral",
     "direct_or_unknown"
   ];
 
   var CAMPAIGN_ENUM = ["cash_timing_v1", "none"];
+  var CONTENT_ENUM = ["p01", "p02", "p03", "none"];
 
   var EVENT_ENUM = [
     "calculator_visit",
@@ -36,12 +39,48 @@
     "example_calculation_completed"
   ];
 
+  var SOURCE_PARAM_ALIASES = {
+    "facebook": "facebook",
+    "fb": "facebook",
+    "facebook.com": "facebook",
+    "fb.com": "facebook",
+    "x": "x",
+    "twitter": "x",
+    "t.co": "x",
+    "x.com": "x",
+    "twitter.com": "x",
+    "threads": "threads",
+    "threads.com": "threads",
+    "threads.net": "threads",
+    "linkedin": "linkedin",
+    "linkedin.com": "linkedin",
+    "lnkd.in": "linkedin",
+    "reddit": "reddit",
+    "reddit.com": "reddit",
+    "redd.it": "reddit",
+    "moneysavingexpert": "moneysavingexpert",
+    "moneysavingexpert.com": "moneysavingexpert",
+    "pinterest": "pinterest",
+    "pinterest.com": "pinterest",
+    "pinterest.co.uk": "pinterest",
+    "pinterest.de": "pinterest",
+    "pin.it": "pinterest",
+    "youtube": "youtube",
+    "youtube.com": "youtube",
+    "youtu.be": "youtube",
+    "google": "google",
+    "bing": "bing",
+    "creator": "creator",
+    "site_internal": "site_internal"
+  };
+
   var REFERRER_HOST_MAP = {
     "facebook.com": "facebook",
     "fb.com": "facebook",
     "x.com": "x",
     "twitter.com": "x",
     "t.co": "x",
+    "threads.com": "threads",
     "threads.net": "threads",
     "linkedin.com": "linkedin",
     "lnkd.in": "linkedin",
@@ -49,6 +88,14 @@
     "redd.it": "reddit",
     "moneysavingexpert.com": "moneysavingexpert",
     "pinterest.com": "pinterest",
+    "pinterest.co.uk": "pinterest",
+    "pinterest.de": "pinterest",
+    "pinterest.fr": "pinterest",
+    "pinterest.ca": "pinterest",
+    "pinterest.com.au": "pinterest",
+    "pinterest.es": "pinterest",
+    "pinterest.it": "pinterest",
+    "pinterest.pl": "pinterest",
     "pin.it": "pinterest",
     "youtube.com": "youtube",
     "youtu.be": "youtube",
@@ -59,8 +106,12 @@
     "google.de": "google",
     "google.fr": "google",
     "google.ca": "google",
-    "google.com.au": "google"
+    "google.com.au": "google",
+    "google.es": "google",
+    "google.it": "google"
   };
+
+  var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
   function isKnownSource(val) {
     return typeof val === "string" && SOURCE_ENUM.indexOf(val) !== -1;
@@ -68,6 +119,18 @@
 
   function isKnownCampaign(val) {
     return typeof val === "string" && CAMPAIGN_ENUM.indexOf(val) !== -1;
+  }
+
+  function isKnownContent(val) {
+    return typeof val === "string" && CONTENT_ENUM.indexOf(val) !== -1;
+  }
+
+  function normalizeSourceParam(raw) {
+    if (!raw || typeof raw !== "string") {
+      return null;
+    }
+    var key = raw.trim().toLowerCase();
+    return SOURCE_PARAM_ALIASES[key] || null;
   }
 
   function matchReferrerHostname(hostname, ownHostname) {
@@ -78,8 +141,11 @@
     if (!clean) {
       return null;
     }
-    if (ownHostname && clean === ownHostname.toLowerCase()) {
-      return "same_origin";
+    if (ownHostname) {
+      var cleanOwn = ownHostname.toLowerCase().replace(/\.$/, "");
+      if (clean === cleanOwn) {
+        return "site_internal";
+      }
     }
     var domains = Object.keys(REFERRER_HOST_MAP);
     for (var i = 0; i < domains.length; i++) {
@@ -92,12 +158,13 @@
   }
 
   /**
-   * Classify acquisition source and campaign from URL search and document.referrer.
-   * Priority: recognized src -> recognized utm pair -> referrer hostname -> direct_or_unknown.
+   * Classify visit_source, campaign, and content from URL query and document.referrer.
+   * Priority for visit_source: allowed src -> allowed utm_source -> document.referrer hostname -> direct_or_unknown.
    */
   function classifyAttribution(searchStr, referrerStr, ownHostname) {
-    var source = null;
+    var visitSource = null;
     var campaign = "none";
+    var content = "none";
 
     var params = null;
     try {
@@ -107,35 +174,32 @@
     }
 
     if (params) {
-      var rawSrc = params.get("src");
-      var rawUtmSource = params.get("utm_source");
-      var rawUtmCampaign = params.get("utm_campaign");
-
-      if (rawUtmCampaign && isKnownCampaign(rawUtmCampaign)) {
-        campaign = rawUtmCampaign;
+      var fromSrc = normalizeSourceParam(params.get("src"));
+      var fromUtmSource = normalizeSourceParam(params.get("utm_source"));
+      if (fromSrc) {
+        visitSource = fromSrc;
+      } else if (fromUtmSource) {
+        visitSource = fromUtmSource;
       }
 
-      if (rawSrc && isKnownSource(rawSrc) && rawSrc !== "other_referral" && rawSrc !== "direct_or_unknown") {
-        source = rawSrc;
-      } else if (
-        rawUtmSource &&
-        isKnownSource(rawUtmSource) &&
-        rawUtmSource !== "other_referral" &&
-        rawUtmSource !== "direct_or_unknown" &&
-        rawUtmCampaign &&
-        isKnownCampaign(rawUtmCampaign)
-      ) {
-        source = rawUtmSource;
+      var rawCampaign = (params.get("campaign") || params.get("utm_campaign") || "").trim();
+      if (rawCampaign && isKnownCampaign(rawCampaign) && rawCampaign !== "none") {
+        campaign = rawCampaign;
+      }
+
+      var rawContent = (params.get("content") || params.get("utm_content") || "").trim();
+      if (rawContent && isKnownContent(rawContent) && rawContent !== "none") {
+        content = rawContent;
       }
     }
 
-    if (!source && referrerStr) {
+    if (!visitSource && referrerStr && typeof referrerStr === "string") {
       try {
         var refUrl = new URL(referrerStr);
         if (refUrl.protocol === "http:" || refUrl.protocol === "https:") {
           var matched = matchReferrerHostname(refUrl.hostname, ownHostname);
-          if (matched && matched !== "same_origin") {
-            source = matched;
+          if (matched) {
+            visitSource = matched;
           }
         }
       } catch (_e2) {
@@ -143,11 +207,95 @@
       }
     }
 
-    if (!source) {
-      source = "direct_or_unknown";
+    if (!visitSource) {
+      visitSource = "direct_or_unknown";
     }
 
-    return { source: source, campaign: campaign };
+    return {
+      visit_source: visitSource,
+      campaign: campaign,
+      content: content
+    };
+  }
+
+  function generateUuidV4(cryptoObj) {
+    if (cryptoObj && typeof cryptoObj.randomUUID === "function") {
+      return cryptoObj.randomUUID().toLowerCase();
+    }
+    if (cryptoObj && typeof cryptoObj.getRandomValues === "function") {
+      var bytes = new Uint8Array(16);
+      cryptoObj.getRandomValues(bytes);
+      bytes[6] = (bytes[6] & 0x0f) | 0x40;
+      bytes[8] = (bytes[8] & 0x3f) | 0x80;
+      var hex = [];
+      for (var i = 0; i < 16; i++) {
+        hex.push(bytes[i].toString(16).padStart(2, "0"));
+      }
+      return (
+        hex.slice(0, 4).join("") + "-" +
+        hex.slice(4, 6).join("") + "-" +
+        hex.slice(6, 8).join("") + "-" +
+        hex.slice(8, 10).join("") + "-" +
+        hex.slice(10, 16).join("")
+      );
+    }
+    return null;
+  }
+
+  /**
+   * Validate and build a closed-allowlist PostHog v3 capture payload.
+   * Returns null if any field violates the strict schema.
+   */
+  function buildAllowlistedPayload(params) {
+    if (!params || typeof params !== "object") {
+      return null;
+    }
+    var apiKey = typeof params.apiKey === "string" ? params.apiKey.trim() : "";
+    // Reject empty or personal secret keys (phx_)
+    if (!apiKey || /^phx_/i.test(apiKey)) {
+      return null;
+    }
+    var distinctId = typeof params.distinctId === "string" ? params.distinctId.trim().toLowerCase() : "";
+    if (!UUID_RE.test(distinctId)) {
+      return null;
+    }
+    var eventUuid = typeof params.eventUuid === "string" ? params.eventUuid.trim().toLowerCase() : "";
+    if (!UUID_RE.test(eventUuid)) {
+      return null;
+    }
+    var eventName = params.eventName;
+    if (EVENT_ENUM.indexOf(eventName) === -1) {
+      return null;
+    }
+    var timestamp = params.timestamp;
+    if (typeof timestamp !== "string" || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(timestamp)) {
+      return null;
+    }
+    var firstSource = isKnownSource(params.firstSource) ? params.firstSource : null;
+    var visitSource = isKnownSource(params.visitSource) ? params.visitSource : null;
+    var campaign = isKnownCampaign(params.campaign) ? params.campaign : null;
+    var content = isKnownContent(params.content) ? params.content : null;
+
+    if (!firstSource || !visitSource || !campaign || !content) {
+      return null;
+    }
+
+    return {
+      api_key: apiKey,
+      distinct_id: distinctId,
+      uuid: eventUuid,
+      event: eventName,
+      timestamp: timestamp,
+      properties: {
+        $process_person_profile: false,
+        schema_version: 3,
+        tool: "payday_balance",
+        first_source: firstSource,
+        visit_source: visitSource,
+        campaign: campaign,
+        content: content
+      }
+    };
   }
 
   function createTelemetryClient(deps) {
@@ -158,33 +306,39 @@
     var cryptoObj = env.crypto || (typeof crypto !== "undefined" ? crypto : null);
     var fetchFn = env.fetch || (typeof fetch === "function" ? fetch.bind(globalThis) : null);
     var nowFn = typeof env.now === "function" ? env.now : function () { return Date.now(); };
+
+    var defaultConfig = {
+      enabled: false,
+      publicProjectToken: "",
+      endpoint: POSTHOG_EU_ENDPOINT,
+      productionOrigin: PRODUCTION_ORIGIN,
+      allowNonProductionOrigin: false,
+      timeoutMs: 3500,
+      maxInMemoryRetries: 1
+    };
+
     var config = Object.assign(
-      {
-        enabled: false,
-        eventsEndpoint: "https://api.kf-software.com/cash-timing/events",
-        forgetEndpoint: "https://api.kf-software.com/cash-timing/forget",
-        timeoutMs: 3500
-      },
-      env.config || (win && win.KF_PAYDAY_METRICS_CONFIG) || {}
+      {},
+      defaultConfig,
+      (win && win.KF_PAYDAY_METRICS_CONFIG) || {},
+      env.config || {}
     );
 
     var localStore = null;
-    var sessionStore = null;
     try {
       localStore = env.localStorage || (win && win.localStorage) || null;
       if (localStore) {
-        localStore.setItem("__kf_probe__", "1");
-        localStore.removeItem("__kf_probe__");
+        localStore.setItem("__kf_v3_probe__", "1");
+        localStore.removeItem("__kf_v3_probe__");
       }
     } catch (_e) {
       localStore = null;
     }
 
-    try {
-      sessionStore = env.sessionStorage || (win && win.sessionStorage) || null;
-    } catch (_e2) {
-      sessionStore = null;
-    }
+    var inFlightControllers = new Set();
+    var pendingRetryTimers = new Set();
+    var visitSentForPageOpen = false;
+    var lastStoppedReferenceUuid = null;
 
     function isPrivacySignalActive() {
       if (nav && nav.globalPrivacyControl === true) {
@@ -194,86 +348,111 @@
       return dnt === "1" || dnt === "yes";
     }
 
-    function hasCryptoRandom() {
-      return Boolean(cryptoObj && typeof cryptoObj.getRandomValues === "function");
+    function hasCryptoUuid() {
+      return Boolean(
+        cryptoObj &&
+        (typeof cryptoObj.randomUUID === "function" || typeof cryptoObj.getRandomValues === "function")
+      );
+    }
+
+    function isAllowedOrigin() {
+      if (config.allowNonProductionOrigin === true) {
+        return true;
+      }
+      var currentOrigin = win && win.location && typeof win.location.origin === "string"
+        ? win.location.origin
+        : "";
+      return currentOrigin === config.productionOrigin;
+    }
+
+    function isValidPublicToken(tok) {
+      if (typeof tok !== "string") return false;
+      var trimmed = tok.trim();
+      // Reject empty or personal secret API keys (phx_)
+      return trimmed.length >= 8 && !/^phx_/i.test(trimmed);
     }
 
     function isInfrastructureAvailable() {
-      return Boolean(config.enabled && localStore && hasCryptoRandom() && fetchFn && !isPrivacySignalActive());
+      return Boolean(
+        config.enabled === true &&
+        isValidPublicToken(config.publicProjectToken) &&
+        isAllowedOrigin() &&
+        localStore &&
+        hasCryptoUuid() &&
+        fetchFn &&
+        !isPrivacySignalActive()
+      );
     }
 
-    // Classify in memory on init and strip query/hash from visible URL
-    var inMemoryAttribution = classifyAttribution(
-      win && win.location ? win.location.search : "",
-      doc ? doc.referrer : "",
-      win && win.location ? win.location.hostname : ""
-    );
+    // Classify current page visit in memory only (cached on window across React StrictMode remounts)
+    // and strip query string while preserving safe hash
+    var inMemoryAttribution =
+      win && win.__KF_PAYDAY_INITIAL_ATTRIBUTION__
+        ? win.__KF_PAYDAY_INITIAL_ATTRIBUTION__
+        : classifyAttribution(
+            win && win.location ? win.location.search : "",
+            doc ? doc.referrer : "",
+            win && win.location ? win.location.hostname : ""
+          );
+
+    if (win && !win.__KF_PAYDAY_INITIAL_ATTRIBUTION__) {
+      win.__KF_PAYDAY_INITIAL_ATTRIBUTION__ = inMemoryAttribution;
+    }
 
     if (win && win.history && typeof win.history.replaceState === "function" && win.location) {
-      if (win.location.search || win.location.hash) {
+      if (win.location.search) {
         try {
-          win.history.replaceState(null, "", win.location.pathname);
-        } catch (_e3) {
-          // Ignore replaceState failures in restricted contexts
+          var rawHash = typeof win.location.hash === "string" ? win.location.hash : "";
+          var safeHash = /^#[A-Za-z0-9_-]+$/.test(rawHash) ? rawHash : "";
+          win.history.replaceState(null, "", win.location.pathname + safeHash);
+        } catch (_e2) {
+          // Ignore replaceState failures
         }
       }
     }
 
-    function getConsentState() {
-      if (!localStore) {
-        return "unavailable";
-      }
-      try {
-        var val = localStore.getItem(CONSENT_KEY);
-        if (val === "accepted") {
-          var rawToken = localStore.getItem(TOKEN_KEY);
-          if (rawToken) {
-            var parsedToken = JSON.parse(rawToken);
-            if (parsedToken && typeof parsedToken.expires_at === "number" && nowFn() >= parsedToken.expires_at) {
-              localStore.removeItem(TOKEN_KEY);
-              localStore.removeItem(CONSENT_KEY);
-              clearDedupAndAttribution();
-              return "unset";
-            }
-          }
-          return "accepted";
+    function abortAllInFlightAndRetries() {
+      inFlightControllers.forEach(function (ctrl) {
+        try {
+          ctrl.abort();
+        } catch (_e) {
+          // Ignore
         }
-        if (val === "declined") {
-          return "declined";
-        }
-        return "unset";
-      } catch (_e) {
-        return "unavailable";
-      }
+      });
+      inFlightControllers.clear();
+
+      pendingRetryTimers.forEach(function (timerId) {
+        clearTimeout(timerId);
+      });
+      pendingRetryTimers.clear();
     }
 
-    function readStoredTokenRecord() {
+    function readStoredIdentity() {
       if (!localStore) {
         return null;
       }
       try {
-        var raw = localStore.getItem(TOKEN_KEY);
+        var raw = localStore.getItem(IDENTITY_KEY);
         if (!raw) {
           return null;
         }
         var parsed = JSON.parse(raw);
         if (
           !parsed ||
-          typeof parsed.token !== "string" ||
-          !/^[0-9a-f]{64}$/.test(parsed.token) ||
+          typeof parsed.distinct_id !== "string" ||
+          !UUID_RE.test(parsed.distinct_id) ||
+          !isKnownSource(parsed.first_source) ||
           typeof parsed.created_at !== "number" ||
           typeof parsed.expires_at !== "number"
         ) {
-          localStore.removeItem(TOKEN_KEY);
+          localStore.removeItem(IDENTITY_KEY);
           return null;
         }
         if (nowFn() >= parsed.expires_at) {
-          // Fixed 90-day expiry reached: discard identity and require renewed consent
-          localStore.removeItem(TOKEN_KEY);
-          if (localStore.getItem(CONSENT_KEY) === "accepted") {
-            localStore.removeItem(CONSENT_KEY);
-          }
-          clearDedupAndAttribution();
+          // Fixed 90-day expiry reached: clear ID, attribution, and reset consent to unknown
+          localStore.removeItem(IDENTITY_KEY);
+          localStore.removeItem(CONSENT_KEY);
+          visitSentForPageOpen = false;
           return null;
         }
         return parsed;
@@ -282,134 +461,111 @@
       }
     }
 
-    function generateToken() {
-      var bytes = new Uint8Array(32);
-      cryptoObj.getRandomValues(bytes);
-      var hex = "";
-      for (var i = 0; i < bytes.length; i++) {
-        hex += bytes[i].toString(16).padStart(2, "0");
+    function getConsentState() {
+      if (!localStore) {
+        return "unknown";
       }
-      return hex;
+      try {
+        // Check identity expiry first so expired IDs reset consent to unknown
+        readStoredIdentity();
+        var val = localStore.getItem(CONSENT_KEY);
+        if (val === "accepted" || val === "rejected") {
+          return val;
+        }
+        return "unknown";
+      } catch (_e) {
+        return "unknown";
+      }
     }
 
-    function ensureTokenForConsentedBrowser() {
-      if (!isInfrastructureAvailable()) {
+    function ensureIdentityForConsentedBrowser() {
+      if (!isInfrastructureAvailable() || getConsentState() !== "accepted") {
         return null;
       }
-      var existing = readStoredTokenRecord();
-      if (getConsentState() !== "accepted") {
-        return null;
-      }
+      var existing = readStoredIdentity();
       if (existing) {
-        return existing.token;
+        return existing;
+      }
+      var uuid = generateUuidV4(cryptoObj);
+      if (!uuid) {
+        return null;
       }
       var createdAt = nowFn();
       var record = {
-        token: generateToken(),
+        distinct_id: uuid,
+        first_source: inMemoryAttribution.visit_source,
         created_at: createdAt,
         expires_at: createdAt + NINETY_DAYS_MS
       };
       try {
-        localStore.setItem(TOKEN_KEY, JSON.stringify(record));
-        return record.token;
+        localStore.setItem(IDENTITY_KEY, JSON.stringify(record));
+        lastStoppedReferenceUuid = null;
+        return record;
       } catch (_e) {
         return null;
       }
     }
 
-    function getAttributionForEvent() {
-      if (sessionStore) {
-        try {
-          var raw = sessionStore.getItem(SESSION_ATTRIB_KEY);
-          if (raw) {
-            var parsed = JSON.parse(raw);
-            if (parsed && isKnownSource(parsed.source) && isKnownCampaign(parsed.campaign)) {
-              return parsed;
-            }
-          }
-          if (getConsentState() === "accepted") {
-            sessionStore.setItem(SESSION_ATTRIB_KEY, JSON.stringify(inMemoryAttribution));
-          }
-        } catch (_e) {
-          // Fall back to in-memory
-        }
+    function sendCaptureRequest(payload, attemptNumber) {
+      if (!isInfrastructureAvailable() || getConsentState() !== "accepted") {
+        return Promise.resolve(false);
       }
-      return inMemoryAttribution;
-    }
 
-    function clearDedupAndAttribution() {
-      if (sessionStore) {
-        try {
-          sessionStore.removeItem(SESSION_ATTRIB_KEY);
-          var keysToDelete = [];
-          for (var i = 0; i < sessionStore.length; i++) {
-            var k = sessionStore.key(i);
-            if (k && k.indexOf(DEDUP_KEY_PREFIX) === 0) {
-              keysToDelete.push(k);
-            }
-          }
-          for (var j = 0; j < keysToDelete.length; j++) {
-            sessionStore.removeItem(keysToDelete[j]);
-          }
-        } catch (_e) {
-          // Ignore storage errors
-        }
-      }
-    }
-
-    function utcDayString() {
-      return new Date(nowFn()).toISOString().slice(0, 10);
-    }
-
-    function isAlreadySentInTabToday(eventName, dayStr) {
-      if (!sessionStore) {
-        return false;
-      }
-      try {
-        return sessionStore.getItem(DEDUP_KEY_PREFIX + eventName) === dayStr;
-      } catch (_e) {
-        return false;
-      }
-    }
-
-    function markSentInTabToday(eventName, dayStr) {
-      if (!sessionStore) {
-        return;
-      }
-      try {
-        sessionStore.setItem(DEDUP_KEY_PREFIX + eventName, dayStr);
-      } catch (_e) {
-        // Ignore storage errors
-      }
-    }
-
-    function postJson(url, bodyObj) {
       var controller = typeof AbortController === "function" ? new AbortController() : null;
-      var timerId = null;
+      var timeoutId = null;
       if (controller) {
-        timerId = setTimeout(function () {
+        inFlightControllers.add(controller);
+        timeoutId = setTimeout(function () {
           controller.abort();
         }, config.timeoutMs);
       }
 
-      return fetchFn(url, {
+      return fetchFn(config.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyObj),
+        body: JSON.stringify(payload),
         credentials: "omit",
         referrerPolicy: "no-referrer",
-        keepalive: true,
+        mode: "cors",
         signal: controller ? controller.signal : undefined
-      }).then(
-        function (res) {
-          if (timerId) clearTimeout(timerId);
-          return res;
-        },
-        function (err) {
-          if (timerId) clearTimeout(timerId);
-          throw err;
-        }
-      );
+      })
+        .then(function (res) {
+          if (timeoutId) clearTimeout(timeoutId);
+          if (controller) inFlightControllers.delete(controller);
+          if (res && res.ok) {
+            return true;
+          }
+          var status = res ? res.status : 0;
+          if ((status === 429 || status >= 500) && attemptNumber < config.maxInMemoryRetries) {
+            return retryInMemory(payload, attemptNumber + 1);
+          }
+          return false;
+        })
+        .catch(function () {
+          if (timeoutId) clearTimeout(timeoutId);
+          if (controller) inFlightControllers.delete(controller);
+          if (attemptNumber < config.maxInMemoryRetries && getConsentState() === "accepted") {
+            return retryInMemory(payload, attemptNumber + 1);
+          }
+          return false;
+        });
+    }
+
+    function retryInMemory(payload, nextAttempt) {
+      if (getConsentState() !== "accepted" || !isInfrastructureAvailable()) {
+        return Promise.resolve(false);
+      }
+      return new Promise(function (resolve) {
+        var tid = setTimeout(function () {
+          pendingRetryTimers.delete(tid);
+          if (getConsentState() !== "accepted" || !isInfrastructureAvailable()) {
+            resolve(false);
+            return;
+          }
+          sendCaptureRequest(payload, nextAttempt).then(resolve);
+        }, 250);
+        pendingRetryTimers.add(tid);
+      });
     }
 
     function trackEvent(eventName) {
@@ -419,35 +575,43 @@
       if (!isInfrastructureAvailable() || getConsentState() !== "accepted") {
         return Promise.resolve(false);
       }
+      if (eventName === "calculator_visit") {
+        if (visitSentForPageOpen) {
+          return Promise.resolve(false);
+        }
+        visitSentForPageOpen = true;
+      }
 
-      var token = ensureTokenForConsentedBrowser();
-      if (!token) {
+      var identity = ensureIdentityForConsentedBrowser();
+      if (!identity) {
+        if (eventName === "calculator_visit") {
+          visitSentForPageOpen = false;
+        }
         return Promise.resolve(false);
       }
 
-      var dayStr = utcDayString();
-      if (isAlreadySentInTabToday(eventName, dayStr)) {
+      var eventUuid = generateUuidV4(cryptoObj);
+      if (!eventUuid) {
         return Promise.resolve(false);
       }
 
-      var attrib = getAttributionForEvent();
-      var payload = {
-        schema_version: 2,
-        browser_token: token,
-        event: eventName,
-        source: attrib.source,
-        campaign: attrib.campaign
-      };
+      var payload = buildAllowlistedPayload({
+        apiKey: config.publicProjectToken,
+        distinctId: identity.distinct_id,
+        eventUuid: eventUuid,
+        eventName: eventName,
+        timestamp: new Date(nowFn()).toISOString(),
+        firstSource: identity.first_source,
+        visitSource: inMemoryAttribution.visit_source,
+        campaign: inMemoryAttribution.campaign,
+        content: inMemoryAttribution.content
+      });
 
-      markSentInTabToday(eventName, dayStr);
+      if (!payload) {
+        return Promise.resolve(false);
+      }
 
-      return postJson(config.eventsEndpoint, payload)
-        .then(function (res) {
-          return Boolean(res && res.ok);
-        })
-        .catch(function () {
-          return false;
-        });
+      return sendCaptureRequest(payload, 0);
     }
 
     function grantConsent() {
@@ -459,82 +623,47 @@
       } catch (_e) {
         return false;
       }
-      ensureTokenForConsentedBrowser();
-      getAttributionForEvent();
+      ensureIdentityForConsentedBrowser();
       return true;
     }
 
-    function declineConsent() {
-      if (!localStore) {
-        return;
-      }
-      try {
-        localStore.setItem(CONSENT_KEY, "declined");
-      } catch (_e) {
-        // Ignore
-      }
-      clearDedupAndAttribution();
-    }
-
-    /**
-     * Stop measurement immediately across tabs.
-     * Retains existing token locally ONLY as an inactive deletion handle until its original expiry.
-     * Makes no network request.
-     */
     function stopMeasurement() {
-      declineConsent();
+      abortAllInFlightAndRetries();
+      var currentIdentity = readStoredIdentity();
+      if (currentIdentity && currentIdentity.distinct_id) {
+        lastStoppedReferenceUuid = currentIdentity.distinct_id;
+      }
+      if (localStore) {
+        try {
+          localStore.removeItem(IDENTITY_KEY);
+          localStore.setItem(CONSENT_KEY, "rejected");
+        } catch (_e) {
+          // Ignore
+        }
+      }
+      visitSentForPageOpen = false;
     }
 
-    /**
-     * Stop measurement and request deletion on POST /cash-timing/forget.
-     * Removes local token only after confirmed deletion.
-     */
-    function deleteUsageHistory() {
+    function rejectConsent() {
       stopMeasurement();
-      var record = readStoredTokenRecord();
-      if (!record) {
-        return Promise.resolve({ ok: true, hadToken: false });
-      }
-      if (!config.enabled || !fetchFn) {
-        return Promise.resolve({
-          ok: false,
-          hadToken: true,
-          error: "Deletion endpoint is not enabled or network is unavailable."
-        });
-      }
-
-      var payload = {
-        schema_version: 2,
-        browser_token: record.token
-      };
-
-      return postJson(config.forgetEndpoint, payload)
-        .then(function (res) {
-          if (res && res.status === 204) {
-            try {
-              localStore.removeItem(TOKEN_KEY);
-            } catch (_e) {
-              // Ignore
-            }
-            return { ok: true, hadToken: true };
-          }
-          return {
-            ok: false,
-            hadToken: true,
-            error: "Server did not confirm deletion. Your measurement remains off; please retry."
-          };
-        })
-        .catch(function () {
-          return {
-            ok: false,
-            hadToken: true,
-            error: "Could not reach the deletion endpoint. Your measurement remains off; please retry."
-          };
-        });
     }
 
-    function hasDeletableToken() {
-      return Boolean(readStoredTokenRecord());
+    function getUsageReference() {
+      var active = readStoredIdentity();
+      if (active && active.distinct_id) {
+        return active.distinct_id;
+      }
+      return lastStoppedReferenceUuid;
+    }
+
+    function getCurrentAttribution() {
+      var active = readStoredIdentity();
+      return {
+        first_source: active ? active.first_source : null,
+        visit_source: inMemoryAttribution.visit_source,
+        campaign: inMemoryAttribution.campaign,
+        content: inMemoryAttribution.content
+      };
     }
 
     function onConsentSync(callback) {
@@ -542,11 +671,15 @@
         return function () {};
       }
       function handler(e) {
-        if (e && e.key === CONSENT_KEY) {
-          if (e.newValue !== "accepted") {
-            clearDedupAndAttribution();
+        if (!e || e.key === null || e.key === CONSENT_KEY || e.key === IDENTITY_KEY) {
+          var state = getConsentState();
+          if (state !== "accepted") {
+            abortAllInFlightAndRetries();
+            visitSentForPageOpen = false;
           }
-          callback(getConsentState());
+          if (typeof callback === "function") {
+            callback(state);
+          }
         }
       }
       win.addEventListener("storage", handler);
@@ -555,28 +688,36 @@
       };
     }
 
+    function destroy() {
+      abortAllInFlightAndRetries();
+    }
+
     return {
       isInfrastructureAvailable: isInfrastructureAvailable,
       isPrivacySignalActive: isPrivacySignalActive,
       getConsentState: getConsentState,
-      hasDeletableToken: hasDeletableToken,
+      getUsageReference: getUsageReference,
+      getCurrentAttribution: getCurrentAttribution,
       grantConsent: grantConsent,
-      declineConsent: declineConsent,
+      rejectConsent: rejectConsent,
       stopMeasurement: stopMeasurement,
-      deleteUsageHistory: deleteUsageHistory,
       trackEvent: trackEvent,
-      onConsentSync: onConsentSync
+      onConsentSync: onConsentSync,
+      destroy: destroy
     };
   }
 
   return {
     CONSENT_KEY: CONSENT_KEY,
-    TOKEN_KEY: TOKEN_KEY,
-    SESSION_ATTRIB_KEY: SESSION_ATTRIB_KEY,
+    IDENTITY_KEY: IDENTITY_KEY,
+    POSTHOG_EU_ENDPOINT: POSTHOG_EU_ENDPOINT,
+    PRODUCTION_ORIGIN: PRODUCTION_ORIGIN,
     SOURCE_ENUM: SOURCE_ENUM,
     CAMPAIGN_ENUM: CAMPAIGN_ENUM,
+    CONTENT_ENUM: CONTENT_ENUM,
     EVENT_ENUM: EVENT_ENUM,
     classifyAttribution: classifyAttribution,
+    buildAllowlistedPayload: buildAllowlistedPayload,
     createTelemetryClient: createTelemetryClient
   };
 });

@@ -1,15 +1,30 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { getConsentDecision } from "./analyticsConsent";
+import { isIsolatedFinancialRoute } from "./routeGate";
 import { trackClarityEvent } from "@/lib/clarity";
 
 export function MicrosoftClarity() {
   const projectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
+  const pathname = usePathname();
+  const [allowedOnRoute, setAllowedOnRoute] = useState(false);
 
   useEffect(() => {
-    if (!projectId) return;
+    if (!projectId) {
+      setAllowedOnRoute(false);
+      return;
+    }
+
+    // Fail-closed gate: never initialize or load Clarity on financial routes
+    if (isIsolatedFinancialRoute(pathname)) {
+      setAllowedOnRoute(false);
+      return;
+    }
+
+    setAllowedOnRoute(true);
 
     // Initialize Clarity queue if not already present
     window.clarity = window.clarity || function(...args) {
@@ -33,6 +48,9 @@ export function MicrosoftClarity() {
 
     // Set up global click tracking for key events
     const handleDocumentClick = (event: MouseEvent) => {
+      if (isIsolatedFinancialRoute(window.location.pathname, window.location.pathname)) {
+        return;
+      }
       const target = event.target as HTMLElement;
       const anchor = target.closest("a");
       if (!anchor) return;
@@ -74,9 +92,9 @@ export function MicrosoftClarity() {
     return () => {
       document.removeEventListener("click", handleDocumentClick);
     };
-  }, [projectId]);
+  }, [projectId, pathname]);
 
-  if (!projectId) {
+  if (!projectId || !allowedOnRoute || isIsolatedFinancialRoute(pathname)) {
     return null;
   }
 
